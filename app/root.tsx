@@ -5,35 +5,37 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "react-router";
-
-import type { Route } from "./+types/root";
-import "./app.css";
+} from 'react-router';
+import { RootProvider } from 'fumadocs-ui/provider/react-router';
+import type { Route } from './+types/root';
+import './app.css';
+import { rewritePath } from 'fumadocs-core/negotiation';
+import NotFound from './routes/not-found';
+import SearchDialog from '@/components/search';
 
 export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
+    rel: 'preconnect',
+    href: 'https://api.fonts.coollabs.io',
+    crossOrigin: 'anonymous',
   },
   {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    rel: 'stylesheet',
+    href: 'https://api.fonts.coollabs.io/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
   },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="flex flex-col min-h-screen">
+        <RootProvider search={{ SearchDialog }}>{children}</RootProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -46,23 +48,21 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
+  let message = 'Oops!';
+  let details = 'An unexpected error occurred.';
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
+    if (error.status === 404) return <NotFound />;
+    message = 'Error';
+    details = error.statusText;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
+    <main className="pt-16 p-4 w-full max-w-[1400px] mx-auto">
       <h1>{message}</h1>
       <p>{details}</p>
       {stack && (
@@ -73,3 +73,15 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     </main>
   );
 }
+
+const { rewrite: rewriteLLM } = rewritePath('/docs{/*path}.mdx', '/llms.mdx/docs{/*path}');
+const serverMiddleware: Route.MiddlewareFunction = async (
+  { request }: { request: Request },
+  next: () => Promise<Response>,
+) => {
+  const url = new URL(request.url);
+  const path = rewriteLLM(url.pathname);
+  if (path) return Response.redirect(new URL(path, url));
+  return next();
+};
+export const middleware = [serverMiddleware];
