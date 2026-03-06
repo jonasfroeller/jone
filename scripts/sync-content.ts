@@ -19,11 +19,15 @@ async function main() {
   const orama = new OramaCloud({ projectId, apiKey });
 
   const content = await fs.readFile(filePath);
-  const records = JSON.parse(content.toString()) as OramaDocument[];
+  const allRecords = JSON.parse(content.toString()) as OramaDocument[];
+  const records = allRecords.filter((r) => !r.url?.includes('/baseui/'));
 
-  await sync(orama, { index, documents: records });
-
-  console.log(`search updated: ${records.length} records`);
+  try {
+    await sync(orama, { index, documents: records });
+    console.log(`search updated: ${records.length} records`);
+  } catch (e) {
+    console.warn(`⚠ search sync failed (${records.length} records): ${e instanceof Error ? e.message : e}`);
+  }
 }
 
 void main();
