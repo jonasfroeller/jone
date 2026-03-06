@@ -1,6 +1,8 @@
+import type { ReactNode } from 'react';
 import type { Route } from './+types/docs';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/layouts/docs/page';
+import { Package2, LayoutGrid } from 'lucide-react';
 import { source } from '@/lib/source';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import browserCollections from 'fumadocs-mdx:collections/browser';
@@ -10,7 +12,7 @@ import { LLMCopyButton, ViewOptions } from '@/components/ai/page-actions';
 import { getPageImagePath } from '@/lib/og';
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const slugs = params['*'].split('/').filter((v) => v.length > 0);
+  const slugs = params['*'].split('/').filter((s: string) => s.length > 0);
   const page = source.getPage(slugs);
   if (!page) throw new Response('Not found', { status: 404 });
 
@@ -37,7 +39,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
     },
   ) {
     return (
-      <DocsPage toc={toc}>
+      <DocsPage toc={toc} tableOfContent={{ style: 'clerk' }} tableOfContentPopover={{ style: 'clerk' }}>
         <title>{frontmatter.title}</title>
         <meta name="description" content={frontmatter.description} />
         <meta property="og:image" content={imagePath} />
@@ -62,7 +64,22 @@ export default function Page({ loaderData }: Route.ComponentProps) {
   const { path, url, pageTree, imagePath } = useFumadocsLoader(loaderData);
 
   return (
-    <DocsLayout {...baseOptions()} tree={pageTree}>
+    <DocsLayout
+      {...baseOptions()}
+      tree={pageTree}
+      sidebar={{
+        tabs: {
+          transform: (option) => {
+            const icons: Record<string, ReactNode> = {
+              baseui: <Package2 className="size-4" />,
+              shadcn: <LayoutGrid className="size-4" />,
+            };
+            const slug = option.url.replace('/docs/', '').split('/')[0];
+            return { ...option, icon: icons[slug] ?? option.icon };
+          },
+        },
+      }}
+    >
       {clientLoader.useContent(path, { path, url, imagePath })}
     </DocsLayout>
   );
