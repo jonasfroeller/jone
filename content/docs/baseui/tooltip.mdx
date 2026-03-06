@@ -1,0 +1,50 @@
+---
+title: Tooltip
+description: Base UI Tooltip component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="tooltip/index.ts"
+export { TooltipRoot as Root } from './root/TooltipRoot';
+export { TooltipTrigger as Trigger } from './trigger/TooltipTrigger';
+export { TooltipPortal as Portal } from './portal/TooltipPortal';
+export { TooltipPositioner as Positioner } from './positioner/TooltipPositioner';
+export { TooltipPopup as Popup } from './popup/TooltipPopup';
+export { TooltipArrow as Arrow } from './arrow/TooltipArrow';
+export { TooltipProvider as Provider } from './provider/TooltipProvider';
+export { TooltipViewport as Viewport } from './viewport/TooltipViewport';
+export {
+  createTooltipHandle as createHandle,
+  TooltipHandle as Handle,
+} from './store/TooltipHandle';
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the portal mounted in the DOM while the popup is hidden. |
+| `side?` | `Side \| undefined` | `top` | Which side of the anchor element to align the popup against. May automatically change to avoid collisions. |
+| `children?` | `React.ReactNode` | `-` | - |
+| `delay?` | `number \| undefined` | `-` | How long to wait before opening a tooltip. Specified in milliseconds. |
+| `closeDelay?` | `number \| undefined` | `-` | How long to wait before closing a tooltip. Specified in milliseconds. |
+| `timeout?` | `number \| undefined` | `400` | Another tooltip will open instantly if the previous tooltip is closed within this timeout. Specified in milliseconds. |
+| `defaultOpen?` | `boolean \| undefined` | `false` | Whether the tooltip is initially open. To render a controlled tooltip, use the `open` prop instead. |
+| `open?` | `boolean \| undefined` | `-` | Whether the tooltip is currently open. |
+| `onOpenChangeComplete?` | `((open: boolean) => void) \| undefined` | `-` | Event handler called after any animations complete when the tooltip is opened or closed. |
+| `disableHoverablePopup?` | `boolean \| undefined` | `false` | Whether the tooltip contents can be hovered without closing the tooltip. |
+| `trackCursorAxis?` | `'none' \| 'x' \| 'y' \| 'both' \| undefined` | `none` | Determines which axis the tooltip should track the cursor on. |
+| `actionsRef?` | `React.RefObject<TooltipRoot.Actions \| null> \| undefined` | `-` | A ref to imperative actions. - `unmount`: Unmounts the tooltip popup. - `close`: Closes the tooltip imperatively when called. |
+| `disabled?` | `boolean \| undefined` | `false` | Whether the tooltip is disabled. |
+| `handle?` | `TooltipHandle<Payload> \| undefined` | `-` | A handle to associate the tooltip with a trigger. If specified, allows external triggers to control the tooltip's open state. Can be created with the Tooltip.createHandle() method. |
+| `triggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the tooltip is associated with. This is useful in conjunction with the `open` prop to create a controlled tooltip. There's no need to specify this prop when the tooltip is uncontrolled (i.e. when the `open` prop is not set). |
+| `defaultTriggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the tooltip is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open tooltip. |
+| `payload?` | `Payload \| undefined` | `-` | A payload to pass to the tooltip when it is opened. |
+| `closeOnClick?` | `boolean \| undefined` | `true` | Whether the tooltip should close when this trigger is clicked. |

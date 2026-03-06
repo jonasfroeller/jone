@@ -141,7 +141,7 @@ export interface UseListNavigationProps {
   openOnArrowKeyDown?: boolean | undefined;
   /**
    * By default elements with either a `disabled` or `aria-disabled` attribute
-   * are skipped in the list navigation — however, this requires the items to
+   * are skipped in the list navigation: however, this requires the items to
    * be rendered.
    * This prop allows you to manually specify indices which should be disabled,
    * overriding the default logic.

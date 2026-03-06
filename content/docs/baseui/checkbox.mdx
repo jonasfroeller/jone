@@ -1,0 +1,35 @@
+---
+title: Checkbox
+description: Base UI Checkbox component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="checkbox/index.ts"
+export { CheckboxRoot as Root } from './root/CheckboxRoot';
+export { CheckboxIndicator as Indicator } from './indicator/CheckboxIndicator';
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the element in the DOM when the checkbox is not checked. |
+| `id?` | `string \| undefined` | `-` | The id of the input element. |
+| `name?` | `string \| undefined` | `undefined` | Identifies the field when a form is submitted. |
+| `checked?` | `boolean \| undefined` | `undefined` | Whether the checkbox is currently ticked. To render an uncontrolled checkbox, use the `defaultChecked` prop instead. |
+| `defaultChecked?` | `boolean \| undefined` | `false` | Whether the checkbox is initially ticked. To render a controlled checkbox, use the `checked` prop instead. |
+| `disabled?` | `boolean \| undefined` | `false` | Whether the component should ignore user interaction. |
+| `readOnly?` | `boolean \| undefined` | `false` | Whether the user should be unable to tick or untick the checkbox. |
+| `required?` | `boolean \| undefined` | `false` | Whether the user must tick the checkbox before submitting a form. |
+| `indeterminate?` | `boolean \| undefined` | `false` | Whether the checkbox is in a mixed state: neither ticked, nor unticked. |
+| `inputRef?` | `React.Ref<HTMLInputElement> \| undefined` | `-` | A ref to access the hidden `<input>` element. |
+| `parent?` | `boolean \| undefined` | `false` | Whether the checkbox controls a group of child checkboxes. Must be used in a [Checkbox Group](https://base-ui.com/react/components/checkbox-group). |
+| `uncheckedValue?` | `string \| undefined` | `-` | The value submitted with the form when the checkbox is unchecked. By default, unchecked checkboxes do not submit any value, matching native checkbox behavior. |
+| `value?` | `string \| undefined` | `-` | The value of the selected checkbox. |

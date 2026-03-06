@@ -150,7 +150,7 @@ export function useFloatingPortalNode(
 }
 
 /**
- * Portals the floating element into a given container element — by default,
+ * Portals the floating element into a given container element: by default,
  * outside of the app root and into the body.
  * This is necessary to ensure the floating element can appear outside any
  * potential parent containers that cause clipping (such as `overflow: hidden`),

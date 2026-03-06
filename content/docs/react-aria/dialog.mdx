@@ -1,0 +1,23 @@
+---
+title: Dialog
+description: React Aria Dialog component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Dialog is used inside Modal: see AlertDialog for a full example.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="Dialog.tsx"
+'use client';
+import React from 'react';
+import { type DialogProps, Dialog as RACDialog } from 'react-aria-components';
+import { twMerge } from 'tailwind-merge';
+
+export function Dialog(props: DialogProps) {
+  return <RACDialog {...props} className={twMerge('outline box-border p-6 [[data-placement]>&]:p-4 max-h-[inherit] overflow-auto relative', props.className)} />;
+}
+```

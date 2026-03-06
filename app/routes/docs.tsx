@@ -5,6 +5,8 @@ import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/layo
 import { Package2, LayoutGrid } from 'lucide-react';
 import { source } from '@/lib/source';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
+import { ComponentPreview } from '@/components/docs/componentPreview';
+import * as componentRegistry from '@/components/docs/componentRegistry';
 import browserCollections from 'fumadocs-mdx:collections/browser';
 import { baseOptions, gitConfig } from '@/lib/layout.shared';
 import { useFumadocsLoader } from 'fumadocs-core/source/client';
@@ -12,7 +14,7 @@ import { LLMCopyButton, ViewOptions } from '@/components/ai/page-actions';
 import { getPageImagePath } from '@/lib/og';
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const slugs = params['*'].split('/').filter((s: string) => s.length > 0);
+  const slugs = (params['*'] ?? '').split('/').filter((s: string) => s.length > 0);
   const page = source.getPage(slugs);
   if (!page) throw new Response('Not found', { status: 404 });
 
@@ -53,7 +55,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
           />
         </div>
         <DocsBody>
-          <Mdx components={{ ...defaultMdxComponents }} />
+          <Mdx components={{ ...defaultMdxComponents, ...componentRegistry, ComponentPreview }} />
         </DocsBody>
       </DocsPage>
     );

@@ -1,0 +1,77 @@
+---
+title: Menu
+description: Base UI Menu component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="menu/index.ts"
+export { MenuArrow as Arrow } from './arrow/MenuArrow';
+export { MenuBackdrop as Backdrop } from './backdrop/MenuBackdrop';
+export { MenuCheckboxItem as CheckboxItem } from './checkbox-item/MenuCheckboxItem';
+export { MenuCheckboxItemIndicator as CheckboxItemIndicator } from './checkbox-item-indicator/MenuCheckboxItemIndicator';
+export { MenuGroup as Group } from './group/MenuGroup';
+export { MenuGroupLabel as GroupLabel } from './group-label/MenuGroupLabel';
+export { MenuItem as Item } from './item/MenuItem';
+export { MenuLinkItem as LinkItem } from './link-item/MenuLinkItem';
+export { MenuPopup as Popup } from './popup/MenuPopup';
+export { MenuPortal as Portal } from './portal/MenuPortal';
+export { MenuPositioner as Positioner } from './positioner/MenuPositioner';
+export { MenuRadioGroup as RadioGroup } from './radio-group/MenuRadioGroup';
+export { MenuRadioItem as RadioItem } from './radio-item/MenuRadioItem';
+export { MenuRadioItemIndicator as RadioItemIndicator } from './radio-item-indicator/MenuRadioItemIndicator';
+export { MenuRoot as Root } from './root/MenuRoot';
+export { MenuSubmenuRoot as SubmenuRoot } from './submenu-root/MenuSubmenuRoot';
+export { MenuTrigger as Trigger } from './trigger/MenuTrigger';
+export { Separator } from '../separator/Separator';
+export { MenuSubmenuTrigger as SubmenuTrigger } from './submenu-trigger/MenuSubmenuTrigger';
+export { MenuHandle as Handle, createMenuHandle as createHandle } from './store/MenuHandle';
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `checked?` | `boolean \| undefined` | `-` | Whether the checkbox item is currently ticked. To render an uncontrolled checkbox item, use the `defaultChecked` prop instead. |
+| `defaultChecked?` | `boolean \| undefined` | `false` | Whether the checkbox item is initially ticked. To render a controlled checkbox item, use the `checked` prop instead. |
+| `onClick?` | `BaseUIComponentProps<'div', MenuCheckboxItemState>['onClick'] \| undefined` | `-` | The click handler for the menu item. |
+| `disabled?` | `boolean \| undefined` | `false` | Whether the component should ignore user interaction. |
+| `label?` | `string \| undefined` | `-` | Overrides the text label to use when the item is matched during keyboard text navigation. |
+| `id?` | `string \| undefined` | `-` | @ignore |
+| `closeOnClick?` | `boolean \| undefined` | `false` | Whether to close the menu when the item is clicked. |
+| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the HTML element in the DOM when the checkbox item is not checked. |
+| `children?` | `React.ReactNode` | `-` | The content of the component. |
+| `closeOnClick` | `boolean` | `-` | Whether to close the menu when the item is clicked. |
+| `highlighted` | `boolean` | `-` | Determines if the menu item is highlighted. |
+| `id` | `string \| undefined` | `-` | The id of the menu item. |
+| `nodeId` | `string \| undefined` | `-` | The node id of the menu positioner. |
+| `store` | `MenuStore<any>` | `-` | The menu store. |
+| `typingRef?` | `React.RefObject<boolean> \| undefined` | `-` | Whether a typeahead session is in progress. |
+| `itemRef` | `React.RefObject<HTMLElement \| null>` | `-` | Ref to the item element. |
+| `itemMetadata?` | `UseMenuItemMetadata \| undefined` | `-` | Optional metadata for checking item type before triggering click. If provided, click will only be triggered for 'regular-item' type. |
+| `value?` | `any` | `-` | The controlled value of the radio item that should be currently selected. To render an uncontrolled radio group, use the `defaultValue` prop instead. |
+| `defaultValue?` | `any` | `-` | The uncontrolled value of the radio item that should be initially selected. To render a controlled radio group, use the `value` prop instead. |
+| `value` | `any` | `-` | Value of the radio item. This is the value that will be set in the MenuRadioGroup when the item is selected. |
+| `defaultOpen?` | `boolean \| undefined` | `false` | Whether the menu is initially open. To render a controlled menu, use the `open` prop instead. |
+| `loopFocus?` | `boolean \| undefined` | `true` | Whether to loop keyboard focus back to the first item when the end of the list is reached while using the arrow keys. |
+| `highlightItemOnHover?` | `boolean \| undefined` | `true` | Whether moving the pointer over items should highlight them. Disabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state. |
+| `modal?` | `boolean \| undefined` | `true` | Determines if the menu enters a modal state when open. - `true`: user interaction is limited to the menu: document page scroll is locked and pointer interactions on outside elements are disabled. - `false`: user interaction with the rest of the document is allowed. |
+| `onOpenChange?` | `((open: boolean, eventDetails: MenuRoot.ChangeEventDetails) => void) \| undefined` | `-` | Event handler called when the menu is opened or closed. |
+| `onOpenChangeComplete?` | `((open: boolean) => void) \| undefined` | `-` | Event handler called after any animations complete when the menu is closed. |
+| `open?` | `boolean \| undefined` | `-` | Whether the menu is currently open. |
+| `orientation?` | `MenuRoot.Orientation \| undefined` | `vertical` | The visual orientation of the menu. Controls whether roving focus uses up/down or left/right arrow keys. |
+| `closeParentOnEsc?` | `boolean \| undefined` | `false` | When in a submenu, determines whether pressing the Escape key closes the entire menu, or only the current child menu. |
+| `actionsRef?` | `React.RefObject<MenuRoot.Actions \| null> \| undefined` | `-` | A ref to imperative actions. - `unmount`: When specified, the menu will not be unmounted when closed. Instead, the `unmount` function must be called to unmount the menu manually. Useful when the menu's animation is controlled by an external library. - `close`: When specified, the menu can be closed imperatively. |
+| `triggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the popover is associated with. This is useful in conjunction with the `open` prop to create a controlled popover. There's no need to specify this prop when the popover is uncontrolled (i.e. when the `open` prop is not set). |
+| `defaultTriggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the popover is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open popover. |
+| `handle?` | `MenuHandle<Payload> \| undefined` | `-` | A handle to associate the menu with a trigger. If specified, allows external triggers to control the menu's open state. |
+| `delay?` | `number \| undefined` | `100` | How long to wait before the menu may be opened on hover. Specified in milliseconds. Requires the `openOnHover` prop. |
+| `closeDelay?` | `number \| undefined` | `0` | How long to wait before closing the menu that was opened on hover. Specified in milliseconds. Requires the `openOnHover` prop. |
+| `openOnHover?` | `boolean \| undefined` | `-` | Whether the menu should also open when the trigger is hovered. |
+| `payload?` | `Payload \| undefined` | `-` | A payload to pass to the menu when it is opened. |

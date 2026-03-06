@@ -1,0 +1,45 @@
+---
+title: Popover
+description: Base UI Popover component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="popover/index.ts"
+export { PopoverRoot as Root } from './root/PopoverRoot';
+export { PopoverTrigger as Trigger } from './trigger/PopoverTrigger';
+export { PopoverPortal as Portal } from './portal/PopoverPortal';
+export { PopoverPositioner as Positioner } from './positioner/PopoverPositioner';
+export { PopoverPopup as Popup } from './popup/PopoverPopup';
+export { PopoverArrow as Arrow } from './arrow/PopoverArrow';
+export { PopoverBackdrop as Backdrop } from './backdrop/PopoverBackdrop';
+export { PopoverTitle as Title } from './title/PopoverTitle';
+export { PopoverDescription as Description } from './description/PopoverDescription';
+export { PopoverClose as Close } from './close/PopoverClose';
+export { PopoverViewport as Viewport } from './viewport/PopoverViewport';
+export {
+  createPopoverHandle as createHandle,
+  PopoverHandle as Handle,
+} from './store/PopoverHandle';
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the portal mounted in the DOM while the popup is hidden. |
+| `defaultOpen?` | `boolean \| undefined` | `false` | Whether the popover is initially open. To render a controlled popover, use the `open` prop instead. |
+| `open?` | `boolean \| undefined` | `-` | Whether the popover is currently open. |
+| `onOpenChangeComplete?` | `((open: boolean) => void) \| undefined` | `-` | Event handler called after any animations complete when the popover is opened or closed. |
+| `actionsRef?` | `React.RefObject<PopoverRoot.Actions \| null> \| undefined` | `-` | A ref to imperative actions. - `unmount`: When specified, the popover will not be unmounted when closed. Instead, the `unmount` function must be called to unmount the popover manually. Useful when the popover's animation is controlled by an external library. - `close`: Closes the dialog imperatively when called. |
+| `modal?` | `boolean \| 'trap-focus' \| undefined` | `false` | Determines if the popover enters a modal state when open. - `true`: user interaction is limited to the popover: document page scroll is locked, and pointer interactions on outside elements are disabled. - `false`: user interaction with the rest of the document is allowed. - `'trap-focus'`: focus is trapped inside the popover, but document page scroll is not locked and pointer interactions outside of it remain enabled. |
+| `triggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the popover is associated with. This is useful in conjunction with the `open` prop to create a controlled popover. There's no need to specify this prop when the popover is uncontrolled (i.e. when the `open` prop is not set). |
+| `defaultTriggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the popover is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open popover. |
+| `handle?` | `PopoverHandle<Payload> \| undefined` | `-` | A handle to associate the popover with a trigger. If specified, allows external triggers to control the popover's open state. |
+| `children?` | `React.ReactNode \| PayloadChildRenderFunction<Payload>` | `-` | The content of the popover. This can be a regular React node or a render function that receives the `payload` of the active trigger. |

@@ -1,0 +1,12 @@
+/* View transition animation overrides for Toast component */
+@keyframes toast-entering {
+  from { opacity: 0; transform: translateX(100%); }
+}
+
+@keyframes toast-exiting {
+  to { opacity: 0; transform: translateX(100%); }
+}
+
+::view-transition-group(toast) {
+  animation-duration: 300ms;
+}

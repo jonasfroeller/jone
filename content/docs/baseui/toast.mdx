@@ -1,0 +1,41 @@
+---
+title: Toast
+description: Base UI Toast component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="toast/index.ts"
+export { ToastProvider as Provider } from './provider/ToastProvider';
+export { ToastViewport as Viewport } from './viewport/ToastViewport';
+export { ToastRoot as Root } from './root/ToastRoot';
+export { ToastContent as Content } from './content/ToastContent';
+export { ToastDescription as Description } from './description/ToastDescription';
+export { ToastTitle as Title } from './title/ToastTitle';
+export { ToastClose as Close } from './close/ToastClose';
+export { ToastAction as Action } from './action/ToastAction';
+export { ToastPortal as Portal } from './portal/ToastPortal';
+export { ToastPositioner as Positioner } from './positioner/ToastPositioner';
+export { ToastArrow as Arrow } from './arrow/ToastArrow';
+
+export { useToastManager } from './useToastManager';
+export { createToastManager } from './createToastManager';
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `anchor?` | `Element \| null \| undefined` | `-` | An element to position the toast against. |
+| `side?` | `Side \| undefined` | `top` | Which side of the anchor element to align the toast against. May automatically change to avoid collisions. |
+| `toast` | `ToastObject<any>` | `-` | The toast object associated with the positioner. |
+| `children?` | `React.ReactNode` | `-` | - |
+| `timeout?` | `number \| undefined` | `5000` | The default amount of time (in ms) before a toast is auto dismissed. A value of `0` will prevent the toast from being dismissed automatically. |
+| `limit?` | `number \| undefined` | `3` | The maximum number of toasts that can be displayed at once. When the limit is reached, the oldest toast will be removed to make room for the new one. |
+| `toastManager?` | `ToastManager \| undefined` | `-` | A global manager for toasts to use outside of a React component. |

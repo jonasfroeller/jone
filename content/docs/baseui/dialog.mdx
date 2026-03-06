@@ -1,0 +1,46 @@
+---
+title: Dialog
+description: Base UI Dialog component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="dialog/index.ts"
+export { DialogBackdrop as Backdrop } from './backdrop/DialogBackdrop';
+export { DialogClose as Close } from './close/DialogClose';
+export { DialogDescription as Description } from './description/DialogDescription';
+export { DialogPopup as Popup } from './popup/DialogPopup';
+export { DialogPortal as Portal } from './portal/DialogPortal';
+export { DialogRoot as Root } from './root/DialogRoot';
+export { DialogViewport as Viewport } from './viewport/DialogViewport';
+export { DialogTitle as Title } from './title/DialogTitle';
+export { DialogTrigger as Trigger } from './trigger/DialogTrigger';
+export { createDialogHandle as createHandle, DialogHandle as Handle } from './store/DialogHandle';
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `forceRender?` | `boolean \| undefined` | `false` | Whether the backdrop is forced to render even when nested. |
+| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the portal mounted in the DOM while the popup is hidden. |
+| `container?` | `FloatingPortal.Props<DialogPortalState>['container'] \| undefined` | `-` | A parent element to render the portal element into. |
+| `open?` | `boolean \| undefined` | `-` | Whether the dialog is currently open. |
+| `defaultOpen?` | `boolean \| undefined` | `false` | Whether the dialog is initially open. To render a controlled dialog, use the `open` prop instead. |
+| `modal?` | `boolean \| 'trap-focus' \| undefined` | `true` | Determines if the dialog enters a modal state when open. - `true`: user interaction is limited to just the dialog: focus is trapped, document page scroll is locked, and pointer interactions on outside elements are disabled. - `false`: user interaction with the rest of the document is allowed. - `'trap-focus'`: focus is trapped inside the dialog, but document page scroll is not locked and pointer interactions outside of it remain enabled. |
+| `onOpenChange?` | `((open: boolean, eventDetails: DialogRoot.ChangeEventDetails) => void) \| undefined` | `-` | Event handler called when the dialog is opened or closed. |
+| `onOpenChangeComplete?` | `((open: boolean) => void) \| undefined` | `-` | Event handler called after any animations complete when the dialog is opened or closed. |
+| `disablePointerDismissal?` | `boolean \| undefined` | `false` | Determines whether the dialog should close on outside clicks. |
+| `actionsRef?` | `React.RefObject<DialogRoot.Actions \| null> \| undefined` | `-` | A ref to imperative actions. - `unmount`: When specified, the dialog will not be unmounted when closed. Instead, the `unmount` function must be called to unmount the dialog manually. Useful when the dialog's animation is controlled by an external library. - `close`: Closes the dialog imperatively when called. |
+| `handle?` | `DialogHandle<Payload> \| undefined` | `-` | A handle to associate the dialog with a trigger. If specified, allows external triggers to control the dialog's open state. Can be created with the Dialog.createHandle() method. |
+| `children?` | `React.ReactNode \| PayloadChildRenderFunction<Payload>` | `-` | The content of the dialog. This can be a regular React node or a render function that receives the `payload` of the active trigger. |
+| `triggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the dialog is associated with. This is useful in conjunction with the `open` prop to create a controlled dialog. There's no need to specify this prop when the popover is uncontrolled (i.e. when the `open` prop is not set). |
+| `defaultTriggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the dialog is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open dialog. |
+| `payload?` | `Payload \| undefined` | `-` | A payload to pass to the dialog when it is opened. |
+| `id?` | `string \| undefined` | `-` | ID of the trigger. In addition to being forwarded to the rendered element, it is also used to specify the active trigger for the dialogs in controlled mode (with the DialogRoot `triggerId` prop). |

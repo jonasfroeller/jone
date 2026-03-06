@@ -127,7 +127,7 @@ export interface UseDismissProps {
 }
 
 /**
- * Closes the floating element when a dismissal is requested — by default, when
+ * Closes the floating element when a dismissal is requested: by default, when
  * the user presses the `escape` key or outside of the floating element.
  * @see https://floating-ui.com/docs/useDismiss
  */

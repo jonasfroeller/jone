@@ -1,0 +1,48 @@
+---
+title: Toolbar
+description: React Aria Toolbar component
+---
+
+## Preview
+
+<ComponentPreview>
+  <Toolbar>
+    <Button variant="secondary">Cut</Button>
+    <Button variant="secondary">Copy</Button>
+    <Button variant="secondary">Paste</Button>
+    <Separator orientation="vertical" />
+    <Button variant="secondary">Undo</Button>
+  </Toolbar>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="Toolbar.tsx"
+'use client';
+import React from 'react';
+import { Toolbar as RACToolbar, ToggleButtonGroupContext, type ToolbarProps, composeRenderProps } from 'react-aria-components';
+import { tv } from 'tailwind-variants';
+
+const styles = tv({
+  base: 'flex flex-wrap gap-2',
+  variants: {
+    orientation: {
+      horizontal: 'flex-row items-center',
+      vertical: 'flex-col items-start'
+    }
+  }
+})
+
+export function Toolbar(props: ToolbarProps) {
+  return (
+    <ToggleButtonGroupContext.Provider value={{orientation: props.orientation}}>
+      <RACToolbar
+        {...props}
+        className={composeRenderProps(
+          props.className,
+          (className, renderProps) => styles({...renderProps, className})
+        )} />
+    </ToggleButtonGroupContext.Provider>
+  );
+}
+```

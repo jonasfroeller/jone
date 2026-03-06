@@ -1,0 +1,61 @@
+---
+title: Drawer
+description: Base UI Drawer component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="drawer/index.ts"
+export { DrawerBackdrop as Backdrop } from './backdrop/DrawerBackdrop';
+export { DrawerClose as Close } from './close/DrawerClose';
+export { DrawerContent as Content } from './content/DrawerContent';
+export { DrawerDescription as Description } from './description/DrawerDescription';
+export { DrawerIndent as Indent } from './indent/DrawerIndent';
+export { DrawerIndentBackground as IndentBackground } from './indent-background/DrawerIndentBackground';
+export { DrawerPopup as Popup } from './popup/DrawerPopup';
+export { DrawerPortal as Portal } from './portal/DrawerPortal';
+export { DrawerProvider as Provider } from './provider/DrawerProvider';
+export { DrawerRoot as Root } from './root/DrawerRoot';
+export { DrawerTitle as Title } from './title/DrawerTitle';
+export { DrawerTrigger as Trigger } from './trigger/DrawerTrigger';
+export { DrawerViewport as Viewport } from './viewport/DrawerViewport';
+export {
+  createDialogHandle as createHandle,
+  DialogHandle as Handle,
+} from '../dialog/store/DialogHandle';
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `forceRender?` | `boolean \| undefined` | `false` | Whether the backdrop is forced to render even when nested. |
+| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the portal mounted in the DOM while the popup is hidden. |
+| `container?` | `FloatingPortal.Props<DrawerPortalState>['container'] \| undefined` | `-` | A parent element to render the portal element into. |
+| `children?` | `React.ReactNode` | `-` | - |
+| `open?` | `boolean \| undefined` | `-` | Whether the drawer is currently open. |
+| `defaultOpen?` | `boolean \| undefined` | `false` | Whether the drawer is initially open. To render a controlled drawer, use the `open` prop instead. |
+| `modal?` | `boolean \| 'trap-focus' \| undefined` | `true` | Determines if the drawer enters a modal state when open. - `true`: user interaction is limited to just the drawer: focus is trapped, document page scroll is locked, and pointer interactions on outside elements are disabled. - `false`: user interaction with the rest of the document is allowed. - `'trap-focus'`: focus is trapped inside the drawer, but document page scroll is not locked and pointer interactions outside of it remain enabled. |
+| `onOpenChange?` | `((open: boolean, eventDetails: DrawerRoot.ChangeEventDetails) => void) \| undefined` | `-` | Event handler called when the drawer is opened or closed. |
+| `onOpenChangeComplete?` | `((open: boolean) => void) \| undefined` | `-` | Event handler called after any animations complete when the drawer is opened or closed. |
+| `disablePointerDismissal?` | `boolean \| undefined` | `false` | Determines whether the drawer should close on outside clicks. |
+| `actionsRef?` | `React.RefObject<DrawerRoot.Actions \| null> \| undefined` | `-` | A ref to imperative actions. - `unmount`: When specified, the drawer will not be unmounted when closed. Instead, the `unmount` function must be called to unmount the drawer manually. Useful when the drawer's animation is controlled by an external library. - `close`: Closes the drawer imperatively when called. |
+| `handle?` | `DialogHandle<Payload> \| undefined` | `-` | A handle to associate the drawer with a trigger. If specified, allows detached triggers to control the drawer's open state. Can be created with the Drawer.createHandle() method. |
+| `triggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the drawer is associated with. This is useful in conjunction with the `open` prop to create a controlled drawer. There's no need to specify this prop when the drawer is uncontrolled (i.e. when the `open` prop is not set). |
+| `defaultTriggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the drawer is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open drawer. |
+| `swipeDirection?` | `DrawerSwipeDirection \| undefined` | `down` | The swipe direction used to dismiss the drawer. |
+| `snapPoints?` | `DrawerSnapPoint[] \| undefined` | `-` | Snap points used to position the drawer. Use numbers between 0 and 1 to represent fractions of the viewport height, numbers greater than 1 as pixel values, or strings in `px`/`rem` units (for example, `'148px'` or `'30rem'`). |
+| `snapToSequentialPoints?` | `boolean \| undefined` | `false` | Disables velocity-based snap skipping so drag distance determines the next snap point. |
+| `snapPoint?` | `DrawerSnapPoint \| null \| undefined` | `-` | The currently active snap point. Use with `onSnapPointChange` to control the snap point. |
+| `defaultSnapPoint?` | `DrawerSnapPoint \| null \| undefined` | `-` | The initial snap point value when uncontrolled. |
+| `snapPoint` | `DrawerSnapPoint \| null,` | `-` | - |
+| `eventDetails` | `DrawerRoot.SnapPointChangeEventDetails,` | `-` | - |
+| `disabled?` | `boolean \| undefined` | `false` | Whether the swipe area is disabled. |
+| `payload?` | `Payload \| undefined` | `-` | A payload to pass to the drawer when it is opened. |
+| `id?` | `string \| undefined` | `-` | ID of the trigger. In addition to being forwarded to the rendered element, it is also used to specify the active trigger for drawers in controlled mode (with the Drawer.Root `triggerId` prop). |

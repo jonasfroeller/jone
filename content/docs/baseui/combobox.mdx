@@ -1,0 +1,57 @@
+---
+title: Combobox
+description: Base UI Combobox component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="combobox/index.ts"
+export { ComboboxRoot as Root } from './root/ComboboxRoot';
+export { ComboboxValue as Value } from './value/ComboboxValue';
+export { ComboboxInput as Input } from './input/ComboboxInput';
+export { ComboboxTrigger as Trigger } from './trigger/ComboboxTrigger';
+export { ComboboxList as List } from './list/ComboboxList';
+export { ComboboxStatus as Status } from './status/ComboboxStatus';
+export { ComboboxPortal as Portal } from './portal/ComboboxPortal';
+export { ComboboxBackdrop as Backdrop } from './backdrop/ComboboxBackdrop';
+export { ComboboxPositioner as Positioner } from './positioner/ComboboxPositioner';
+export { ComboboxPopup as Popup } from './popup/ComboboxPopup';
+export { ComboboxArrow as Arrow } from './arrow/ComboboxArrow';
+export { ComboboxIcon as Icon } from './icon/ComboboxIcon';
+export { ComboboxGroup as Group } from './group/ComboboxGroup';
+export { ComboboxGroupLabel as GroupLabel } from './group-label/ComboboxGroupLabel';
+export { ComboboxItem as Item } from './item/ComboboxItem';
+export { ComboboxItemIndicator as ItemIndicator } from './item-indicator/ComboboxItemIndicator';
+export { ComboboxChips as Chips } from './chips/ComboboxChips';
+export { ComboboxChip as Chip } from './chip/ComboboxChip';
+export { ComboboxChipRemove as ChipRemove } from './chip-remove/ComboboxChipRemove';
+export { ComboboxRow as Row } from './row/ComboboxRow';
+export { ComboboxCollection as Collection } from './collection/ComboboxCollection';
+export { ComboboxEmpty as Empty } from './empty/ComboboxEmpty';
+export { ComboboxClear as Clear } from './clear/ComboboxClear';
+
+export { Separator } from '../separator';
+
+export { useComboboxFilter as useFilter } from './root/utils/useFilter';
+export { useFilteredItems } from './root/utils/useFilteredItems';
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `disabled?` | `boolean \| undefined` | `false` | Whether the component should ignore user interaction. |
+| `keepMounted?` | `boolean \| undefined` | `false` | Whether the component should remain mounted in the DOM when not visible. |
+| `children` | `(item: any, index: number) => React.ReactNode` | `-` | - |
+| `items?` | `readonly any[] \| undefined` | `-` | Items to be rendered within this group. When provided, child `Collection` components will use these items. |
+| `children?` | `React.ReactNode` | `-` | - |
+| `onClick?` | `BaseUIComponentProps<'div', ComboboxItemState>['onClick'] \| undefined` | `-` | An optional click handler for the item when selected. It fires when clicking the item with the pointer, as well as when pressing `Enter` with the keyboard if the item is highlighted when the `Input` or `List` element has focus. |
+| `index?` | `number \| undefined` | `-` | The index of the item in the list. Improves performance when specified by avoiding the need to calculate the index automatically from the DOM. |
+| `value?` | `any` | `null` | A unique value that identifies this item. |
+| `placeholder?` | `React.ReactNode` | `-` | The placeholder value to display when no value is selected. This is overridden by `children` if specified, or by a null item's label in `items`. |

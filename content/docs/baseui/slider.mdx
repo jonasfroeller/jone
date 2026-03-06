@@ -1,0 +1,43 @@
+---
+title: Slider
+description: Base UI Slider component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="slider/index.ts"
+export { SliderRoot as Root } from './root/SliderRoot';
+export { SliderValue as Value } from './value/SliderValue';
+export { SliderControl as Control } from './control/SliderControl';
+export { SliderTrack as Track } from './track/SliderTrack';
+export { SliderThumb as Thumb } from './thumb/SliderThumb';
+export { SliderIndicator as Indicator } from './indicator/SliderIndicator';
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `defaultValue?` | `Value \| undefined` | `-` | The uncontrolled value of the slider when it’s initially rendered. To render a controlled slider, use the `value` prop instead. |
+| `disabled?` | `boolean \| undefined` | `false` | Whether the slider should ignore user interaction. |
+| `format?` | `Intl.NumberFormatOptions \| undefined` | `-` | Options to format the input value. |
+| `locale?` | `Intl.LocalesArgument \| undefined` | `-` | The locale used by `Intl.NumberFormat` when formatting the value. Defaults to the user's runtime locale. |
+| `max?` | `number \| undefined` | `100` | The maximum allowed value of the slider. Should not be equal to min. |
+| `min?` | `number \| undefined` | `0` | The minimum allowed value of the slider. Should not be equal to max. |
+| `minStepsBetweenValues?` | `number \| undefined` | `0` | The minimum steps between values in a range slider. |
+| `name?` | `string \| undefined` | `-` | Identifies the field when a form is submitted. |
+| `orientation?` | `Orientation \| undefined` | `horizontal` | The component orientation. |
+| `step?` | `number \| undefined` | `1` | The granularity with which the slider can step through values. (A "discrete" slider.) The `min` prop serves as the origin for the valid values. We recommend (max - min) to be evenly divisible by the step. |
+| `largeStep?` | `number \| undefined` | `10` | The granularity with which the slider can step through values when using Page Up/Page Down or Shift + Arrow Up/Arrow Down. |
+| `thumbAlignment?` | `'center' \| 'edge' \| 'edge-client-only' \| undefined` | `center` | How the thumb(s) are aligned relative to `Slider.Control` when the value is at `min` or `max`: - `center`: The center of the thumb is aligned with the control edge - `edge`: The thumb is inset within the control such that its edge is aligned with the control edge - `edge-client-only`: Same as `edge` but renders after React hydration on the client, reducing bundle size in return |
+| `thumbCollisionBehavior?` | `'push' \| 'swap' \| 'none' \| undefined` | `push` | Controls how thumbs behave when they collide during pointer interactions. - `'push'` (default): Thumbs push each other without restoring their previous positions when dragged back. - `'swap'`: Thumbs swap places when dragged past each other. - `'none'`: Thumbs cannot move past each other; excess movement is ignored. |
+| `value?` | `Value \| undefined` | `-` | The value of the slider. For ranged sliders, provide an array with two values. |
+| `value` | `Value extends number ? number : Value,` | `-` | - |
+| `eventDetails` | `SliderRoot.ChangeEventDetails,` | `-` | - |
+| `getAriaLabel?` | `((index: number) => string) \| null \| undefined` | `-` | A function which returns a string value for the [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) attribute of the `input`. |

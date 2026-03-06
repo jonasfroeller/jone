@@ -1,0 +1,28 @@
+---
+title: Radio
+description: Base UI Radio component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="radio/index.ts"
+export { RadioRoot as Root } from './root/RadioRoot';
+export { RadioIndicator as Indicator } from './indicator/RadioIndicator';
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the HTML element in the DOM when the radio button is inactive. |
+| `value` | `Value` | `-` | The unique identifying value of the radio in a group. |
+| `disabled?` | `boolean \| undefined` | `-` | Whether the component should ignore user interaction. |
+| `required?` | `boolean \| undefined` | `-` | Whether the user must choose a value before submitting a form. |
+| `readOnly?` | `boolean \| undefined` | `-` | Whether the user should be unable to select the radio button. |
+| `inputRef?` | `React.Ref<HTMLInputElement> \| undefined` | `-` | A ref to access the hidden input element. |

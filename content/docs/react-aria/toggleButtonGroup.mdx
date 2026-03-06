@@ -1,0 +1,41 @@
+---
+title: ToggleButtonGroup
+description: React Aria ToggleButtonGroup component
+---
+
+## Preview
+
+<ComponentPreview>
+  <ToggleButtonGroup selectionMode="single">
+    <ToggleButton id="left">Left</ToggleButton>
+    <ToggleButton id="center">Center</ToggleButton>
+    <ToggleButton id="right">Right</ToggleButton>
+  </ToggleButtonGroup>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="ToggleButtonGroup.tsx"
+'use client';
+import React from 'react';
+import { composeRenderProps, ToggleButtonGroup as RACToggleButtonGroup, type ToggleButtonGroupProps } from 'react-aria-components';
+import { tv } from 'tailwind-variants';
+
+const styles = tv({
+  base: 'flex gap-1',
+  variants: {
+    orientation: {
+      horizontal: 'flex-row',
+      vertical: 'flex-col'
+    }
+  }
+});
+
+export function ToggleButtonGroup(props: ToggleButtonGroupProps) {
+  return (
+    <RACToggleButtonGroup
+      {...props}
+      className={composeRenderProps(props.className, (className, renderProps) => styles({...renderProps, className}))} />
+  );
+}
+```

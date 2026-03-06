@@ -1,0 +1,34 @@
+---
+title: Tabs
+description: Base UI Tabs component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="tabs/index.ts"
+export { TabsRoot as Root } from './root/TabsRoot';
+export { TabsTab as Tab } from './tab/TabsTab';
+export { TabsIndicator as Indicator } from './indicator/TabsIndicator';
+export { TabsPanel as Panel } from './panel/TabsPanel';
+export { TabsList as List } from './list/TabsList';
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `renderBeforeHydration?` | `boolean \| undefined` | `false` | Whether to render itself before React hydrates. This minimizes the time that the indicator isn’t visible after server-side rendering. |
+| `activateOnFocus?` | `boolean \| undefined` | `false` | Whether to automatically change the active tab on arrow key focus. Otherwise, tabs will be activated using <kbd>Enter</kbd> or <kbd>Space</kbd> key press. |
+| `loopFocus?` | `boolean \| undefined` | `true` | Whether to loop keyboard focus back to the first item when the end of the list is reached while using the arrow keys. |
+| `value` | `TabsTab.Value` | `-` | The value of the TabPanel. It will be shown when the Tab with the corresponding value is active. |
+| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the HTML element in the DOM while the panel is hidden. |
+| `value?` | `TabsTab.Value \| undefined` | `-` | The value of the currently active `Tab`. Use when the component is controlled. When the value is `null`, no Tab will be active. |
+| `defaultValue?` | `TabsTab.Value \| undefined` | `0` | The default value. Use when the component is not controlled. When the value is `null`, no Tab will be active. |
+| `orientation?` | `TabsRoot.Orientation \| undefined` | `horizontal` | The component orientation (layout flow direction). |
+| `disabled?` | `boolean \| undefined` | `-` | Whether the Tab is disabled. If a first Tab on a `<Tabs.List>` is disabled, it won't initially be selected. Instead, the next enabled Tab will be selected. However, it does not work like this during server-side rendering, as it is not known during pre-rendering which Tabs are disabled. To work around it, ensure that `defaultValue` or `value` on `<Tabs.Root>` is set to an enabled Tab's value. |

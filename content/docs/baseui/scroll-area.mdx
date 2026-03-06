@@ -1,0 +1,32 @@
+---
+title: Scroll Area
+description: Base UI Scroll Area component
+---
+
+## Preview
+
+<ComponentPreview>
+  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+</ComponentPreview>
+
+## Source Code
+
+```tsx title="scroll-area/index.ts"
+export { ScrollAreaRoot as Root } from './root/ScrollAreaRoot';
+export { ScrollAreaViewport as Viewport } from './viewport/ScrollAreaViewport';
+export { ScrollAreaScrollbar as Scrollbar } from './scrollbar/ScrollAreaScrollbar';
+export { ScrollAreaContent as Content } from './content/ScrollAreaContent';
+export { ScrollAreaThumb as Thumb } from './thumb/ScrollAreaThumb';
+export { ScrollAreaCorner as Corner } from './corner/ScrollAreaCorner';
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `xStart` | `number` | `-` | - |
+| `xEnd` | `number` | `-` | - |
+| `yStart` | `number` | `-` | - |
+| `yEnd` | `number` | `-` | - |
+| `orientation?` | `'vertical' \| 'horizontal' \| undefined` | `vertical` | Whether the scrollbar controls vertical or horizontal scroll. |
+| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the HTML element in the DOM when the viewport isn’t scrollable. |
