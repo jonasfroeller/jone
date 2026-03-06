@@ -2,9 +2,9 @@
 import React from 'react';
 import {
   TimeField as AriaTimeField,
-  TimeFieldProps as AriaTimeFieldProps,
-  TimeValue,
-  ValidationResult
+  type TimeFieldProps as AriaTimeFieldProps,
+  type TimeValue,
+  type ValidationResult
 } from 'react-aria-components';
 import { DateInput } from '@/components/react-aria/DateField';
 import { Description, FieldError, Label } from '@/components/react-aria/Field';

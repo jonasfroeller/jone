@@ -1,8 +1,8 @@
 'use client';
 import {
   Autocomplete as AriaAutocomplete,
-  AutocompleteProps as AriaAutocompleteProps,
-  MenuProps as AriaMenuProps,
+  type AutocompleteProps as AriaAutocompleteProps,
+  type MenuProps as AriaMenuProps,
   useFilter,
   Dialog
 } from 'react-aria-components';

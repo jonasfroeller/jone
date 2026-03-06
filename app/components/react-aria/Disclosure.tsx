@@ -2,9 +2,9 @@
 import React, { useContext } from "react";
 import {
   Disclosure as AriaDisclosure,
-  DisclosureProps as AriaDisclosureProps,
+  type DisclosureProps as AriaDisclosureProps,
   DisclosurePanel as AriaDisclosurePanel,
-  DisclosurePanelProps as AriaDisclosurePanelProps,
+  type DisclosurePanelProps as AriaDisclosurePanelProps,
   composeRenderProps,
   Heading,
   DisclosureStateContext,

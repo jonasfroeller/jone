@@ -3,16 +3,16 @@ import { ChevronDown } from 'lucide-react';
 import React from 'react';
 import {
   Select as AriaSelect,
-  SelectProps as AriaSelectProps,
+  type SelectProps as AriaSelectProps,
   Button,
   ListBox,
-  ListBoxItemProps,
+  type ListBoxItemProps,
   SelectValue,
-  ValidationResult
+  type ValidationResult
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
 import { Description, FieldError, Label } from '@/components/react-aria/Field';
-import { DropdownItem, DropdownSection, DropdownSectionProps } from '@/components/react-aria/ListBox';
+import { DropdownItem, DropdownSection, type DropdownSectionProps } from '@/components/react-aria/ListBox';
 import { Popover } from '@/components/react-aria/Popover';
 import { composeTailwindRenderProps, focusRing } from '@/lib/react-aria/utils';
 

@@ -3,14 +3,14 @@ import { ChevronDown } from 'lucide-react';
 import React from 'react';
 import {
   ComboBox as AriaComboBox,
-  ComboBoxProps as AriaComboBoxProps,
+  type ComboBoxProps as AriaComboBoxProps,
   ComboBoxValue,
   ListBox,
-  ListBoxItemProps,
-  ValidationResult
+  type ListBoxItemProps,
+  type ValidationResult
 } from 'react-aria-components';
 import { Description, FieldError, FieldGroup, Input, Label } from '@/components/react-aria/Field';
-import { DropdownItem, DropdownSection, DropdownSectionProps } from '@/components/react-aria/ListBox';
+import { DropdownItem, DropdownSection, type DropdownSectionProps } from '@/components/react-aria/ListBox';
 import { Popover } from '@/components/react-aria/Popover';
 import { composeTailwindRenderProps } from '@/lib/react-aria/utils';
 import { FieldButton } from '@/components/react-aria/FieldButton';

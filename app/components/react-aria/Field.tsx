@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { FieldErrorProps, Group, GroupProps, InputProps, LabelProps, FieldError as RACFieldError, Input as RACInput, Label as RACLabel, Text, TextProps, composeRenderProps } from "react-aria-components";
+import { type FieldErrorProps, Group, type GroupProps, type InputProps, type LabelProps, FieldError as RACFieldError, Input as RACInput, Label as RACLabel, Text, type TextProps, composeRenderProps } from "react-aria-components";
 import { twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
 import { composeTailwindRenderProps, focusRing } from '@/lib/react-aria/utils';
@@ -44,5 +44,5 @@ export function FieldGroup(props: GroupProps) {
 }
 
 export function Input(props: InputProps) {
-  return <RACInput {...props} className={composeTailwindRenderProps(props.className, 'px-3 py-0 min-h-9 flex-1 min-w-0 border-0 outline outline-0 bg-white dark:bg-neutral-900 font-sans text-sm text-neutral-800 dark:text-neutral-200 placeholder:text-neutral-600 dark:placeholder:text-neutral-400 disabled:text-neutral-200 dark:disabled:text-neutral-600 disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-600 [-webkit-tap-highlight-color:transparent]')} />
+  return <RACInput {...props} className={composeTailwindRenderProps(props.className, 'px-3 py-0 min-h-9 flex-1 min-w-0 border-0 outline-0 bg-white dark:bg-neutral-900 font-sans text-sm text-neutral-800 dark:text-neutral-200 placeholder:text-neutral-600 dark:placeholder:text-neutral-400 disabled:text-neutral-200 dark:disabled:text-neutral-600 disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-600 [-webkit-tap-highlight-color:transparent]')} />
 }

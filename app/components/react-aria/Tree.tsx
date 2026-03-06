@@ -5,8 +5,8 @@ import {
   TreeItem as AriaTreeItem,
   TreeItemContent as AriaTreeItemContent,
   Button,
-  TreeItemProps as AriaTreeItemProps,
-  TreeProps
+  type TreeItemProps as AriaTreeItemProps,
+  type TreeProps
 } from 'react-aria-components';
 import { ChevronRight } from "lucide-react";
 import { tv } from 'tailwind-variants';
@@ -72,7 +72,7 @@ export function TreeItem(props: TreeItemProps) {
             {selectionMode !== 'none' && selectionBehavior === 'toggle' && (
               <Checkbox slot="selection" />
             )}
-            <div className='shrink-0 w-[calc(calc(var(--tree-item-level)_-_1)_*_calc(var(--spacing)_*_3))]' />
+            <div className='shrink-0 w-[calc(calc(var(--tree-item-level)-1)*calc(var(--spacing)*3))]' />
             {hasChildItems ? (
               <Button slot="chevron" className={expandButton({ isDisabled })}>
               <ChevronRight aria-hidden className={chevron({ isExpanded, isDisabled })} />

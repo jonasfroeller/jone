@@ -2,7 +2,7 @@
 import React from 'react';
 import {
   ProgressBar as AriaProgressBar,
-  ProgressBarProps as AriaProgressBarProps
+  type ProgressBarProps as AriaProgressBarProps
 } from 'react-aria-components';
 import { Label } from '@/components/react-aria/Field';
 import { composeTailwindRenderProps } from '@/lib/react-aria/utils';
@@ -20,7 +20,7 @@ export function ProgressBar({ label, ...props }: ProgressBarProps) {
             <Label>{label}</Label>
             <span className="text-sm text-neutral-600 dark:text-neutral-400">{valueText}</span>
           </div>
-          <div className="max-w-full h-2 rounded-full bg-neutral-300 dark:bg-neutral-700 outline outline-1 -outline-offset-1 outline-transparent relative overflow-hidden">
+          <div className="max-w-full h-2 rounded-full bg-neutral-300 dark:bg-neutral-700 outline-1 -outline-offset-1 outline-transparent relative overflow-hidden">
             <div className={`absolute top-0 h-full rounded-full bg-blue-500 forced-colors:bg-[Highlight] ${isIndeterminate ? 'left-full animate-in duration-1000 slide-in-from-left-[20rem] repeat-infinite ease-out' : 'left-0'}`} style={{ width: (isIndeterminate ? 40 : percentage) + '%' }} />
           </div>
         </>

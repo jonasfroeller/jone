@@ -4,12 +4,12 @@ import React from 'react';
 import {
   ListBox as AriaListBox,
   ListBoxItem as AriaListBoxItem,
-  ListBoxProps as AriaListBoxProps,
+  type ListBoxProps as AriaListBoxProps,
   Collection,
   Header,
-  ListBoxItemProps,
+  type ListBoxItemProps,
   ListBoxSection,
-  SectionProps,
+  type SectionProps,
   composeRenderProps
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
