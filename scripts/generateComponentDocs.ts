@@ -8,7 +8,9 @@ const COMPONENTS_DIR = path.join(ROOT, 'app', 'components');
 const BASE_UI_DIR = path.join(COMPONENTS_DIR, 'base-ui');
 const REACT_ARIA_DIR = path.join(COMPONENTS_DIR, 'react-aria');
 
-const UTILITY_PACKAGES = new Set([
+const EXCLUDED_PACKAGES = new Set([
+  'base',
+
   'csp-provider', 'direction-provider', 'floating-ui-react', 'form',
   'labelable-provider', 'merge-props', 'types', 'unstable-use-media-query',
   'use-button', 'use-render', 'utils', 'composite',
@@ -23,16 +25,6 @@ function toTitleCase(slug: string): string {
 
 function escapeForMdx(code: string): string {
   return code.replace(/`{3,}/g, (m) => '`'.repeat(m.length + 1));
-}
-
-function getExportedFunctions(source: string): string[] {
-  const names: string[] = [];
-  const fnRegex = /export\s+(?:function|const)\s+(\w+)/g;
-  let m: RegExpExecArray | null;
-  while ((m = fnRegex.exec(source)) !== null) {
-    names.push(m[1]);
-  }
-  return names;
 }
 
 const REACT_ARIA_PREVIEWS: Record<string, string> = {
@@ -163,7 +155,8 @@ function buildPropsTable(props: PropInfo[]): string {
 
 function getBaseUiComponents(): string[] {
   return fs.readdirSync(BASE_UI_DIR, { withFileTypes: true })
-    .filter(e => e.isDirectory() && !UTILITY_PACKAGES.has(e.name))
+    .filter(e => e.isDirectory() && !EXCLUDED_PACKAGES.has(e.name))
+    .filter(e => fs.existsSync(path.join(BASE_UI_DIR, e.name, 'page.mdx')))
     .map(e => e.name)
     .sort();
 }
@@ -173,6 +166,76 @@ function getReactAriaComponents(): string[] {
     .filter(e => e.isFile() && e.name.endsWith('.tsx'))
     .map(e => e.name.replace('.tsx', ''))
     .sort();
+}
+
+function rewriteMdxDemos(raw: string, slug: string): string {
+  let lines = raw.split('\n');
+  const demoImports: Record<string, string> = {};
+
+  // First pass: Find and rewrite Demo imports
+  lines = lines.map(line => {
+    const importMatch = line.match(/^\s*import\s+\{\s*(Demo\w+)\s*\}\s+from\s+['"](\.\.?\/[^'"]+)['"]/);
+    if (importMatch) {
+      const demoName = importMatch[1];
+      const relPath = importMatch[2];
+      
+      // Resolve the actual component location
+      const compDir = path.join(BASE_UI_DIR, slug);
+      let targetPath = path.join(compDir, relPath);
+      if (!fs.existsSync(targetPath) && fs.existsSync(targetPath + '.ts')) {
+        targetPath += '.ts';
+      } else if (!fs.existsSync(targetPath) && fs.existsSync(targetPath + '.tsx')) {
+        targetPath += '.tsx';
+      }
+
+      // Look for the best demo payload (tailwind > css-modules > root)
+      let resolvedRelativePath = relPath;
+      if (fs.existsSync(targetPath) && fs.statSync(targetPath).isDirectory()) {
+        if (fs.existsSync(path.join(targetPath, 'tailwind', 'index.tsx'))) {
+          resolvedRelativePath = path.posix.join(relPath, 'tailwind', 'index.tsx');
+        } else if (fs.existsSync(path.join(targetPath, 'css-modules', 'index.tsx'))) {
+          resolvedRelativePath = path.posix.join(relPath, 'css-modules', 'index.tsx');
+        } else if (fs.existsSync(path.join(targetPath, 'index.tsx'))) {
+          resolvedRelativePath = path.posix.join(relPath, 'index.tsx');
+        }
+      }
+
+      // Convert to an absolute alias path for FumaDocs and use default import
+      // e.g. '@/components/base-ui/accordion/demos/hero/tailwind/index.tsx'
+      let aliasPath = path.posix.join('@/components/base-ui', slug, resolvedRelativePath);
+      // FumaDocs MDX compiler doesn't always resolve TS aliases (@/) cleanly for remote injection.
+      // We explicitly compute the relative path from the output document: content/docs/baseui/<doc>.mdx
+      // back to the original source folder.
+      const sourceAbsPath = path.posix.join('app/components/base-ui', slug, resolvedRelativePath);
+      const docDirPath = path.posix.join('content/docs/baseui');
+      let relativePath = path.posix.relative(docDirPath, sourceAbsPath);
+      
+      if (!relativePath.startsWith('.')) {
+        relativePath = './' + relativePath;
+      }
+
+      demoImports[demoName] = relativePath;
+      return `import ${demoName} from '${relativePath}';`;
+    }
+
+    // Strip out any other relative imports to prevent Vite crashing
+    if (line.match(/^\s*import\s+.*from\s+['"]\.\.?\//)) {
+      return '';
+    }
+
+    return line;
+  });
+
+  let joined = lines.join('\n');
+
+  // Second pass: Wrap <Demo... /> tags in <ComponentPreview>
+  for (const demoName of Object.keys(demoImports)) {
+    // Match <DemoName /> or <DemoName props... /> or <DemoName>...</DemoName>
+    const demoTagRegex = new RegExp(`(<${demoName}(\\s[^>]*?)?(?:\\/>|>.*?<\\/${demoName}>))`, 'g');
+    joined = joined.replace(demoTagRegex, '<ComponentPreview>\n  $1\n</ComponentPreview>');
+  }
+
+  return joined.replace(/\n{3,}/g, '\n\n');
 }
 
 function findMainSourceFile(componentDir: string): string | null {
@@ -208,58 +271,37 @@ function collectAllSourceFiles(dir: string): string[] {
   return results;
 }
 
+function extractPageMdxMeta(raw: string): { title: string; description: string } {
+  const titleMatch = raw.match(/^#\s+(.+)$/m);
+  const descMatch = raw.match(/<Subtitle>([^<]+)<\/Subtitle>/);
+  const metaDescMatch = raw.match(/content="([^"]+)"/);
+
+  return {
+    title: titleMatch?.[1]?.trim() ?? 'Component',
+    description: metaDescMatch?.[1]?.trim() ?? descMatch?.[1]?.trim() ?? '',
+  };
+}
+
 function generateBaseUiMdx(slug: string): string {
   const componentDir = path.join(BASE_UI_DIR, slug);
-  const title = toTitleCase(slug);
+  const pageMdxPath = path.join(componentDir, 'page.mdx');
+  const raw = fs.readFileSync(pageMdxPath, 'utf-8');
 
-  const mainFile = findMainSourceFile(componentDir);
-  let sourceCode = '';
-  let allProps: PropInfo[] = [];
+  const { title, description } = extractPageMdxMeta(raw);
 
-  if (mainFile) {
-    sourceCode = fs.readFileSync(mainFile, 'utf-8');
-    allProps = parsePropsFromSource(sourceCode);
-  }
+  let body = rewriteMdxDemos(raw, slug);
+  body = body.replace(/^#\s+.+\n/, '');
+  body = body.replace(/export\s+const\s+metadata\s*=\s*\{[\s\S]*?\};?\s*$/, '');
 
-  const allFiles = collectAllSourceFiles(componentDir);
-  for (const file of allFiles) {
-    if (file !== mainFile) {
-      const content = fs.readFileSync(file, 'utf-8');
-      allProps.push(...parsePropsFromSource(content));
-    }
-  }
+  body = body.trim();
 
-  const uniqueProps = allProps.filter((prop, i, arr) =>
-    arr.findIndex(p => p.name === prop.name) === i
-  );
-
-  const escapedSource = escapeForMdx(sourceCode);
-  const previewNote = `<p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>`;
-
-  let mdx = `---
+  return `---
 title: ${title}
-description: Base UI ${title} component
+description: ${description || `Base UI ${title} component`}
 ---
 
-## Preview
-
-<ComponentPreview>
-  ${previewNote}
-</ComponentPreview>
-
-## Source Code
-
-\`\`\`tsx title="${slug}/index.ts"
-${escapedSource.trim()}
-\`\`\`
+${body}
 `;
-
-  const propsTable = buildPropsTable(uniqueProps);
-  if (propsTable) {
-    mdx += `\n${propsTable}`;
-  }
-
-  return mdx;
 }
 
 function generateReactAriaMdx(componentName: string): string {
@@ -315,6 +357,47 @@ function main() {
 
   console.log(`Found ${baseUiSlugs.length} Base UI components`);
   console.log(`Found ${reactAriaNames.length} React Aria components`);
+
+  // Parse all Base UI component props from the raw source
+  const apiData: Record<string, Record<string, PropInfo[]>> = {};
+  const rootBaseDir = path.join(BASE_UI_DIR, 'base');
+  
+  if (fs.existsSync(rootBaseDir)) {
+    const rawComponents = fs.readdirSync(rootBaseDir, { withFileTypes: true })
+      .filter(e => e.isDirectory())
+      .map(e => e.name);
+
+    for (const slug of rawComponents) {
+      const compDir = path.join(rootBaseDir, slug);
+      const allFiles = collectAllSourceFiles(compDir);
+      
+      const partsData: Record<string, PropInfo[]> = {};
+      for (const file of allFiles) {
+        // e.g., AccordionRoot.tsx -> Root
+        const fileName = path.basename(file, '.tsx').replace('.ts', '');
+        let partName = fileName.replace(toTitleCase(slug).replace(/\s/g, ''), '');
+        if (!partName) partName = 'Root';
+        
+        const content = fs.readFileSync(file, 'utf-8');
+        const props = parsePropsFromSource(content);
+        if (props.length > 0) {
+          partsData[partName] = props;
+        }
+      }
+      
+      if (Object.keys(partsData).length > 0) {
+        apiData[toTitleCase(slug).replace(/\s/g, '')] = partsData;
+      }
+    }
+  }
+
+  // Save the API data for the Reference component
+  fs.writeFileSync(
+    path.join(CONTENT_DIR, 'baseui-api.json'),
+    JSON.stringify(apiData, null, 2),
+    'utf-8'
+  );
+  console.log('✓ Generated baseui-api.json');
 
   // Generate Base UI component pages
   const baseUiContentDir = path.join(CONTENT_DIR, 'baseui');

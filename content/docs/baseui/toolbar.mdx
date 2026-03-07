@@ -1,33 +1,103 @@
 ---
 title: Toolbar
-description: Base UI Toolbar component
+description: A high-quality, unstyled React toolbar component that groups a set of buttons and controls.
 ---
 
-## Preview
+<Subtitle>A container for grouping a set of buttons and controls.</Subtitle>
+<Meta
+  name="description"
+  content="A high-quality, unstyled React toolbar component that groups a set of buttons and controls."
+/>
+
+import DemoToolbarHero from '../../../app/components/base-ui/toolbar/demos/hero/tailwind/index.tsx';
 
 <ComponentPreview>
-  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+  <DemoToolbarHero />
 </ComponentPreview>
 
-## Source Code
+## Usage guidelines
 
-```tsx title="toolbar/index.ts"
-export { ToolbarSeparator as Separator } from './separator/ToolbarSeparator';
-export { ToolbarRoot as Root } from './root/ToolbarRoot';
-export { ToolbarGroup as Group } from './group/ToolbarGroup';
-export { ToolbarButton as Button } from './button/ToolbarButton';
-export { ToolbarLink as Link } from './link/ToolbarLink';
-export { ToolbarInput as Input } from './input/ToolbarInput';
+To ensure that toolbars are accessible and helpful, follow these guidelines:
 
-export { type Orientation } from '../utils/types';
+- **Use inputs sparingly**: Left and right arrow keys are used to both move the text insertion cursor in an input, and to navigate among controls in horizontal toolbars. When using an input in a horizontal toolbar, use only one and place it as the last element of the toolbar.
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```jsx title="Anatomy"
+import { Toolbar } from '@base-ui/react/toolbar';
+
+<Toolbar.Root>
+  <Toolbar.Button />
+  <Toolbar.Link />
+  <Toolbar.Separator />
+  <Toolbar.Group>
+    <Toolbar.Button />
+    <Toolbar.Button />
+  <Toolbar.Group />
+  <Toolbar.Input />
+</Toolbar.Root>;
 ```
 
-## Props
+## Examples
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `disabled?` | `boolean \| undefined` | `false` | When `true` the item is disabled. |
-| `focusableWhenDisabled?` | `boolean \| undefined` | `true` | When `true` the item remains focuseable when disabled. |
-| `defaultValue?` | `React.ComponentProps<'input'>['defaultValue'] \| undefined` | `-` | - |
-| `orientation?` | `ToolbarRoot.Orientation \| undefined` | `horizontal` | The orientation of the toolbar. |
-| `loopFocus?` | `boolean \| undefined` | `true` | If `true`, using keyboard navigation will wrap focus to the other end of the toolbar once the end is reached. |
+### Using with Menu
+
+All Base UI popup components that provide a `Trigger` component can be integrated with a toolbar by passing the trigger to `<Toolbar.Button>` with the `render` prop:
+
+```tsx {4,12} title="Using popups with toolbar"
+return (
+  <Toolbar.Root>
+    <Menu.Root>
+      <Toolbar.Button render={<Menu.Trigger />} />
+      <Menu.Portal>
+        {/* prettier-ignore */}
+        {/* Compose the rest of the menu */}
+      </Menu.Portal>
+    </Menu.Root>
+  </Toolbar.Root>;
+)
+```
+
+This applies to `<AlertDialog>`, `<Dialog>`, `<Menu>`, `<Popover>`, and `<Select>`.
+
+### Using with Tooltip
+
+Unlike other popups, the toolbar item should be passed to the `render` prop of `<Tooltip.Trigger>`:
+
+```tsx {4} title="Using popups with toolbar"
+return (
+  <Toolbar.Root>
+    <Tooltip.Root>
+      <Tooltip.Trigger render={<Toolbar.Button />} />
+      <Tooltip.Portal>
+        {/* prettier-ignore */}
+        {/* Compose the rest of the tooltip */}
+      </Tooltip.Portal>
+    </Tooltip.Root>
+  </Toolbar.Root>;
+)
+```
+
+### Using with NumberField
+
+To use a NumberField in the toolbar, pass `<NumberField.Input>` to `<Toolbar.Input>` using the `render` prop:
+
+```tsx {6} title="Using NumberField with toolbar"
+return (
+  <Toolbar.Root>
+    <NumberField.Root>
+      <NumberField.Group>
+        <NumberField.Decrement />
+        <Toolbar.Input render={<NumberField.Input />} />
+        <NumberField.Increment />
+      </NumberField.Group>
+    </NumberField.Root>
+  </Toolbar.Root>;
+)
+```
+
+## API reference
+
+<Reference component="Toolbar" parts="Root, Button, Link, Input, Group, Separator" />

@@ -1,33 +1,36 @@
 ---
 title: Progress
-description: Base UI Progress component
+description: A high-quality, unstyled React progress bar component that displays the status of a task that takes a long time.
 ---
 
-## Preview
+<Subtitle>Displays the status of a task that takes a long time.</Subtitle>
+<Meta
+  name="description"
+  content="A high-quality, unstyled React progress bar component that displays the status of a task that takes a long time."
+/>
+
+import DemoProgressHero from '../../../app/components/base-ui/progress/demos/hero/tailwind/index.tsx';
 
 <ComponentPreview>
-  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+  <DemoProgressHero />
 </ComponentPreview>
 
-## Source Code
+## Anatomy
 
-```tsx title="progress/index.ts"
-export { ProgressRoot as Root } from './root/ProgressRoot';
-export { ProgressTrack as Track } from './track/ProgressTrack';
-export { ProgressIndicator as Indicator } from './indicator/ProgressIndicator';
-export { ProgressValue as Value } from './value/ProgressValue';
-export { ProgressLabel as Label } from './label/ProgressLabel';
+Import the component and assemble its parts:
 
-export type { ProgressStatus as Status } from './root/ProgressRoot';
+```jsx title="Anatomy"
+import { Progress } from '@base-ui/react/progress';
+
+<Progress.Root>
+  <Progress.Label />
+  <Progress.Track>
+    <Progress.Indicator />
+  </Progress.Track>
+  <Progress.Value />
+</Progress.Root>;
 ```
 
-## Props
+## API reference
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `format?` | `Intl.NumberFormatOptions \| undefined` | `-` | Options to format the value. |
-| `getAriaValueText?` | `((formattedValue: string \| null, value: number \| null) => string) \| undefined` | `-` | Accepts a function which returns a string value that provides a human-readable text alternative for the current value of the progress bar. |
-| `locale?` | `Intl.LocalesArgument \| undefined` | `-` | The locale used by `Intl.NumberFormat` when formatting the value. Defaults to the user's runtime locale. |
-| `max?` | `number \| undefined` | `100` | The maximum value. |
-| `min?` | `number \| undefined` | `0` | The minimum value. |
-| `value` | `number \| null` | `null` | The current value. The component is indeterminate when value is `null`. |
+<Reference component="Progress" parts="Root, Track, Indicator, Value, Label" />

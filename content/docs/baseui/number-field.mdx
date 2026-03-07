@@ -1,48 +1,47 @@
 ---
 title: Number Field
-description: Base UI Number Field component
+description: A high-quality, unstyled React number field component with increment and decrement buttons, and a scrub area.
 ---
 
-## Preview
+<Subtitle>A numeric input element with increment and decrement buttons, and a scrub area.</Subtitle>
+
+<Meta
+  name="description"
+  content="A high-quality, unstyled React number field component with increment and decrement buttons, and a scrub area."
+/>
+
+import DemoNumberFieldHero from '../../../app/components/base-ui/number-field/demos/hero/tailwind/index.tsx';
 
 <ComponentPreview>
-  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+  <DemoNumberFieldHero />
 </ComponentPreview>
 
-## Source Code
+## Usage guidelines
 
-```tsx title="number-field/index.ts"
-export { NumberFieldRoot as Root } from './root/NumberFieldRoot';
-export { NumberFieldGroup as Group } from './group/NumberFieldGroup';
-export { NumberFieldIncrement as Increment } from './increment/NumberFieldIncrement';
-export { NumberFieldDecrement as Decrement } from './decrement/NumberFieldDecrement';
-export { NumberFieldInput as Input } from './input/NumberFieldInput';
-export { NumberFieldScrubArea as ScrubArea } from './scrub-area/NumberFieldScrubArea';
-export { NumberFieldScrubAreaCursor as ScrubAreaCursor } from './scrub-area-cursor/NumberFieldScrubAreaCursor';
+- **Form controls must have an accessible name**: It can be created using a `<label>` element or the `Field` component. See the [forms guide](/react/handbook/forms).
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```jsx title="Anatomy"
+import { NumberField } from '@base-ui/react/number-field';
+
+<NumberField.Root>
+  <NumberField.ScrubArea>
+    <NumberField.ScrubAreaCursor />
+  </NumberField.ScrubArea>
+  <NumberField.Group>
+    <NumberField.Decrement />
+    <NumberField.Input />
+    <NumberField.Increment />
+  </NumberField.Group>
+</NumberField.Root>;
 ```
 
-## Props
+## API reference
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `id?` | `string \| undefined` | `-` | The id of the input element. |
-| `min?` | `number \| undefined` | `-` | The minimum value of the input element. |
-| `max?` | `number \| undefined` | `-` | The maximum value of the input element. |
-| `allowOutOfRange?` | `boolean \| undefined` | `false` | When true, direct text entry may be outside the `min`/`max` range without clamping, so native range underflow/overflow validation can occur. Step-based interactions (keyboard arrows, buttons, wheel, scrub) still clamp. |
-| `smallStep?` | `number \| undefined` | `0.1` | The small step value of the input element when incrementing while the meta key is held. Snaps to multiples of this value. |
-| `step?` | `number \| 'any' \| undefined` | `1` | Amount to increment and decrement with the buttons and arrow keys, or to scrub with pointer movement in the scrub area. To always enable step validation on form submission, specify the `min` prop explicitly in conjunction with this prop. Specify `step="any"` to always disable step validation. |
-| `largeStep?` | `number \| undefined` | `10` | The large step value of the input element when incrementing while the shift key is held. Snaps to multiples of this value. |
-| `required?` | `boolean \| undefined` | `false` | Whether the user must enter a value before submitting a form. |
-| `disabled?` | `boolean \| undefined` | `false` | Whether the component should ignore user interaction. |
-| `readOnly?` | `boolean \| undefined` | `false` | Whether the user should be unable to change the field value. |
-| `name?` | `string \| undefined` | `-` | Identifies the field when a form is submitted. |
-| `value?` | `number \| null \| undefined` | `-` | The raw numeric value of the field. |
-| `defaultValue?` | `number \| undefined` | `-` | The uncontrolled value of the field when it’s initially rendered. To render a controlled number field, use the `value` prop instead. |
-| `allowWheelScrub?` | `boolean \| undefined` | `false` | Whether to allow the user to scrub the input value with the mouse wheel while focused and hovering over the input. |
-| `snapOnStep?` | `boolean \| undefined` | `false` | Whether the value should snap to the nearest step when incrementing or decrementing. |
-| `format?` | `Intl.NumberFormatOptions \| undefined` | `-` | Options to format the input value. |
-| `locale?` | `Intl.LocalesArgument \| undefined` | `-` | The locale of the input element. Defaults to the user's runtime locale. |
-| `inputRef?` | `React.Ref<HTMLInputElement> \| undefined` | `-` | A ref to access the hidden input element. |
-| `direction?` | `'horizontal' \| 'vertical' \| undefined` | `horizontal` | Cursor movement direction in the scrub area. |
-| `pixelSensitivity?` | `number \| undefined` | `2` | Determines how many pixels the cursor must move before the value changes. A higher value will make scrubbing less sensitive. |
-| `teleportDistance?` | `number \| undefined` | `-` | If specified, determines the distance that the cursor may move from the center of the scrub area before it will loop back around. |
+<Reference
+  component="NumberField"
+  parts="Root, ScrubArea, ScrubAreaCursor, Group, Decrement, Input, Increment"
+/>

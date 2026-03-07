@@ -1,44 +1,191 @@
 ---
 title: Preview Card
-description: Base UI Preview Card component
+description: A high-quality, unstyled React preview card component that appears when a link is hovered, showing a preview for sighted users.
 ---
 
-## Preview
+<Subtitle>
+  A popup that appears when a link is hovered, showing a preview for sighted users.
+</Subtitle>
+<Meta
+  name="description"
+  content="A high-quality, unstyled React preview card component that appears when a link is hovered, showing a preview for sighted users."
+/>
+
+import DemoPreviewCardHero from '../../../app/components/base-ui/preview-card/demos/hero/tailwind/index.tsx';
 
 <ComponentPreview>
-  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+  <DemoPreviewCardHero />
 </ComponentPreview>
+<link
+  as="image"
+  rel="preload"
+  href="https://images.unsplash.com/photo-1619615391095-dfa29e1672ef?q=80&w=448&h=300"
+/>
 
-## Source Code
+## Usage guidelines
 
-```tsx title="preview-card/index.ts"
-export { PreviewCardRoot as Root } from './root/PreviewCardRoot';
-export { PreviewCardPortal as Portal } from './portal/PreviewCardPortal';
-export { PreviewCardTrigger as Trigger } from './trigger/PreviewCardTrigger';
-export { PreviewCardPositioner as Positioner } from './positioner/PreviewCardPositioner';
-export { PreviewCardPopup as Popup } from './popup/PreviewCardPopup';
-export { PreviewCardArrow as Arrow } from './arrow/PreviewCardArrow';
-export { PreviewCardBackdrop as Backdrop } from './backdrop/PreviewCardBackdrop';
-export { PreviewCardViewport as Viewport } from './viewport/PreviewCardViewport';
-export {
-  createPreviewCardHandle as createHandle,
-  PreviewCardHandle as Handle,
-} from './store/PreviewCardHandle';
+- **Popup content should reflect the link destination**: Avoid placing unique or essential information in the popup unless it is also available on the linked page, so all users can access the same information. Preview cards are a visual enhancement for sighted mouse and keyboard users and are not accessible to touch or screen reader users.
+
+## Anatomy
+
+Import the component and assemble its parts:
+
+```jsx title="Anatomy"
+import { PreviewCard } from '@base-ui/react/preview-card';
+
+<PreviewCard.Root>
+  <PreviewCard.Trigger />
+  <PreviewCard.Portal>
+    <PreviewCard.Backdrop />
+    <PreviewCard.Positioner>
+      <PreviewCard.Popup>
+        <PreviewCard.Arrow />
+      </PreviewCard.Popup>
+    </PreviewCard.Positioner>
+  </PreviewCard.Portal>
+</PreviewCard.Root>;
 ```
 
-## Props
+## Examples
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the portal mounted in the DOM while the popup is hidden. |
-| `defaultOpen?` | `boolean \| undefined` | `false` | Whether the preview card is initially open. To render a controlled preview card, use the `open` prop instead. |
-| `open?` | `boolean \| undefined` | `-` | Whether the preview card is currently open. |
-| `onOpenChangeComplete?` | `((open: boolean) => void) \| undefined` | `-` | Event handler called after any animations complete when the preview card is opened or closed. |
-| `actionsRef?` | `React.RefObject<PreviewCardRoot.Actions \| null> \| undefined` | `-` | A ref to imperative actions. - `unmount`: Unmounts the preview card popup. - `close`: Closes the preview card imperatively when called. |
-| `handle?` | `PreviewCardHandle<Payload> \| undefined` | `-` | A handle to associate the preview card with a trigger. If specified, allows external triggers to control the card's open state. Can be created with the PreviewCard.createHandle() method. |
-| `children?` | `React.ReactNode \| PayloadChildRenderFunction<Payload>` | `-` | The content of the preview card. This can be a regular React node or a render function that receives the `payload` of the active trigger. |
-| `triggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the preview card is associated with. This is useful in conjunction with the `open` prop to create a controlled preview card. There's no need to specify this prop when the preview card is uncontrolled (i.e. when the `open` prop is not set). |
-| `defaultTriggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the preview card is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open preview card. |
-| `payload?` | `Payload \| undefined` | `-` | A payload to pass to the preview card when it is opened. |
-| `delay?` | `number \| undefined` | `600` | How long to wait before the preview card opens. Specified in milliseconds. |
-| `closeDelay?` | `number \| undefined` | `300` | How long to wait before closing the preview card. Specified in milliseconds. |
+### Detached triggers
+
+A preview card can be controlled by a trigger located either inside or outside the `<PreviewCard.Root>` component.
+For simple, one-off interactions, place the `<PreviewCard.Trigger>` inside `<PreviewCard.Root>`, as shown in the example at the top of this page.
+
+However, if defining the preview card's content next to its trigger is not practical, you can use a detached trigger.
+This involves placing the `<PreviewCard.Trigger>` outside of `<PreviewCard.Root>` and linking them with a `handle` created by the `PreviewCard.createHandle()` function.
+
+```jsx title="Detached triggers" {3,5} "handle={demoPreviewCard}"
+const demoPreviewCard = PreviewCard.createHandle();
+
+<PreviewCard.Trigger handle={demoPreviewCard} href="#">
+  Link
+</PreviewCard.Trigger>
+
+<PreviewCard.Root handle={demoPreviewCard}>
+  ...
+</PreviewCard.Root>
+```
+
+import DemoPreviewCardDetachedTriggersSimple from '../../../app/components/base-ui/preview-card/demos/detached-triggers-simple/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoPreviewCardDetachedTriggersSimple />
+</ComponentPreview>
+
+### Multiple triggers
+
+A single preview card can be opened by multiple trigger elements.
+You can achieve this by using the same `handle` for several detached triggers, or by placing multiple `<PreviewCard.Trigger>` components inside a single `<PreviewCard.Root>`.
+
+```jsx title="Multiple triggers within the Root part"
+<PreviewCard.Root>
+  <PreviewCard.Trigger href="#">Trigger 1</PreviewCard.Trigger>
+  <PreviewCard.Trigger href="#">Trigger 2</PreviewCard.Trigger>
+  ...
+</PreviewCard.Root>
+```
+
+```jsx title="Multiple detached triggers"
+const demoPreviewCard = PreviewCard.createHandle();
+
+<PreviewCard.Trigger handle={demoPreviewCard} href="#">
+  Trigger 1
+</PreviewCard.Trigger>
+
+<PreviewCard.Trigger handle={demoPreviewCard} href="#">
+  Trigger 2
+</PreviewCard.Trigger>
+
+<PreviewCard.Root handle={demoPreviewCard}>
+  ...
+</PreviewCard.Root>
+```
+
+The preview card can render different content depending on which trigger opened it.
+This is achieved by passing a `payload` to the `<PreviewCard.Trigger>` and using the function-as-a-child pattern in `<PreviewCard.Root>`.
+
+The payload can be strongly typed by providing a type argument to the `createHandle()` function:
+
+```jsx title="Detached triggers with payload" {1,3,7} "payload"
+const demoPreviewCard = PreviewCard.createHandle<{ title: string }>();
+
+<PreviewCard.Trigger handle={demoPreviewCard} payload={{ title: 'Trigger 1' }} href="#">
+  Trigger 1
+</PreviewCard.Trigger>
+
+<PreviewCard.Trigger handle={demoPreviewCard} payload={{ title: 'Trigger 2' }} href="#">
+  Trigger 2
+</PreviewCard.Trigger>
+
+<PreviewCard.Root handle={demoPreviewCard}>
+  {({ payload }) => (
+    <PreviewCard.Portal>
+      <PreviewCard.Positioner sideOffset={8}>
+        <PreviewCard.Popup>
+          {payload !== undefined && (
+            <span>
+              Preview card opened by {payload.title}
+            </span>
+          )}
+        </PreviewCard.Popup>
+      </PreviewCard.Positioner>
+    </PreviewCard.Portal>
+  )}
+</PreviewCard.Root>
+```
+
+### Controlled mode with multiple triggers
+
+You can control the preview card's open state externally using the `open` and `onOpenChange` props on `<PreviewCard.Root>`.
+This allows you to manage the preview card's visibility based on your application's state.
+When using multiple triggers, you have to manage which trigger is active with the `triggerId` prop on `<PreviewCard.Root>` and the `id` prop on each `<PreviewCard.Trigger>`.
+
+Note that there is no separate `onTriggerIdChange` prop.
+Instead, the `onOpenChange` callback receives an additional argument, `eventDetails`, which contains the trigger element that initiated the state change.
+
+import DemoPreviewCardDetachedTriggersControlled from '../../../app/components/base-ui/preview-card/demos/detached-triggers-controlled/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoPreviewCardDetachedTriggersControlled />
+</ComponentPreview>
+
+### Animating the Preview Card
+
+You can animate a preview card as it moves between different trigger elements.
+This includes animating its position, size, and content.
+
+#### Position and Size
+
+To animate the preview card's position, apply CSS transitions to the `left`, `right`, `top`, and `bottom` properties of the **Positioner** part.
+To animate its size, transition the `width` and `height` of the **Popup** part.
+
+#### Content
+
+The preview card also supports content transitions.
+This is useful when different triggers display different content within the same preview card.
+
+To enable content animations, wrap the content in the `<PreviewCard.Viewport>` part.
+This part provides features to create direction-aware animations.
+It renders a `div` with a `data-activation-direction` attribute (`left`, `right`, `up`, or `down`) that indicates the new trigger's position relative to the previous one.
+
+Inside the `<PreviewCard.Viewport>`, the content is further wrapped in `div`s with data attributes to help with styling:
+
+- `data-current`: The currently visible content when no transitions are present or the incoming content.
+- `data-previous`: The outgoing content during a transition.
+
+You can use these attributes to style the enter and exit animations.
+
+import DemoPreviewCardDetachedTriggersFull from '../../../app/components/base-ui/preview-card/demos/detached-triggers-full/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoPreviewCardDetachedTriggersFull />
+</ComponentPreview>
+
+## API reference
+
+<Reference
+  component="PreviewCard"
+  parts="Root, Trigger, Portal, Backdrop, Positioner, Popup, Viewport, Arrow"
+/>

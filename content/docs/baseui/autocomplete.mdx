@@ -1,51 +1,265 @@
 ---
 title: Autocomplete
-description: Base UI Autocomplete component
+description: A high-quality, unstyled React autocomplete component that renders an input with a list of filtered options.
 ---
 
-## Preview
+<Subtitle>An input that suggests options as you type.</Subtitle>
+<Meta
+  name="description"
+  content="A high-quality, unstyled React autocomplete component that renders an input with a list of filtered options."
+/>
+
+import DemoAutocompleteHero from '../../../app/components/base-ui/autocomplete/demos/hero/tailwind/index.tsx';
 
 <ComponentPreview>
-  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+  <DemoAutocompleteHero />
 </ComponentPreview>
 
-## Source Code
+## Usage guidelines
 
-```tsx title="autocomplete/index.ts"
-export { AutocompleteRoot as Root } from './root/AutocompleteRoot';
-export { AutocompleteValue as Value } from './value/AutocompleteValue';
+- **Avoid when selection state is needed**: Use [Combobox](/react/components/combobox) instead of Autocomplete if the selection should be remembered and the input value cannot be custom. Unlike Combobox, Autocomplete's input can contain free-form text, as its suggestions only _optionally_ autocomplete the text.
+- **Can be used for filterable command pickers**: The input can be used as a filter for command items that perform an action when clicked when rendered inside the popup.
+- **Form controls must have an accessible name**: It can be created using a `<label>` element or the `Field` component. See the [forms guide](/react/handbook/forms).
 
-export { ComboboxTrigger as Trigger } from '../combobox/trigger/ComboboxTrigger';
-export { ComboboxInput as Input } from '../combobox/input/ComboboxInput';
-export { ComboboxIcon as Icon } from '../combobox/icon/ComboboxIcon';
-export { ComboboxClear as Clear } from '../combobox/clear/ComboboxClear';
-export { ComboboxList as List } from '../combobox/list/ComboboxList';
-export { ComboboxStatus as Status } from '../combobox/status/ComboboxStatus';
-export { ComboboxPortal as Portal } from '../combobox/portal/ComboboxPortal';
-export { ComboboxBackdrop as Backdrop } from '../combobox/backdrop/ComboboxBackdrop';
-export { ComboboxPositioner as Positioner } from '../combobox/positioner/ComboboxPositioner';
-export { ComboboxPopup as Popup } from '../combobox/popup/ComboboxPopup';
-export { ComboboxArrow as Arrow } from '../combobox/arrow/ComboboxArrow';
-export { ComboboxGroup as Group } from '../combobox/group/ComboboxGroup';
-export { ComboboxGroupLabel as GroupLabel } from '../combobox/group-label/ComboboxGroupLabel';
-export { ComboboxItem as Item } from '../combobox/item/ComboboxItem';
-export { ComboboxRow as Row } from '../combobox/row/ComboboxRow';
-export { ComboboxCollection as Collection } from '../combobox/collection/ComboboxCollection';
-export { ComboboxEmpty as Empty } from '../combobox/empty/ComboboxEmpty';
+## Anatomy
 
-export { Separator } from '../separator/Separator';
+Import the components and place them together:
 
-export { useCoreFilter as useFilter } from '../combobox/root/utils/useFilter';
-export { useFilteredItems } from '../combobox/root/utils/useFilteredItems';
+```jsx title="Anatomy"
+import { Autocomplete } from '@base-ui/react/autocomplete';
+
+<Autocomplete.Root>
+  <Autocomplete.Input />
+  <Autocomplete.Trigger />
+  <Autocomplete.Icon />
+  <Autocomplete.Clear />
+  <Autocomplete.Value />
+
+  <Autocomplete.Portal>
+    <Autocomplete.Backdrop />
+    <Autocomplete.Positioner>
+      <Autocomplete.Popup>
+        <Autocomplete.Arrow />
+
+        <Autocomplete.Status />
+        <Autocomplete.Empty />
+
+        <Autocomplete.List>
+          <Autocomplete.Row>
+            <Autocomplete.Item />
+          </Autocomplete.Row>
+
+          <Autocomplete.Separator />
+
+          <Autocomplete.Group>
+            <Autocomplete.GroupLabel />
+          </Autocomplete.Group>
+
+          <Autocomplete.Collection />
+        </Autocomplete.List>
+      </Autocomplete.Popup>
+    </Autocomplete.Positioner>
+  </Autocomplete.Portal>
+</Autocomplete.Root>;
 ```
 
-## Props
+## TypeScript inference
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `mode?` | `'list' \| 'both' \| 'inline' \| 'none' \| undefined` | `list` | Controls how the autocomplete behaves with respect to list filtering and inline autocompletion. - `list` (default): items are dynamically filtered based on the input value. The input value does not change based on the active item. - `both`: items are dynamically filtered based on the input value, which will temporarily change based on the active item (inline autocompletion). - `inline`: items are static (not filtered), and the input value will temporarily change based on the active item (inline autocompletion). - `none`: items are static (not filtered), and the input value will not change based on the active item. |
-| `autoHighlight?` | `boolean \| 'always' \| undefined` | `false` | Whether the first matching item is highlighted automatically. - `true`: highlight after the user types and keep the highlight while the query changes. - `'always'`: always highlight the first item. |
-| `keepHighlight?` | `boolean \| undefined` | `false` | Whether the highlighted item should be preserved when the pointer leaves the list. |
-| `highlightItemOnHover?` | `boolean \| undefined` | `true` | Whether moving the pointer over items should highlight them. Disabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state. |
-| `submitOnItemClick?` | `AriaCombobox.Props<ItemValue, 'none'>['submitOnItemClick'] \| undefined` | `false` | Whether clicking an item should submit the autocomplete's owning form. By default, clicking an item via a pointer or <kbd>Enter</kbd> key does not submit the owning form. Useful when the autocomplete is used as a single-field form search input. |
-| `children?` | `React.ReactNode \| ((value: string) => React.ReactNode)` | `-` | - |
+Autocomplete infers the item type from the `items` prop passed to `<Autocomplete.Root>`.
+If using `itemToStringValue`, the value prop on the `<Autocomplete.Item>` must match the type of an item in the `items` array.
+
+## Examples
+
+### Async search
+
+Load items asynchronously while typing and render custom status content.
+
+import DemoAutocompleteAsync from '../../../app/components/base-ui/autocomplete/demos/async/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoAutocompleteAsync compact />
+</ComponentPreview>
+
+### Inline autocomplete
+
+Autofill the input with the highlighted item while navigating with arrow keys using the `mode` prop. Accepts `aria-autocomplete` values `list`, `both`, `inline`, or `none`.
+
+import DemoAutocompleteInline from '../../../app/components/base-ui/autocomplete/demos/inline/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoAutocompleteInline compact />
+</ComponentPreview>
+
+### Grouped
+
+Organize related options with `<Autocomplete.Group>` and `<Autocomplete.GroupLabel>` to add section headings inside the popup.
+
+Groups are represented by an array of objects with an `items` property, which itself is an array of individual items for each group. An extra property, such as `value`, can be provided for the heading text when rendering the group label.
+
+```tsx title="Example" {3,9,13}
+interface ProduceGroupItem {
+  value: string;
+  items: string[];
+}
+
+const groups: ProduceGroupItem[] = [
+  {
+    value: 'Fruits',
+    items: ['Apple', 'Banana', 'Orange'],
+  },
+  {
+    value: 'Vegetables',
+    items: ['Carrot', 'Lettuce', 'Spinach'],
+  },
+];
+```
+
+import DemoAutocompleteGrouped from '../../../app/components/base-ui/autocomplete/demos/grouped/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoAutocompleteGrouped compact />
+</ComponentPreview>
+
+### Fuzzy matching
+
+Use fuzzy matching to find relevant results even when the query doesn't exactly match the item text.
+
+import DemoAutocompleteFuzzyMatching from '../../../app/components/base-ui/autocomplete/demos/fuzzy-matching/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoAutocompleteFuzzyMatching compact />
+</ComponentPreview>
+
+### Limit results
+
+Limit the number of visible items using the `limit` prop and guide users to refine their query using `<Autocomplete.Status>`.
+
+import DemoAutocompleteLimit from '../../../app/components/base-ui/autocomplete/demos/limit/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoAutocompleteLimit compact />
+</ComponentPreview>
+
+### Auto highlight
+
+The first matching item can be automatically highlighted as the user types by specifying the `autoHighlight` prop on `<Autocomplete.Root>`. Set the prop's value to `"always"` if the highlight should always be present, such as when the list is rendered inline within a dialog.
+
+The prop can be combined with the `keepHighlight` and `highlightItemOnHover` props to configure how the highlight behaves during mouse interactions.
+
+import DemoAutocompleteAutoHighlight from '../../../app/components/base-ui/autocomplete/demos/auto-highlight/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoAutocompleteAutoHighlight compact />
+</ComponentPreview>
+
+### Command palette
+
+Use the autocomplete input to filter a list of command items that perform an action when clicked.
+
+import DemoAutocompleteCommandPalette from '../../../app/components/base-ui/autocomplete/demos/command-palette/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoAutocompleteCommandPalette compact />
+</ComponentPreview>
+
+### Grid layout
+
+Display items in a grid layout, wrapping each row in `<Autocomplete.Row>` components.
+
+import DemoAutocompleteGrid from '../../../app/components/base-ui/autocomplete/demos/grid/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoAutocompleteGrid compact />
+</ComponentPreview>
+
+### Virtualized
+
+Efficiently handle large datasets using a virtualization library like `@tanstack/react-virtual`.
+
+import DemoAutocompleteVirtualized from '../../../app/components/base-ui/autocomplete/demos/virtualized/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoAutocompleteVirtualized compact />
+</ComponentPreview>
+
+## API reference
+
+<Reference component="Autocomplete" parts="Root, Value" />
+<Reference
+  component="Combobox"
+  as="Autocomplete"
+  parts="Input, Trigger, Icon, Clear, List, Portal, Backdrop, Positioner, Popup, Arrow, Status, Empty, Collection, Row, Item, Group, GroupLabel, Separator"
+/>
+
+## useFilter
+
+Matches items against a query using `Intl.Collator` for robust string matching.
+This hook is used when externally filtering items.
+
+### Input parameters
+
+Accepts all `Intl.CollatorOptions`, plus the following option:
+
+<PropsReferenceTable
+  data={{
+    locale: {
+      type: 'Intl.LocalesArgument',
+      description: 'The locale to use for string comparison.',
+    },
+  }}
+/>
+
+### Return value
+
+<PropsReferenceTable
+  type="return"
+  data={{
+    contains: {
+      type: '(itemValue: any, query: string) => boolean',
+      description: 'Returns whether the item matches the query anywhere.',
+    },
+    startsWith: {
+      type: '(itemValue: any, query: string) => boolean',
+      description: 'Returns whether the item starts with the query.',
+    },
+    endsWith: {
+      type: '(itemValue: any, query: string) => boolean',
+      description: 'Returns whether the item ends with the query.',
+    },
+  }}
+/>
+
+export const metadata = {
+  keywords: [
+    'React Autocomplete',
+    'Autocomplete Component',
+    'Search Suggestions',
+    'Filterable Input',
+    'Async Autocomplete',
+    'Typeahead',
+    'Lookahead',
+    'Autosuggest',
+    'Incremental Search',
+    'Predictive Text',
+    'Search Input',
+    'Accessible Combobox',
+    'Headless React Components',
+    'Base UI',
+  ],
+};
+
+## useFilteredItems
+
+Returns the internally filtered items when called inside `<Autocomplete.Root>`.
+
+### Return value
+
+<PropsReferenceTable
+  type="return"
+  data={{
+    filteredItems: {
+      type: 'any[]',
+      description: 'The filtered items.',
+    },
+  }}
+/>

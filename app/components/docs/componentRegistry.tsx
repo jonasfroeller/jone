@@ -54,3 +54,9 @@ export { Tooltip } from '@/components/react-aria/Tooltip';
 export { Tree, TreeItem } from '@/components/react-aria/Tree';
 
 export { DialogTrigger, Heading, TooltipTrigger } from 'react-aria-components';
+
+// Documentation-specific MDX components
+export { Subtitle } from '@/components/docs/Subtitle';
+export { Meta } from '@/components/docs/Meta';
+export { Reference } from '@/components/docs/Reference';
+export { PropsReferenceTable } from '@/components/docs/PropsReferenceTable';

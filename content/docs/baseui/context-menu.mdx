@@ -1,36 +1,71 @@
 ---
 title: Context Menu
-description: Base UI Context Menu component
+description: A high-quality, unstyled React context menu component that appears at the pointer on right click or long press.
 ---
 
-## Preview
+<Subtitle>A menu that appears at the pointer on right click or long press.</Subtitle>
+<Meta
+  name="description"
+  content="A high-quality, unstyled React context menu component that appears at the pointer on right click or long press."
+/>
+
+import DemoContextMenuHero from '../../../app/components/base-ui/context-menu/demos/hero/tailwind/index.tsx';
 
 <ComponentPreview>
-  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+  <DemoContextMenuHero />
 </ComponentPreview>
 
-## Source Code
+## Anatomy
 
-```tsx title="context-menu/index.ts"
-export { ContextMenuRoot as Root } from './root/ContextMenuRoot';
-export { ContextMenuTrigger as Trigger } from './trigger/ContextMenuTrigger';
+Import the components and place them together:
 
-export { MenuBackdrop as Backdrop } from '../menu/backdrop/MenuBackdrop';
-export { MenuPortal as Portal } from '../menu/portal/MenuPortal';
-export { MenuPositioner as Positioner } from '../menu/positioner/MenuPositioner';
-export { MenuPopup as Popup } from '../menu/popup/MenuPopup';
-export { MenuArrow as Arrow } from '../menu/arrow/MenuArrow';
-export { MenuGroup as Group } from '../menu/group/MenuGroup';
-export { MenuGroupLabel as GroupLabel } from '../menu/group-label/MenuGroupLabel';
-export { MenuItem as Item } from '../menu/item/MenuItem';
-export { MenuCheckboxItem as CheckboxItem } from '../menu/checkbox-item/MenuCheckboxItem';
-export { MenuCheckboxItemIndicator as CheckboxItemIndicator } from '../menu/checkbox-item-indicator/MenuCheckboxItemIndicator';
-export { MenuLinkItem as LinkItem } from '../menu/link-item/MenuLinkItem';
-export { MenuRadioGroup as RadioGroup } from '../menu/radio-group/MenuRadioGroup';
-export { MenuRadioItem as RadioItem } from '../menu/radio-item/MenuRadioItem';
-export { MenuRadioItemIndicator as RadioItemIndicator } from '../menu/radio-item-indicator/MenuRadioItemIndicator';
-export { MenuSubmenuRoot as SubmenuRoot } from '../menu/submenu-root/MenuSubmenuRoot';
-export { MenuSubmenuTrigger as SubmenuTrigger } from '../menu/submenu-trigger/MenuSubmenuTrigger';
+```jsx title="Anatomy"
+import { ContextMenu } from '@base-ui/react/context-menu';
 
-export { Separator } from '../separator/Separator';
+<ContextMenu.Root>
+  <ContextMenu.Trigger />
+  <ContextMenu.Portal>
+    <ContextMenu.Backdrop />
+    <ContextMenu.Positioner>
+      <ContextMenu.Popup>
+        <ContextMenu.Arrow />
+        <ContextMenu.Item />
+        <ContextMenu.LinkItem />
+        <ContextMenu.Separator />
+        <ContextMenu.Group>
+          <ContextMenu.GroupLabel />
+        </ContextMenu.Group>
+        <ContextMenu.RadioGroup>
+          <ContextMenu.RadioItem />
+        </ContextMenu.RadioGroup>
+        <ContextMenu.CheckboxItem />
+        <ContextMenu.SubmenuRoot>
+          <ContextMenu.SubmenuTrigger />
+        </ContextMenu.SubmenuRoot>
+      </ContextMenu.Popup>
+    </ContextMenu.Positioner>
+  </ContextMenu.Portal>
+</ContextMenu.Root>;
 ```
+
+## Examples
+
+[Menu](/react/components/menu#examples) displays additional demos, many of which apply to the context menu as well.
+
+### Nested menu
+
+To create a submenu, create a `<ContextMenu.SubmenuRoot>` inside the parent context menu. Use the `<ContextMenu.SubmenuTrigger>` part for the menu item that opens the nested menu.
+
+import DemoContextMenuSubmenu from '../../../app/components/base-ui/context-menu/demos/submenu/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoContextMenuSubmenu />
+</ComponentPreview>
+
+## API reference
+
+<Reference component="ContextMenu" parts="Root, Trigger" />
+<Reference
+  component="Menu"
+  parts="Portal, Positioner, Popup, Arrow, Item, LinkItem, SubmenuRoot, SubmenuTrigger, Group, GroupLabel, RadioGroup, RadioItem, RadioItemIndicator, CheckboxItem, CheckboxItemIndicator, Separator"
+/>

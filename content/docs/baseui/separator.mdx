@@ -1,68 +1,31 @@
 ---
 title: Separator
-description: Base UI Separator component
+description: A high-quality, unstyled React separator component that is accessible to screen readers.
 ---
 
-## Preview
+<Subtitle>A separator element accessible to screen readers.</Subtitle>
+
+<Meta
+  name="description"
+  content="A high-quality, unstyled React separator component that is accessible to screen readers."
+/>
+
+import DemoSeparatorHero from '../../../app/components/base-ui/separator/demos/hero/tailwind/index.tsx';
 
 <ComponentPreview>
-  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+  <DemoSeparatorHero />
 </ComponentPreview>
 
-## Source Code
+## Anatomy
 
-```tsx title="separator/index.ts"
-'use client';
-import * as React from 'react';
-import type { BaseUIComponentProps, Orientation } from '../utils/types';
-import { useRenderElement } from '../utils/useRenderElement';
+Import the component and use it as a single part:
 
-/**
- * A separator element accessible to screen readers.
- * Renders a `<div>` element.
- *
- * Documentation: [Base UI Separator](https://base-ui.com/react/components/separator)
- */
-export const Separator = React.forwardRef(function SeparatorComponent(
-  componentProps: Separator.Props,
-  forwardedRef: React.ForwardedRef<HTMLDivElement>,
-) {
-  const { className, render, orientation = 'horizontal', ...elementProps } = componentProps;
+```jsx title="Anatomy"
+import { Separator } from '@base-ui/react/separator';
 
-  const state: SeparatorState = { orientation };
-
-  const element = useRenderElement('div', componentProps, {
-    state,
-    ref: forwardedRef,
-    props: [{ role: 'separator', 'aria-orientation': orientation }, elementProps],
-  });
-
-  return element;
-});
-
-export interface SeparatorProps extends BaseUIComponentProps<'div', SeparatorState> {
-  /**
-   * The orientation of the separator.
-   * @default 'horizontal'
-   */
-  orientation?: Orientation | undefined;
-}
-
-export interface SeparatorState {
-  /**
-   * The orientation of the separator.
-   */
-  orientation: Orientation;
-}
-
-export namespace Separator {
-  export type Props = SeparatorProps;
-  export type State = SeparatorState;
-}
+<Separator />;
 ```
 
-## Props
+## API reference
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `orientation?` | `Orientation \| undefined` | `horizontal` | The orientation of the separator. |
+<Reference component="Separator" />

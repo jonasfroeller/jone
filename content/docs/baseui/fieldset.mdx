@@ -1,17 +1,33 @@
 ---
 title: Fieldset
-description: Base UI Fieldset component
+description: A high-quality, unstyled React fieldset component with an easily stylable legend.
 ---
 
-## Preview
+<Subtitle>A native fieldset element with an easily stylable legend.</Subtitle>
+
+<Meta
+  name="description"
+  content="A high-quality, unstyled React fieldset component with an easily stylable legend."
+/>
+
+import DemoFieldsetHero from '../../../app/components/base-ui/fieldset/demos/hero/tailwind/index.tsx';
 
 <ComponentPreview>
-  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+  <DemoFieldsetHero />
 </ComponentPreview>
 
-## Source Code
+## Anatomy
 
-```tsx title="fieldset/index.ts"
-export { FieldsetRoot as Root } from './root/FieldsetRoot';
-export { FieldsetLegend as Legend } from './legend/FieldsetLegend';
+Import the component and assemble its parts:
+
+```jsx title="Anatomy"
+import { Fieldset } from '@base-ui/react/fieldset';
+
+<Fieldset.Root>
+  <Fieldset.Legend />
+</Fieldset.Root>;
 ```
+
+## API reference
+
+<Reference component="Fieldset" parts="Root, Legend" />

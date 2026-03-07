@@ -1,25 +1,33 @@
 ---
 title: Avatar
-description: Base UI Avatar component
+description: A high-quality, unstyled React avatar component that is easy to customize.
 ---
 
-## Preview
+<Subtitle>An easily stylable avatar component.</Subtitle>
+<Meta
+  name="description"
+  content="A high-quality, unstyled React avatar component that is easy to customize."
+/>
+
+import DemoAvatarHero from '../../../app/components/base-ui/avatar/demos/hero/tailwind/index.tsx';
 
 <ComponentPreview>
-  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+  <DemoAvatarHero />
 </ComponentPreview>
 
-## Source Code
+## Anatomy
 
-```tsx title="avatar/index.ts"
-export { AvatarRoot as Root } from './root/AvatarRoot';
-export { AvatarImage as Image } from './image/AvatarImage';
-export { AvatarFallback as Fallback } from './fallback/AvatarFallback';
+Import the component and assemble its parts:
+
+```jsx title="Anatomy"
+import { Avatar } from '@base-ui/react/avatar';
+
+<Avatar.Root>
+  <Avatar.Image src="" />
+  <Avatar.Fallback>LT</Avatar.Fallback>
+</Avatar.Root>;
 ```
 
-## Props
+## API reference
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `delay?` | `number \| undefined` | `-` | How long to wait before showing the fallback. Specified in milliseconds. |
-| `onLoadingStatusChange?` | `((status: ImageLoadingStatus) => void) \| undefined` | `-` | Callback fired when the loading status changes. |
+<Reference component="Avatar" parts="Root, Image, Fallback" />

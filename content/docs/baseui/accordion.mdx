@@ -1,33 +1,49 @@
 ---
 title: Accordion
-description: Base UI Accordion component
+description: A high-quality, unstyled React accordion component that displays a set of collapsible panels with headings.
 ---
 
-## Preview
+<Subtitle>A set of collapsible panels with headings.</Subtitle>
+<Meta
+  name="description"
+  content="A high-quality, unstyled React accordion component that displays a set of collapsible panels with headings."
+/>
+
+import DemoAccordionHero from '../../../app/components/base-ui/accordion/demos/hero/tailwind/index.tsx';
 
 <ComponentPreview>
-  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+  <DemoAccordionHero />
 </ComponentPreview>
 
-## Source Code
+## Anatomy
 
-```tsx title="accordion/index.ts"
-export { AccordionRoot as Root } from './root/AccordionRoot';
-export { AccordionItem as Item } from './item/AccordionItem';
-export { AccordionHeader as Header } from './header/AccordionHeader';
-export { AccordionTrigger as Trigger } from './trigger/AccordionTrigger';
-export { AccordionPanel as Panel } from './panel/AccordionPanel';
+Import the component and assemble its parts:
+
+```jsx title="Anatomy"
+import { Accordion } from '@base-ui/react/accordion';
+
+<Accordion.Root>
+  <Accordion.Item>
+    <Accordion.Header>
+      <Accordion.Trigger />
+    </Accordion.Header>
+    <Accordion.Panel />
+  </Accordion.Item>
+</Accordion.Root>;
 ```
 
-## Props
+## Examples
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value?` | `AccordionValue<Value> \| undefined` | `-` | The controlled value of the item(s) that should be expanded. To render an uncontrolled accordion, use the `defaultValue` prop instead. |
-| `defaultValue?` | `AccordionValue<Value> \| undefined` | `-` | The uncontrolled value of the item(s) that should be initially expanded. To render a controlled accordion, use the `value` prop instead. |
-| `disabled?` | `boolean \| undefined` | `false` | Whether the component should ignore user interaction. |
-| `hiddenUntilFound?` | `boolean \| undefined` | `false` | Allows the browser’s built-in page search to find and expand the panel contents. Overrides the `keepMounted` prop and uses `hidden="until-found"` to hide the element without removing it from the DOM. |
-| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the element in the DOM while the panel is closed. This prop is ignored when `hiddenUntilFound` is used. |
-| `loopFocus?` | `boolean \| undefined` | `true` | Whether to loop keyboard focus back to the first item when the end of the list is reached while using the arrow keys. |
-| `multiple?` | `boolean \| undefined` | `false` | Whether multiple items can be open at the same time. |
-| `orientation?` | `Orientation \| undefined` | `vertical` | The visual orientation of the accordion. Controls whether roving focus uses left/right or up/down arrow keys. |
+### Open multiple panels
+
+You can set up the accordion to allow multiple panels to be open at the same time using the `multiple` prop.
+
+import DemoAccordionMultiple from '../../../app/components/base-ui/accordion/demos/multiple/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoAccordionMultiple compact />
+</ComponentPreview>
+
+## API reference
+
+<Reference component="Accordion" parts="Root, Item, Header, Trigger, Panel" />

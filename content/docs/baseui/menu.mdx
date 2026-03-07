@@ -1,77 +1,301 @@
 ---
 title: Menu
-description: Base UI Menu component
+description: A high-quality, unstyled React menu component that displays list of actions in a dropdown, enhanced with keyboard navigation.
 ---
 
-## Preview
+<Subtitle>A list of actions in a dropdown, enhanced with keyboard navigation.</Subtitle>
+<Meta
+  name="description"
+  content="A high-quality, unstyled React menu component that displays list of actions in a dropdown, enhanced with keyboard navigation."
+/>
+
+import DemoMenuHero from '../../../app/components/base-ui/menu/demos/hero/tailwind/index.tsx';
 
 <ComponentPreview>
-  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+  <DemoMenuHero />
 </ComponentPreview>
 
-## Source Code
+## Anatomy
 
-```tsx title="menu/index.ts"
-export { MenuArrow as Arrow } from './arrow/MenuArrow';
-export { MenuBackdrop as Backdrop } from './backdrop/MenuBackdrop';
-export { MenuCheckboxItem as CheckboxItem } from './checkbox-item/MenuCheckboxItem';
-export { MenuCheckboxItemIndicator as CheckboxItemIndicator } from './checkbox-item-indicator/MenuCheckboxItemIndicator';
-export { MenuGroup as Group } from './group/MenuGroup';
-export { MenuGroupLabel as GroupLabel } from './group-label/MenuGroupLabel';
-export { MenuItem as Item } from './item/MenuItem';
-export { MenuLinkItem as LinkItem } from './link-item/MenuLinkItem';
-export { MenuPopup as Popup } from './popup/MenuPopup';
-export { MenuPortal as Portal } from './portal/MenuPortal';
-export { MenuPositioner as Positioner } from './positioner/MenuPositioner';
-export { MenuRadioGroup as RadioGroup } from './radio-group/MenuRadioGroup';
-export { MenuRadioItem as RadioItem } from './radio-item/MenuRadioItem';
-export { MenuRadioItemIndicator as RadioItemIndicator } from './radio-item-indicator/MenuRadioItemIndicator';
-export { MenuRoot as Root } from './root/MenuRoot';
-export { MenuSubmenuRoot as SubmenuRoot } from './submenu-root/MenuSubmenuRoot';
-export { MenuTrigger as Trigger } from './trigger/MenuTrigger';
-export { Separator } from '../separator/Separator';
-export { MenuSubmenuTrigger as SubmenuTrigger } from './submenu-trigger/MenuSubmenuTrigger';
-export { MenuHandle as Handle, createMenuHandle as createHandle } from './store/MenuHandle';
+Import the component and assemble its parts:
+
+```jsx title="Anatomy"
+import { Menu } from '@base-ui/react/menu';
+
+<Menu.Root>
+  <Menu.Trigger />
+  <Menu.Portal>
+    <Menu.Backdrop />
+    <Menu.Positioner>
+      <Menu.Popup>
+        <Menu.Arrow />
+        <Menu.Item />
+        <Menu.LinkItem />
+        <Menu.Separator />
+        <Menu.Group>
+          <Menu.GroupLabel />
+        </Menu.Group>
+        <Menu.RadioGroup>
+          <Menu.RadioItem />
+        </Menu.RadioGroup>
+        <Menu.CheckboxItem />
+        <Menu.SubmenuRoot>
+          <Menu.SubmenuTrigger />
+        </Menu.SubmenuRoot>
+      </Menu.Popup>
+    </Menu.Positioner>
+  </Menu.Portal>
+</Menu.Root>;
 ```
 
-## Props
+## Examples
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `checked?` | `boolean \| undefined` | `-` | Whether the checkbox item is currently ticked. To render an uncontrolled checkbox item, use the `defaultChecked` prop instead. |
-| `defaultChecked?` | `boolean \| undefined` | `false` | Whether the checkbox item is initially ticked. To render a controlled checkbox item, use the `checked` prop instead. |
-| `onClick?` | `BaseUIComponentProps<'div', MenuCheckboxItemState>['onClick'] \| undefined` | `-` | The click handler for the menu item. |
-| `disabled?` | `boolean \| undefined` | `false` | Whether the component should ignore user interaction. |
-| `label?` | `string \| undefined` | `-` | Overrides the text label to use when the item is matched during keyboard text navigation. |
-| `id?` | `string \| undefined` | `-` | @ignore |
-| `closeOnClick?` | `boolean \| undefined` | `false` | Whether to close the menu when the item is clicked. |
-| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the HTML element in the DOM when the checkbox item is not checked. |
-| `children?` | `React.ReactNode` | `-` | The content of the component. |
-| `closeOnClick` | `boolean` | `-` | Whether to close the menu when the item is clicked. |
-| `highlighted` | `boolean` | `-` | Determines if the menu item is highlighted. |
-| `id` | `string \| undefined` | `-` | The id of the menu item. |
-| `nodeId` | `string \| undefined` | `-` | The node id of the menu positioner. |
-| `store` | `MenuStore<any>` | `-` | The menu store. |
-| `typingRef?` | `React.RefObject<boolean> \| undefined` | `-` | Whether a typeahead session is in progress. |
-| `itemRef` | `React.RefObject<HTMLElement \| null>` | `-` | Ref to the item element. |
-| `itemMetadata?` | `UseMenuItemMetadata \| undefined` | `-` | Optional metadata for checking item type before triggering click. If provided, click will only be triggered for 'regular-item' type. |
-| `value?` | `any` | `-` | The controlled value of the radio item that should be currently selected. To render an uncontrolled radio group, use the `defaultValue` prop instead. |
-| `defaultValue?` | `any` | `-` | The uncontrolled value of the radio item that should be initially selected. To render a controlled radio group, use the `value` prop instead. |
-| `value` | `any` | `-` | Value of the radio item. This is the value that will be set in the MenuRadioGroup when the item is selected. |
-| `defaultOpen?` | `boolean \| undefined` | `false` | Whether the menu is initially open. To render a controlled menu, use the `open` prop instead. |
-| `loopFocus?` | `boolean \| undefined` | `true` | Whether to loop keyboard focus back to the first item when the end of the list is reached while using the arrow keys. |
-| `highlightItemOnHover?` | `boolean \| undefined` | `true` | Whether moving the pointer over items should highlight them. Disabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state. |
-| `modal?` | `boolean \| undefined` | `true` | Determines if the menu enters a modal state when open. - `true`: user interaction is limited to the menu: document page scroll is locked and pointer interactions on outside elements are disabled. - `false`: user interaction with the rest of the document is allowed. |
-| `onOpenChange?` | `((open: boolean, eventDetails: MenuRoot.ChangeEventDetails) => void) \| undefined` | `-` | Event handler called when the menu is opened or closed. |
-| `onOpenChangeComplete?` | `((open: boolean) => void) \| undefined` | `-` | Event handler called after any animations complete when the menu is closed. |
-| `open?` | `boolean \| undefined` | `-` | Whether the menu is currently open. |
-| `orientation?` | `MenuRoot.Orientation \| undefined` | `vertical` | The visual orientation of the menu. Controls whether roving focus uses up/down or left/right arrow keys. |
-| `closeParentOnEsc?` | `boolean \| undefined` | `false` | When in a submenu, determines whether pressing the Escape key closes the entire menu, or only the current child menu. |
-| `actionsRef?` | `React.RefObject<MenuRoot.Actions \| null> \| undefined` | `-` | A ref to imperative actions. - `unmount`: When specified, the menu will not be unmounted when closed. Instead, the `unmount` function must be called to unmount the menu manually. Useful when the menu's animation is controlled by an external library. - `close`: When specified, the menu can be closed imperatively. |
-| `triggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the popover is associated with. This is useful in conjunction with the `open` prop to create a controlled popover. There's no need to specify this prop when the popover is uncontrolled (i.e. when the `open` prop is not set). |
-| `defaultTriggerId?` | `string \| null \| undefined` | `-` | ID of the trigger that the popover is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open popover. |
-| `handle?` | `MenuHandle<Payload> \| undefined` | `-` | A handle to associate the menu with a trigger. If specified, allows external triggers to control the menu's open state. |
-| `delay?` | `number \| undefined` | `100` | How long to wait before the menu may be opened on hover. Specified in milliseconds. Requires the `openOnHover` prop. |
-| `closeDelay?` | `number \| undefined` | `0` | How long to wait before closing the menu that was opened on hover. Specified in milliseconds. Requires the `openOnHover` prop. |
-| `openOnHover?` | `boolean \| undefined` | `-` | Whether the menu should also open when the trigger is hovered. |
-| `payload?` | `Payload \| undefined` | `-` | A payload to pass to the menu when it is opened. |
+### Open on hover
+
+To create a menu that opens on hover, add the `openOnHover` prop to `<Menu.Trigger>`. You can additionally configure how quickly the menu opens on hover using the `delay` prop.
+
+import DemoMenuOpenOnHover from '../../../app/components/base-ui/menu/demos/open-on-hover/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoMenuOpenOnHover compact />
+</ComponentPreview>
+
+### Checkbox items
+
+Use the `<Menu.CheckboxItem>` part to create a menu item that can toggle a setting on or off.
+
+import DemoMenuCheckboxItems from '../../../app/components/base-ui/menu/demos/checkbox-items/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoMenuCheckboxItems compact />
+</ComponentPreview>
+
+### Radio items
+
+Use the `<Menu.RadioGroup>` and `<Menu.RadioItem>` parts to create menu items that work like radio buttons.
+
+import DemoMenuRadioItems from '../../../app/components/base-ui/menu/demos/radio-items/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoMenuRadioItems compact />
+</ComponentPreview>
+
+### Close on click
+
+Use the `closeOnClick` prop to change whether the menu closes when an item is clicked.
+
+```jsx title="Control whether the menu closes on click"
+// Close the menu when a checkbox item is clicked
+<Menu.CheckboxItem closeOnClick />
+
+// Keep the menu open when an item is clicked
+<Menu.Item closeOnClick={false} />
+```
+
+### Group labels
+
+Use the `<Menu.GroupLabel>` part to add a label to a `<Menu.Group>`
+
+import DemoMenuGroupLabels from '../../../app/components/base-ui/menu/demos/group-labels/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoMenuGroupLabels compact />
+</ComponentPreview>
+
+### Nested menu
+
+To create a submenu, nest another menu inside the parent menu with `<Menu.SubmenuRoot>`. Use the `<Menu.SubmenuTrigger>` part for the menu item that opens the nested menu.
+
+```jsx {11-21} {12}#strong title="Adding a submenu"
+<Menu.Root>
+  <Menu.Trigger />
+  <Menu.Portal>
+    <Menu.Positioner>
+      <Menu.Popup>
+        <Menu.Arrow />
+        <Menu.Item />
+
+        {/* Submenu */}
+        <Menu.SubmenuRoot>
+          <Menu.SubmenuTrigger />
+          <Menu.Portal>
+            <Menu.Positioner>
+              <Menu.Popup>
+                {/* prettier-ignore */}
+                {/* Submenu items  */}
+              </Menu.Popup>
+            </Menu.Positioner>
+          </Menu.Portal>
+        </Menu.SubmenuRoot>
+      </Menu.Popup>
+    </Menu.Positioner>
+  </Menu.Portal>
+</Menu.Root>
+```
+
+import DemoMenuSubmenu from '../../../app/components/base-ui/menu/demos/submenu/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoMenuSubmenu compact />
+</ComponentPreview>
+
+### Navigate to another page
+
+Use the `<Menu.LinkItem>` part to create a link.
+
+```jsx title="A menu item that opens a link"
+<Menu.LinkItem href="/projects">Go to Projects</Menu.LinkItem>
+```
+
+### Open a dialog
+
+In order to open a dialog using a menu, control the dialog state and open it imperatively using the `onClick` handler on the menu item.
+
+```tsx {12-13,17-18,24-25,28-29} title="Connecting a dialog to a menu"
+import * as React from 'react';
+import { Dialog } from '@base-ui/react/dialog';
+import { Menu } from '@base-ui/react/menu';
+
+function ExampleMenu() {
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+
+  return (
+    <React.Fragment>
+      <Menu.Root>
+        <Menu.Trigger>Open menu</Menu.Trigger>
+        <Menu.Portal>
+          <Menu.Positioner>
+            <Menu.Popup>
+              {/* Open the dialog when the menu item is clicked */}
+              <Menu.Item onClick={() => setDialogOpen(true)}>Open dialog</Menu.Item>
+            </Menu.Popup>
+          </Menu.Positioner>
+        </Menu.Portal>
+      </Menu.Root>
+
+      {/* Control the dialog state */}
+      <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
+        <Dialog.Portal>
+          <Dialog.Backdrop />
+          <Dialog.Popup>
+            {/* prettier-ignore */}
+            {/* Rest of the dialog */}
+          </Dialog.Popup>
+        </Dialog.Portal>
+      </Dialog.Root>
+    </React.Fragment>
+  );
+}
+```
+
+### Detached triggers
+
+A menu can be opened by a trigger that lives either inside or outside the `<Menu.Root>`.
+Keep the trigger inside `<Menu.Root>` for simple, tightly coupled layouts like the hero demo at the top of this page.
+When the trigger and menu content need to live in different parts of the tree (for example, in a card list that controls a menu rendered near the document root), create a `handle` with `Menu.createHandle()` and pass it to both the trigger and the root.
+
+Note that only top-level menus can have detached triggers.
+Submenus must have their triggers defined within the `SubmenuRoot` part.
+
+```jsx title="Detached triggers" {3,7} "handle={demoMenu}"
+const demoMenu = Menu.createHandle();
+
+<Menu.Trigger handle={demoMenu}>
+  Actions
+</Menu.Trigger>
+
+<Menu.Root handle={demoMenu}>
+  <Menu.Portal>
+    <Menu.Positioner>
+      <Menu.Popup>
+        <Menu.Item>Edit</Menu.Item>
+        <Menu.Item>Share</Menu.Item>
+      </Menu.Popup>
+    </Menu.Positioner>
+  </Menu.Portal>
+</Menu.Root>
+```
+
+import DemoMenuDetachedTriggersSimple from '../../../app/components/base-ui/menu/demos/detached-triggers-simple/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoMenuDetachedTriggersSimple />
+</ComponentPreview>
+
+### Multiple triggers
+
+One menu can be opened by several triggers.
+You can either render multiple `<Menu.Trigger>` components inside the same `<Menu.Root>`, or attach several detached triggers to the same `handle`.
+
+```jsx title="Multiple triggers within the Root part"
+<Menu.Root>
+  <Menu.Trigger>Row actions</Menu.Trigger>
+  <Menu.Trigger>Quick actions</Menu.Trigger>
+  {/* Rest of the menu */}
+</Menu.Root>
+```
+
+```jsx title="Multiple detached triggers"
+const projectMenu = Menu.createHandle();
+
+<Menu.Trigger handle={projectMenu}>Row actions</Menu.Trigger>
+<Menu.Trigger handle={projectMenu}>Quick actions</Menu.Trigger>
+
+<Menu.Root handle={projectMenu}>
+  {/* Rest of the menu */}
+</Menu.Root>
+```
+
+Menus can render different content depending on which trigger opened them.
+Pass a `payload` prop to each `<Menu.Trigger>` and read it via a function child on `<Menu.Root>`.
+Provide a type argument to `createHandle()` to strongly type the payload.
+
+```jsx title="Detached triggers with payload" {6,8,12,17}
+const menus = {
+  file: ['New', 'Open', 'Save'],
+  edit: ['Undo', 'Redo', 'Cut', 'Copy', 'Paste'],
+}
+
+const demoMenu = Menu.createHandle<{ items: string[] }>();
+
+<Menu.Trigger handle={demoMenu} payload={{ items: menus.file }}>
+  File
+</Menu.Trigger>
+
+<Menu.Trigger handle={demoMenu} payload={{ items: menus.edit }}>
+  Edit
+</Menu.Trigger>
+
+<Menu.Root handle={demoMenu}>
+  {({ payload }) => (
+    <Menu.Portal>
+      <Menu.Positioner>
+        <Menu.Popup>
+          {(payload?.items ?? []).map((item) => (
+            <Menu.Item key={item}>{item}</Menu.Item>
+          ))}
+        </Menu.Popup>
+      </Menu.Positioner>
+    </Menu.Portal>
+  )}
+</Menu.Root>
+```
+
+### Controlled mode with multiple triggers
+
+Control a menu's open state externally with the `open` and `onOpenChange` props on `<Menu.Root>`.
+When more than one trigger can open the menu, track the active trigger with the `triggerId` prop on `<Menu.Root>` and matching `id` props on each `<Menu.Trigger>`.
+The `onOpenChange` callback receives `eventDetails`, which includes the DOM element that initiated the change, so you can update your `triggerId` state when the user activates a different trigger.
+
+import DemoMenuDetachedTriggersControlled from '../../../app/components/base-ui/menu/demos/detached-triggers-controlled/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoMenuDetachedTriggersControlled compact />
+</ComponentPreview>
+
+## API reference
+
+<Reference
+  component="Menu"
+  parts="Root, Trigger, Portal, Backdrop, Positioner, Popup, Arrow, Item, LinkItem, SubmenuRoot, SubmenuTrigger, Group, GroupLabel, RadioGroup, RadioItem, RadioItemIndicator, CheckboxItem, CheckboxItemIndicator, Separator"
+/>

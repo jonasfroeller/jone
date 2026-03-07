@@ -1,44 +1,115 @@
 ---
 title: Navigation Menu
-description: Base UI Navigation Menu component
+description: A high-quality, unstyled React navigation menu component that displays a collection of links and menus for website navigation.
 ---
 
-## Preview
+<Subtitle>A collection of links and menus for website navigation.</Subtitle>
+<Meta
+  name="description"
+  content="A high-quality, unstyled React navigation menu component that displays a collection of links and menus for website navigation."
+/>
+
+import DemoNavigationMenuHero from '../../../app/components/base-ui/navigation-menu/demos/hero/tailwind/index.tsx';
 
 <ComponentPreview>
-  <p className="text-fd-muted-foreground text-sm">Base UI components are headless: they provide logic and accessibility without styling. See source code below for the implementation.</p>
+  <DemoNavigationMenuHero />
 </ComponentPreview>
 
-## Source Code
+## Anatomy
 
-```tsx title="navigation-menu/index.ts"
-export { NavigationMenuRoot as Root } from './root/NavigationMenuRoot';
-export { NavigationMenuList as List } from './list/NavigationMenuList';
-export { NavigationMenuItem as Item } from './item/NavigationMenuItem';
-export { NavigationMenuContent as Content } from './content/NavigationMenuContent';
-export { NavigationMenuTrigger as Trigger } from './trigger/NavigationMenuTrigger';
-export { NavigationMenuPortal as Portal } from './portal/NavigationMenuPortal';
-export { NavigationMenuPositioner as Positioner } from './positioner/NavigationMenuPositioner';
-export { NavigationMenuViewport as Viewport } from './viewport/NavigationMenuViewport';
-export { NavigationMenuBackdrop as Backdrop } from './backdrop/NavigationMenuBackdrop';
-export { NavigationMenuPopup as Popup } from './popup/NavigationMenuPopup';
-export { NavigationMenuArrow as Arrow } from './arrow/NavigationMenuArrow';
-export { NavigationMenuLink as Link } from './link/NavigationMenuLink';
-export { NavigationMenuIcon as Icon } from './icon/NavigationMenuIcon';
+Import the component and assemble its parts:
+
+```jsx title="Anatomy"
+import { NavigationMenu } from '@base-ui/react/navigation-menu';
+
+<NavigationMenu.Root>
+  <NavigationMenu.List>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>
+        <NavigationMenu.Icon />
+      </NavigationMenu.Trigger>
+      <NavigationMenu.Content>
+        <NavigationMenu.Link />
+      </NavigationMenu.Content>
+    </NavigationMenu.Item>
+  </NavigationMenu.List>
+
+  <NavigationMenu.Portal>
+    <NavigationMenu.Backdrop />
+    <NavigationMenu.Positioner>
+      <NavigationMenu.Popup>
+        <NavigationMenu.Arrow />
+        <NavigationMenu.Viewport />
+      </NavigationMenu.Popup>
+    </NavigationMenu.Positioner>
+  </NavigationMenu.Portal>
+</NavigationMenu.Root>;
 ```
 
-## Props
+## Examples
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `keepMounted?` | `boolean \| undefined` | `false` | Whether to keep the content mounted in the DOM while the popup is closed. Ensures the content is present during server-side rendering for web crawlers. |
-| `value?` | `any` | `-` | A unique value that identifies this navigation menu item. If no value is provided, a unique ID will be generated automatically. Use when controlling the navigation menu programmatically. |
-| `active?` | `boolean \| undefined` | `false` | Whether the link is the currently active page. |
-| `closeOnClick?` | `boolean \| undefined` | `false` | Whether to close the navigation menu when the link is clicked. |
-| `container?` | `FloatingPortal.Props<NavigationMenuPortalState>['container'] \| undefined` | `-` | A parent element to render the portal element into. |
-| `actionsRef?` | `React.RefObject<NavigationMenuRoot.Actions \| null> \| undefined` | `-` | A ref to imperative actions. |
-| `onOpenChangeComplete?` | `((open: boolean) => void) \| undefined` | `-` | Event handler called after any animations complete when the navigation menu is closed. |
-| `defaultValue?` | `any` | `null` | The uncontrolled value of the item that should be initially selected. To render a controlled navigation menu, use the `value` prop instead. |
-| `delay?` | `number \| undefined` | `50` | How long to wait before opening the navigation menu. Specified in milliseconds. |
-| `closeDelay?` | `number \| undefined` | `50` | How long to wait before closing the navigation menu. Specified in milliseconds. |
-| `orientation?` | `'horizontal' \| 'vertical' \| undefined` | `horizontal` | The orientation of the navigation menu. |
+### Nested submenus
+
+`<NavigationMenu.Root>` component can be nested within a higher-level `<NavigationMenu.Content>` part to create a multi-level navigation menu.
+
+import DemoNavigationMenuNested from '../../../app/components/base-ui/navigation-menu/demos/nested/tailwind/index.tsx';
+
+<ComponentPreview>
+  <DemoNavigationMenuNested compact />
+</ComponentPreview>
+
+### Custom links
+
+The `<NavigationMenu.Link>` part can be customized to render the link from your framework using the `render` prop to enable client-side routing.
+
+```jsx title="Next.js example" {1,7}
+import NextLink from 'next/link';
+import { NavigationMenu } from '@base-ui/react/navigation-menu';
+
+function Link(props: NavigationMenu.Link.Props) {
+  return (
+    <NavigationMenu.Link
+      render={<NextLink href={props.href} />}
+      {...props}
+    />
+  );
+}
+```
+
+### Large menus
+
+When you have large menu content that doesn't fit in the viewport in some cases, you usually have two choices:
+
+1. Compress the navigation menu content
+
+You can change the layout of the navigation menu to render less content or be more compact by reducing the space it takes up.
+If your content is flexible, you can use the `max-height` property on `.Popup` to limit the height of the navigation menu to let it compress itself while preventing overflow.
+
+```css title="Compact layout"
+.Content,
+.Popup {
+  max-height: var(--available-height);
+}
+```
+
+2. Make the navigation menu scrollable
+
+```css title="Scrollable layout"
+.Content,
+.Popup {
+  max-height: var(--available-height);
+}
+
+.Content {
+  overflow-y: auto;
+}
+```
+
+Native scrollbars are visible while transitioning content, so we recommend using the [Scroll Area](/react/components/scroll-area) component instead of native scrollbars to keep them hidden, which also allows the `Arrow` to be centered correctly.
+
+## API reference
+
+<Reference
+  component="NavigationMenu"
+  parts="Root, List, Item, Trigger, Icon, Content, Link, Backdrop, Portal, Positioner, Popup, Viewport, Arrow"
+/>

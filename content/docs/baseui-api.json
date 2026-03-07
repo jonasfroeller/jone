@@ -1,0 +1,3532 @@
+{
+  "Accordion": {
+    "Root": [
+      {
+        "name": "value?",
+        "type": "AccordionValue<Value> \\| undefined",
+        "defaultValue": "-",
+        "description": "The controlled value of the item(s) that should be expanded. To render an uncontrolled accordion, use the `defaultValue` prop instead."
+      },
+      {
+        "name": "defaultValue?",
+        "type": "AccordionValue<Value> \\| undefined",
+        "defaultValue": "-",
+        "description": "The uncontrolled value of the item(s) that should be initially expanded. To render a controlled accordion, use the `value` prop instead."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "hiddenUntilFound?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Allows the browser's built-in page search to find and expand the panel contents. Overrides the `keepMounted` prop and uses `hidden=\"until-found\"` to hide the element without removing it from the DOM."
+      },
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the element in the DOM while the panel is closed. This prop is ignored when `hiddenUntilFound` is used."
+      },
+      {
+        "name": "loopFocus?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether to loop keyboard focus back to the first item when the end of the list is reached while using the arrow keys."
+      },
+      {
+        "name": "multiple?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether multiple items can be open at the same time."
+      },
+      {
+        "name": "orientation?",
+        "type": "Orientation \\| undefined",
+        "defaultValue": "vertical",
+        "description": "The visual orientation of the accordion. Controls whether roving focus uses left/right or up/down arrow keys."
+      }
+    ]
+  },
+  "AlertDialog": {
+    "Root": [
+      {
+        "name": "actionsRef?",
+        "type": "React.RefObject<AlertDialogRoot.Actions \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to imperative actions. - `unmount`: When specified, the dialog will not be unmounted when closed. Instead, the `unmount` function must be called to unmount the dialog manually. Useful when the dialog's animation is controlled by an external library. - `close`: Closes the dialog imperatively when called."
+      },
+      {
+        "name": "handle?",
+        "type": "DialogHandle<Payload> \\| undefined",
+        "defaultValue": "-",
+        "description": "A handle to associate the alert dialog with a trigger. If specified, allows external triggers to control the alert dialog's open state. Can be created with the AlertDialog.createHandle() method."
+      }
+    ]
+  },
+  "Autocomplete": {
+    "Root": [
+      {
+        "name": "mode?",
+        "type": "'list' \\| 'both' \\| 'inline' \\| 'none' \\| undefined",
+        "defaultValue": "list",
+        "description": "Controls how the autocomplete behaves with respect to list filtering and inline autocompletion. - `list` (default): items are dynamically filtered based on the input value. The input value does not change based on the active item. - `both`: items are dynamically filtered based on the input value, which will temporarily change based on the active item (inline autocompletion). - `inline`: items are static (not filtered), and the input value will temporarily change based on the active item (inline autocompletion). - `none`: items are static (not filtered), and the input value will not change based on the active item."
+      },
+      {
+        "name": "autoHighlight?",
+        "type": "boolean \\| 'always' \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the first matching item is highlighted automatically. - `true`: highlight after the user types and keep the highlight while the query changes. - `'always'`: always highlight the first item."
+      },
+      {
+        "name": "keepHighlight?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the highlighted item should be preserved when the pointer leaves the list."
+      },
+      {
+        "name": "highlightItemOnHover?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether moving the pointer over items should highlight them. Disabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state."
+      },
+      {
+        "name": "submitOnItemClick?",
+        "type": "AriaCombobox.Props<ItemValue, 'none'>['submitOnItemClick'] \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether clicking an item should submit the autocomplete's owning form. By default, clicking an item via a pointer or <kbd>Enter</kbd> key does not submit the owning form. Useful when the autocomplete is used as a single-field form search input."
+      }
+    ],
+    "Value": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode \\| ((value: string) => React.ReactNode)",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ]
+  },
+  "Avatar": {
+    "Fallback": [
+      {
+        "name": "delay?",
+        "type": "number \\| undefined",
+        "defaultValue": "-",
+        "description": "How long to wait before showing the fallback. Specified in milliseconds."
+      }
+    ],
+    "Image": [
+      {
+        "name": "onLoadingStatusChange?",
+        "type": "((status: ImageLoadingStatus) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Callback fired when the loading status changes."
+      }
+    ]
+  },
+  "Button": {
+    "Root": [
+      {
+        "name": "focusableWhenDisabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the button should be focusable when disabled."
+      }
+    ]
+  },
+  "Checkbox": {
+    "Indicator": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the element in the DOM when the checkbox is not checked."
+      }
+    ],
+    "Root": [
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "The id of the input element."
+      },
+      {
+        "name": "name?",
+        "type": "string \\| undefined",
+        "defaultValue": "undefined",
+        "description": "Identifies the field when a form is submitted."
+      },
+      {
+        "name": "checked?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "undefined",
+        "description": "Whether the checkbox is currently ticked. To render an uncontrolled checkbox, use the `defaultChecked` prop instead."
+      },
+      {
+        "name": "defaultChecked?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the checkbox is initially ticked. To render a controlled checkbox, use the `checked` prop instead."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "readOnly?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the user should be unable to tick or untick the checkbox."
+      },
+      {
+        "name": "required?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the user must tick the checkbox before submitting a form."
+      },
+      {
+        "name": "indeterminate?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the checkbox is in a mixed state: neither ticked, nor unticked."
+      },
+      {
+        "name": "inputRef?",
+        "type": "React.Ref<HTMLInputElement> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to access the hidden `<input>` element."
+      },
+      {
+        "name": "parent?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the checkbox controls a group of child checkboxes. Must be used in a [Checkbox Group](https://base-ui.com/react/components/checkbox-group)."
+      },
+      {
+        "name": "uncheckedValue?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "The value submitted with the form when the checkbox is unchecked. By default, unchecked checkboxes do not submit any value, matching native checkbox behavior."
+      },
+      {
+        "name": "value?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "The value of the selected checkbox."
+      }
+    ]
+  },
+  "CheckboxGroup": {
+    "Root": [
+      {
+        "name": "value?",
+        "type": "string[] \\| undefined",
+        "defaultValue": "-",
+        "description": "Names of the checkboxes in the group that should be ticked. To render an uncontrolled checkbox group, use the `defaultValue` prop instead."
+      },
+      {
+        "name": "defaultValue?",
+        "type": "string[] \\| undefined",
+        "defaultValue": "-",
+        "description": "Names of the checkboxes in the group that should be initially ticked. To render a controlled checkbox group, use the `value` prop instead."
+      },
+      {
+        "name": "allValues?",
+        "type": "string[] \\| undefined",
+        "defaultValue": "-",
+        "description": "Names of all checkboxes in the group. Use this when creating a parent checkbox."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      }
+    ]
+  },
+  "Collapsible": {
+    "Panel": [
+      {
+        "name": "hiddenUntilFound?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Allows the browser's built-in page search to find and expand the panel contents. Overrides the `keepMounted` prop and uses `hidden=\"until-found\"` to hide the element without removing it from the DOM."
+      },
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the element in the DOM while the panel is hidden. This prop is ignored when `hiddenUntilFound` is used."
+      }
+    ],
+    "Root": [
+      {
+        "name": "open?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the collapsible panel is currently open. To render an uncontrolled collapsible, use the `defaultOpen` prop instead."
+      },
+      {
+        "name": "defaultOpen?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the collapsible panel is initially open. To render a controlled collapsible, use the `open` prop instead."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      }
+    ]
+  },
+  "Combobox": {
+    "Clear": [
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should remain mounted in the DOM when not visible."
+      }
+    ],
+    "Collection": [
+      {
+        "name": "children",
+        "type": "(item: any, index: number) => React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "Group": [
+      {
+        "name": "items?",
+        "type": "readonly any[] \\| undefined",
+        "defaultValue": "-",
+        "description": "Items to be rendered within this group. When provided, child `Collection` components will use these items."
+      }
+    ],
+    "Input": [
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      }
+    ],
+    "Item": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "onClick?",
+        "type": "BaseUIComponentProps<'div', ComboboxItemState>['onClick'] \\| undefined",
+        "defaultValue": "-",
+        "description": "An optional click handler for the item when selected. It fires when clicking the item with the pointer, as well as when pressing `Enter` with the keyboard if the item is highlighted when the `Input` or `List` element has focus."
+      },
+      {
+        "name": "index?",
+        "type": "number \\| undefined",
+        "defaultValue": "-",
+        "description": "The index of the item in the list. Improves performance when specified by avoiding the need to calculate the index automatically from the DOM."
+      },
+      {
+        "name": "value?",
+        "type": "any",
+        "defaultValue": "null",
+        "description": "A unique value that identifies this item."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      }
+    ],
+    "ItemIndicator": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the HTML element in the DOM when the item is not selected."
+      }
+    ],
+    "List": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode \\| ((item: any, index: number) => React.ReactNode)",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "Portal": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the portal mounted in the DOM while the popup is hidden."
+      }
+    ],
+    "Trigger": [
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      }
+    ],
+    "Value": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode \\| ((selectedValue: any) => React.ReactNode)",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "placeholder?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "The placeholder value to display when no value is selected. This is overridden by `children` if specified, or by a null item's label in `items`."
+      }
+    ]
+  },
+  "Composite": {
+    "Item": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "metadata?",
+        "type": "Metadata \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "refs?",
+        "type": "React.Ref<HTMLElement \\| null>[] \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "props?",
+        "type": "Array<Record<string, any> \\| (() => Record<string, any>)> \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "state?",
+        "type": "State \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "stateAttributesMapping?",
+        "type": "StateAttributesMapping<State> \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "tag?",
+        "type": "keyof React.JSX.IntrinsicElements \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "List": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "elementsRef",
+        "type": "React.RefObject<Array<HTMLElement \\| null>>",
+        "defaultValue": "-",
+        "description": "A ref to the list of HTML elements, ordered by their index. `useListNavigation`'s `listRef` prop."
+      },
+      {
+        "name": "labelsRef?",
+        "type": "React.RefObject<Array<string \\| null>> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to the list of element labels, ordered by their index. `useTypeahead`'s `listRef` prop."
+      },
+      {
+        "name": "onMapChange?",
+        "type": "((newMap: Map<Element, CompositeMetadata<Metadata> \\| null>) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "Root": [
+      {
+        "name": "props?",
+        "type": "Array<Record<string, any> \\| (() => Record<string, any>)> \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "state?",
+        "type": "State \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "stateAttributesMapping?",
+        "type": "StateAttributesMapping<State> \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "refs?",
+        "type": "React.Ref<HTMLElement \\| null>[] \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "tag?",
+        "type": "keyof React.JSX.IntrinsicElements \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "orientation?",
+        "type": "'horizontal' \\| 'vertical' \\| 'both' \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "cols?",
+        "type": "number \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "loopFocus?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "highlightedIndex?",
+        "type": "number \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "onHighlightedIndexChange?",
+        "type": "((index: number) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "itemSizes?",
+        "type": "Dimensions[] \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "dense?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "enableHomeAndEndKeys?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "onMapChange?",
+        "type": "((newMap: Map<Node, CompositeMetadata<Metadata> \\| null>) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "stopEventPropagation?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "rootRef?",
+        "type": "React.RefObject<HTMLElement \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "disabledIndices?",
+        "type": "number[] \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "modifierKeys?",
+        "type": "ModifierKey[] \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "highlightItemOnHover?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ]
+  },
+  "CspProvider": {
+    "CSPProvider": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "nonce?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "The nonce value to apply to inline `<style>` and `<script>` tags."
+      },
+      {
+        "name": "disableStyleElements?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether inline `<style>` elements created by Base UI components should not be rendered. Instead, components must specify the CSS styles via custom class names or other methods."
+      }
+    ]
+  },
+  "Dialog": {
+    "Backdrop": [
+      {
+        "name": "forceRender?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the backdrop is forced to render even when nested."
+      }
+    ],
+    "Portal": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the portal mounted in the DOM while the popup is hidden."
+      },
+      {
+        "name": "container?",
+        "type": "FloatingPortal.Props<DialogPortalState>['container'] \\| undefined",
+        "defaultValue": "-",
+        "description": "A parent element to render the portal element into."
+      }
+    ],
+    "Root": [
+      {
+        "name": "open?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the dialog is currently open."
+      },
+      {
+        "name": "defaultOpen?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the dialog is initially open. To render a controlled dialog, use the `open` prop instead."
+      },
+      {
+        "name": "modal?",
+        "type": "boolean \\| 'trap-focus' \\| undefined",
+        "defaultValue": "true",
+        "description": "Determines if the dialog enters a modal state when open. - `true`: user interaction is limited to just the dialog: focus is trapped, document page scroll is locked, and pointer interactions on outside elements are disabled. - `false`: user interaction with the rest of the document is allowed. - `'trap-focus'`: focus is trapped inside the dialog, but document page scroll is not locked and pointer interactions outside of it remain enabled."
+      },
+      {
+        "name": "onOpenChange?",
+        "type": "((open: boolean, eventDetails: DialogRoot.ChangeEventDetails) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Event handler called when the dialog is opened or closed."
+      },
+      {
+        "name": "onOpenChangeComplete?",
+        "type": "((open: boolean) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Event handler called after any animations complete when the dialog is opened or closed."
+      },
+      {
+        "name": "disablePointerDismissal?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Determines whether the dialog should close on outside clicks."
+      },
+      {
+        "name": "actionsRef?",
+        "type": "React.RefObject<DialogRoot.Actions \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to imperative actions. - `unmount`: When specified, the dialog will not be unmounted when closed. Instead, the `unmount` function must be called to unmount the dialog manually. Useful when the dialog's animation is controlled by an external library. - `close`: Closes the dialog imperatively when called."
+      },
+      {
+        "name": "handle?",
+        "type": "DialogHandle<Payload> \\| undefined",
+        "defaultValue": "-",
+        "description": "A handle to associate the dialog with a trigger. If specified, allows external triggers to control the dialog's open state. Can be created with the Dialog.createHandle() method."
+      },
+      {
+        "name": "children?",
+        "type": "React.ReactNode \\| PayloadChildRenderFunction<Payload>",
+        "defaultValue": "-",
+        "description": "The content of the dialog. This can be a regular React node or a render function that receives the `payload` of the active trigger."
+      },
+      {
+        "name": "triggerId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger that the dialog is associated with. This is useful in conjunction with the `open` prop to create a controlled dialog. There's no need to specify this prop when the popover is uncontrolled (i.e. when the `open` prop is not set)."
+      },
+      {
+        "name": "defaultTriggerId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger that the dialog is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open dialog."
+      }
+    ],
+    "Trigger": [
+      {
+        "name": "handle?",
+        "type": "DialogHandle<Payload> \\| undefined",
+        "defaultValue": "-",
+        "description": "A handle to associate the trigger with a dialog. Can be created with the Dialog.createHandle() method."
+      },
+      {
+        "name": "payload?",
+        "type": "Payload \\| undefined",
+        "defaultValue": "-",
+        "description": "A payload to pass to the dialog when it is opened."
+      },
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger. In addition to being forwarded to the rendered element, it is also used to specify the active trigger for the dialogs in controlled mode (with the DialogRoot `triggerId` prop)."
+      }
+    ]
+  },
+  "DirectionProvider": {
+    "Root": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "direction?",
+        "type": "TextDirection \\| undefined",
+        "defaultValue": "ltr",
+        "description": "The reading direction of the text"
+      }
+    ]
+  },
+  "Drawer": {
+    "Backdrop": [
+      {
+        "name": "forceRender?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the backdrop is forced to render even when nested."
+      }
+    ],
+    "Portal": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the portal mounted in the DOM while the popup is hidden."
+      },
+      {
+        "name": "container?",
+        "type": "FloatingPortal.Props<DrawerPortalState>['container'] \\| undefined",
+        "defaultValue": "-",
+        "description": "A parent element to render the portal element into."
+      }
+    ],
+    "Provider": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "Root": [
+      {
+        "name": "open?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the drawer is currently open."
+      },
+      {
+        "name": "defaultOpen?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the drawer is initially open. To render a controlled drawer, use the `open` prop instead."
+      },
+      {
+        "name": "modal?",
+        "type": "boolean \\| 'trap-focus' \\| undefined",
+        "defaultValue": "true",
+        "description": "Determines if the drawer enters a modal state when open. - `true`: user interaction is limited to just the drawer: focus is trapped, document page scroll is locked, and pointer interactions on outside elements are disabled. - `false`: user interaction with the rest of the document is allowed. - `'trap-focus'`: focus is trapped inside the drawer, but document page scroll is not locked and pointer interactions outside of it remain enabled."
+      },
+      {
+        "name": "onOpenChange?",
+        "type": "((open: boolean, eventDetails: DrawerRoot.ChangeEventDetails) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Event handler called when the drawer is opened or closed."
+      },
+      {
+        "name": "onOpenChangeComplete?",
+        "type": "((open: boolean) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Event handler called after any animations complete when the drawer is opened or closed."
+      },
+      {
+        "name": "disablePointerDismissal?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Determines whether the drawer should close on outside clicks."
+      },
+      {
+        "name": "actionsRef?",
+        "type": "React.RefObject<DrawerRoot.Actions \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to imperative actions. - `unmount`: When specified, the drawer will not be unmounted when closed. Instead, the `unmount` function must be called to unmount the drawer manually. Useful when the drawer's animation is controlled by an external library. - `close`: Closes the drawer imperatively when called."
+      },
+      {
+        "name": "handle?",
+        "type": "DialogHandle<Payload> \\| undefined",
+        "defaultValue": "-",
+        "description": "A handle to associate the drawer with a trigger. If specified, allows detached triggers to control the drawer's open state. Can be created with the Drawer.createHandle() method."
+      },
+      {
+        "name": "triggerId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger that the drawer is associated with. This is useful in conjunction with the `open` prop to create a controlled drawer. There's no need to specify this prop when the drawer is uncontrolled (i.e. when the `open` prop is not set)."
+      },
+      {
+        "name": "defaultTriggerId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger that the drawer is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open drawer."
+      },
+      {
+        "name": "children?",
+        "type": "React.ReactNode \\| PayloadChildRenderFunction<Payload>",
+        "defaultValue": "-",
+        "description": "The content of the drawer."
+      },
+      {
+        "name": "swipeDirection?",
+        "type": "DrawerSwipeDirection \\| undefined",
+        "defaultValue": "down",
+        "description": "The swipe direction used to dismiss the drawer."
+      },
+      {
+        "name": "snapPoints?",
+        "type": "DrawerSnapPoint[] \\| undefined",
+        "defaultValue": "-",
+        "description": "Snap points used to position the drawer. Use numbers between 0 and 1 to represent fractions of the viewport height, numbers greater than 1 as pixel values, or strings in `px`/`rem` units (for example, `'148px'` or `'30rem'`)."
+      },
+      {
+        "name": "snapToSequentialPoints?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Disables velocity-based snap skipping so drag distance determines the next snap point."
+      },
+      {
+        "name": "snapPoint?",
+        "type": "DrawerSnapPoint \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "The currently active snap point. Use with `onSnapPointChange` to control the snap point."
+      },
+      {
+        "name": "defaultSnapPoint?",
+        "type": "DrawerSnapPoint \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "The initial snap point value when uncontrolled."
+      },
+      {
+        "name": "snapPoint",
+        "type": "DrawerSnapPoint \\| null,",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "eventDetails",
+        "type": "DrawerRoot.SnapPointChangeEventDetails,",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "SwipeArea": [
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the swipe area is disabled."
+      },
+      {
+        "name": "swipeDirection?",
+        "type": "DrawerSwipeDirection \\| undefined",
+        "defaultValue": "-",
+        "description": "The swipe direction that opens the drawer. Defaults to the opposite of `Drawer.Root` `swipeDirection`."
+      }
+    ],
+    "Trigger": [
+      {
+        "name": "handle?",
+        "type": "DrawerHandle<Payload> \\| undefined",
+        "defaultValue": "-",
+        "description": "A handle to associate the trigger with a drawer. Can be created with the Drawer.createHandle() method."
+      },
+      {
+        "name": "payload?",
+        "type": "Payload \\| undefined",
+        "defaultValue": "-",
+        "description": "A payload to pass to the drawer when it is opened."
+      },
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger. In addition to being forwarded to the rendered element, it is also used to specify the active trigger for drawers in controlled mode (with the Drawer.Root `triggerId` prop)."
+      }
+    ]
+  },
+  "Field": {
+    "Control": [
+      {
+        "name": "defaultValue?",
+        "type": "React.ComponentProps<'input'>['defaultValue'] \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "Error": [
+      {
+        "name": "match?",
+        "type": "boolean \\| keyof ValidityState \\| undefined",
+        "defaultValue": "-",
+        "description": "Determines whether to show the error message according to the field's [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState). Specifying `true` will always show the error message, and lets external libraries control the visibility."
+      }
+    ],
+    "Item": [
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the wrapped control should ignore user interaction. The `disabled` prop on `<Field.Root>` takes precedence over this."
+      }
+    ],
+    "Label": [
+      {
+        "name": "nativeLabel?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether the component renders a native `<label>` element when replacing it via the `render` prop. Set to `false` if the rendered element is not a label (e.g. `<div>`). This is useful to avoid inheriting label behaviors on `<button>` controls (such as `<Select.Trigger>` and `<Combobox.Trigger>`), including avoiding `:hover` on the button when hovering the label, and preventing clicks on the label from firing on the button."
+      }
+    ],
+    "Root": [
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction. Takes precedence over the `disabled` prop on the `<Field.Control>` component."
+      },
+      {
+        "name": "name?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Identifies the field when a form is submitted. Takes precedence over the `name` prop on the `<Field.Control>` component."
+      },
+      {
+        "name": "value",
+        "type": "unknown,",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "formValues",
+        "type": "Form.Values,",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "validationMode?",
+        "type": "Form.ValidationMode \\| undefined",
+        "defaultValue": "onSubmit",
+        "description": "Determines when the field should be validated. This takes precedence over the `validationMode` prop on `<Form>`. - `onSubmit`: triggers validation when the form is submitted, and re-validates on change after submission. - `onBlur`: triggers validation when the control loses focus. - `onChange`: triggers validation on every change to the control value."
+      },
+      {
+        "name": "validationDebounceTime?",
+        "type": "number \\| undefined",
+        "defaultValue": "0",
+        "description": "How long to wait between `validate` callbacks if `validationMode=\"onChange\"` is used. Specified in milliseconds."
+      },
+      {
+        "name": "invalid?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the field is invalid. Useful when the field state is controlled by an external library."
+      },
+      {
+        "name": "dirty?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the field's value has been changed from its initial value. Useful when the field state is controlled by an external library."
+      },
+      {
+        "name": "touched?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the field has been touched. Useful when the field state is controlled by an external library."
+      },
+      {
+        "name": "actionsRef?",
+        "type": "React.RefObject<FieldRoot.Actions \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to imperative actions. - `validate`: Validates the field when called."
+      }
+    ]
+  },
+  "FloatingUiReact": {
+    "FloatingDelayGroup": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "delay",
+        "type": "Delay",
+        "defaultValue": "-",
+        "description": "The delay to use for the group when it's not in the instant phase."
+      },
+      {
+        "name": "timeoutMs?",
+        "type": "number \\| undefined",
+        "defaultValue": "-",
+        "description": "An optional explicit timeout to use for the group, which represents when grouping logic will no longer be active after the close delay completes. This is useful if you want grouping to “last” longer than the close delay, for example if there is no close delay at all."
+      }
+    ],
+    "FloatingFocusManager": [
+      {
+        "name": "children",
+        "type": "React.JSX.Element",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "context",
+        "type": "FloatingRootContext \\| FloatingContext",
+        "defaultValue": "-",
+        "description": "The floating context returned from `useFloatingRootContext`."
+      },
+      {
+        "name": "openInteractionType?",
+        "type": "InteractionType \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "The interaction type used to open the floating element."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether or not the focus manager should be disabled. Useful to delay focus management until after a transition completes or some other conditional state."
+      },
+      {
+        "name": "restoreFocus?",
+        "type": "boolean \\| 'popup' \\| undefined",
+        "defaultValue": "false",
+        "description": "Determines where focus should be restored if focus inside the floating element is lost (such as due to the removal of the currently focused element from the DOM). - `true`: restore to the nearest tabbable element inside the floating tree (previous tabbable if possible, otherwise the last tabbable, then the floating element itself) - `'popup'`: restore directly to the floating element (container) itself - `false`: do not restore focus"
+      },
+      {
+        "name": "modal?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Determines if focus is “modal”, meaning focus is fully trapped inside the floating element and outside content cannot be accessed. This includes screen reader virtual cursors."
+      },
+      {
+        "name": "closeOnFocusOut?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Determines whether `focusout` event listeners that control whether the floating element should be closed if the focus moves outside of it are attached to the reference and floating elements. This affects non-modal focus management."
+      },
+      {
+        "name": "nextFocusableElement?",
+        "type": "HTMLElement \\| React.RefObject<HTMLElement \\| null> \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "Overrides the element to focus when tabbing forward out of the floating element."
+      },
+      {
+        "name": "previousFocusableElement?",
+        "type": "HTMLElement \\| React.RefObject<HTMLElement \\| null> \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "Overrides the element to focus when tabbing backward out of the floating element."
+      },
+      {
+        "name": "beforeContentFocusGuardRef?",
+        "type": "React.RefObject<HTMLSpanElement \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "Ref to the focus guard preceding the floating element content. Can be useful to focus the popup programmatically."
+      },
+      {
+        "name": "externalTree?",
+        "type": "FloatingTreeStore \\| undefined",
+        "defaultValue": "-",
+        "description": "External FlatingTree to use when the one provided by context can't be used."
+      }
+    ],
+    "FloatingPortal": [
+      {
+        "name": "ref?",
+        "type": "React.Ref<HTMLDivElement> \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "componentProps?",
+        "type": "UseRenderElementComponentProps<any> \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "elementProps?",
+        "type": "React.HTMLAttributes<HTMLDivElement> \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "FloatingTree": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "id",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "externalTree?",
+        "type": "FloatingTreeStore \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "useClick": [
+      {
+        "name": "enabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether the Hook is enabled, including all internal Effects and event handlers."
+      },
+      {
+        "name": "event?",
+        "type": "'click' \\| 'mousedown' \\| 'mousedown-only' \\| undefined",
+        "defaultValue": "click",
+        "description": "The type of event to use to determine a “click” with mouse input. Keyboard clicks work as normal."
+      },
+      {
+        "name": "toggle?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether to toggle the open state with repeated clicks."
+      },
+      {
+        "name": "ignoreMouse?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to ignore the logic for mouse input (for example, if `useHover()` is also being used)."
+      },
+      {
+        "name": "stickIfOpen?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "If already open from another event such as the `useHover()` Hook, determines whether to keep the floating element open when clicking the reference element for the first time."
+      },
+      {
+        "name": "touchOpenDelay?",
+        "type": "number \\| undefined",
+        "defaultValue": "0",
+        "description": "Touch-only delay (ms) before opening. Useful to allow mobile viewport/keyboard to settle."
+      },
+      {
+        "name": "reason?",
+        "type": "typeof REASONS.triggerPress \\| typeof REASONS.inputPress \\| undefined",
+        "defaultValue": "REASONS.triggerPress",
+        "description": "The reason for the click."
+      }
+    ],
+    "useClientPoint": [
+      {
+        "name": "enabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether the Hook is enabled, including all internal Effects and event handlers."
+      },
+      {
+        "name": "axis?",
+        "type": "'x' \\| 'y' \\| 'both' \\| undefined",
+        "defaultValue": "both",
+        "description": "Whether to restrict the client point to an axis and use the reference element (if it exists) as the other axis. This can be useful if the floating element is also interactive."
+      }
+    ],
+    "useDismiss": [
+      {
+        "name": "enabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether the Hook is enabled, including all internal Effects and event handlers."
+      },
+      {
+        "name": "escapeKey?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether to dismiss the floating element upon pressing the `esc` key."
+      },
+      {
+        "name": "referencePress?",
+        "type": "(() => boolean) \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to dismiss the floating element upon pressing the reference element. You likely want to ensure the `move` option in the `useHover()` Hook has been disabled when this is in use. A lazy getter invoked when handling reference press events."
+      },
+      {
+        "name": "referencePressEvent?",
+        "type": "PressType \\| undefined",
+        "defaultValue": "down",
+        "description": "The type of event to use to determine a \"press\". - `down` is `pointerdown` on mouse input, but special iOS-like touch handling on touch input. - `up` is lazy on both mouse + touch input (equivalent to `click`)."
+      }
+    ],
+    "useFocus": [
+      {
+        "name": "enabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether the Hook is enabled, including all internal Effects and event handlers."
+      },
+      {
+        "name": "delay?",
+        "type": "number \\| (() => number \\| undefined) \\| undefined",
+        "defaultValue": "undefined",
+        "description": "Waits for the specified time before opening."
+      }
+    ],
+    "useHover": [
+      {
+        "name": "handleClose?",
+        "type": "HandleClose \\| null \\| undefined",
+        "defaultValue": "null",
+        "description": "Accepts an event handler that runs on `mousemove` to control when the floating element closes once the cursor leaves the reference element."
+      },
+      {
+        "name": "restMs?",
+        "type": "number \\| (() => number) \\| undefined",
+        "defaultValue": "0",
+        "description": "Waits until the user's cursor is at “rest” over the reference element before changing the `open` state."
+      },
+      {
+        "name": "delay?",
+        "type": "Delay \\| (() => Delay) \\| undefined",
+        "defaultValue": "0",
+        "description": "Waits for the specified time when the event listener runs before changing the `open` state."
+      },
+      {
+        "name": "move?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether moving the cursor over the floating element will open it, without a regular hover event required."
+      }
+    ],
+    "useHoverReferenceInteraction": [
+      {
+        "name": "enabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "handleClose?",
+        "type": "HandleClose \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "restMs?",
+        "type": "number \\| (() => number) \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "delay?",
+        "type": "Delay \\| (() => Delay) \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "move?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "mouseOnly?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "externalTree?",
+        "type": "FloatingTreeStore \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "isActiveTrigger?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether the hook controls the active trigger. When false, the props are returned under the `trigger` key so they can be applied to inactive triggers via `getTriggerProps`."
+      },
+      {
+        "name": "triggerElementRef?",
+        "type": "Readonly<React.RefObject<Element \\| null>> \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "useListNavigation": [
+      {
+        "name": "listRef",
+        "type": "React.RefObject<Array<HTMLElement \\| null>>",
+        "defaultValue": "empty list",
+        "description": "A ref that holds an array of list items."
+      },
+      {
+        "name": "activeIndex",
+        "type": "number \\| null",
+        "defaultValue": "null",
+        "description": "The index of the currently active (focused or highlighted) item, which may or may not be selected."
+      },
+      {
+        "name": "enabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether the Hook is enabled, including all internal Effects and event handlers."
+      },
+      {
+        "name": "selectedIndex?",
+        "type": "number \\| null \\| undefined",
+        "defaultValue": "null",
+        "description": "The currently selected item index, which may or may not be active."
+      },
+      {
+        "name": "focusItemOnOpen?",
+        "type": "boolean \\| 'auto' \\| undefined",
+        "defaultValue": "auto",
+        "description": "Whether to focus the item upon opening the floating element. 'auto' infers what to do based on the input type (keyboard vs. pointer), while a boolean value will force the value."
+      },
+      {
+        "name": "focusItemOnHover?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether hovering an item synchronizes the focus."
+      },
+      {
+        "name": "openOnArrowKeyDown?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether pressing an arrow key on the navigation's main axis opens the floating element."
+      },
+      {
+        "name": "disabledIndices?",
+        "type": "ReadonlyArray<number> \\| ((index: number) => boolean) \\| undefined",
+        "defaultValue": "undefined",
+        "description": "By default elements with either a `disabled` or `aria-disabled` attribute are skipped in the list navigation: however, this requires the items to be rendered. This prop allows you to manually specify indices which should be disabled, overriding the default logic. For Windows-style select popups, where the menu does not open when navigating via arrow keys, specify an empty array."
+      },
+      {
+        "name": "allowEscape?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Determines whether focus can escape the list, such that nothing is selected after navigating beyond the boundary of the list. In some autocomplete/combobox components, this may be desired, as screen readers will return to the input. `loopFocus` must be `true`."
+      },
+      {
+        "name": "loopFocus?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Determines whether focus should loop around when navigating past the first or last item."
+      },
+      {
+        "name": "nested?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "If the list is nested within another one (e.g. a nested submenu), the navigation semantics change."
+      },
+      {
+        "name": "parentOrientation?",
+        "type": "UseListNavigationProps['orientation'] \\| undefined",
+        "defaultValue": "-",
+        "description": "Allows to specify the orientation of the parent list, which is used to determine the direction of the navigation. This is useful when list navigation is used within a Composite, as the hook can't determine the orientation of the parent list automatically."
+      },
+      {
+        "name": "rtl?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the direction of the floating element's navigation is in RTL layout."
+      },
+      {
+        "name": "virtual?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the focus is virtual (using `aria-activedescendant`). Use this if you need focus to remain on the reference element (such as an input), but allow arrow keys to navigate list items. This is common in autocomplete listbox components. Your virtually-focused list items must have a unique `id` set on them. If you're using a component role with the `useRole()` Hook, then an `id` is generated automatically."
+      },
+      {
+        "name": "orientation?",
+        "type": "'vertical' \\| 'horizontal' \\| 'both' \\| undefined",
+        "defaultValue": "vertical",
+        "description": "The orientation in which navigation occurs."
+      },
+      {
+        "name": "cols?",
+        "type": "number \\| undefined",
+        "defaultValue": "1",
+        "description": "Specifies how many columns the list has (i.e., it's a grid). Use an orientation of 'horizontal' (e.g. for an emoji picker/date picker, where pressing ArrowRight or ArrowLeft can change rows), or 'both' (where the current row cannot be escaped with ArrowRight or ArrowLeft, only ArrowUp and ArrowDown)."
+      },
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "The id of the root component."
+      },
+      {
+        "name": "resetOnPointerLeave?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether to clear the active index when the pointer leaves an item."
+      },
+      {
+        "name": "externalTree?",
+        "type": "FloatingTreeStore \\| undefined",
+        "defaultValue": "-",
+        "description": "External FlatingTree to use when the one provided by context can't be used."
+      }
+    ],
+    "useRole": [
+      {
+        "name": "role?",
+        "type": "AriaRole \\| ComponentRole \\| undefined",
+        "defaultValue": "dialog",
+        "description": "The role of the floating element."
+      }
+    ],
+    "useTypeahead": [
+      {
+        "name": "listRef",
+        "type": "React.RefObject<Array<string \\| null>>",
+        "defaultValue": "empty list",
+        "description": "A ref which contains an array of strings whose indices match the HTML elements of the list."
+      },
+      {
+        "name": "activeIndex",
+        "type": "number \\| null",
+        "defaultValue": "null",
+        "description": "The index of the active (focused or highlighted) item in the list."
+      },
+      {
+        "name": "onMatch?",
+        "type": "((index: number) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Callback invoked with the matching index if found as the user types."
+      },
+      {
+        "name": "elementsRef?",
+        "type": "React.RefObject<Array<HTMLElement \\| null>> \\| undefined",
+        "defaultValue": "-",
+        "description": "Optional list of item elements that correspond to `listRef` indices. When an element exists for an index, typeahead skips it if it is hidden via CSS (`display: none`)."
+      },
+      {
+        "name": "onTypingChange?",
+        "type": "((isTyping: boolean) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Callback invoked with the typing state as the user types."
+      },
+      {
+        "name": "enabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether the Hook is enabled, including all internal Effects and event handlers."
+      },
+      {
+        "name": "resetMs?",
+        "type": "number \\| undefined",
+        "defaultValue": "750",
+        "description": "The number of milliseconds to wait before resetting the typed string."
+      },
+      {
+        "name": "selectedIndex?",
+        "type": "number \\| null \\| undefined",
+        "defaultValue": "null",
+        "description": "The index of the selected item in the list, if available."
+      }
+    ],
+    "types": [
+      {
+        "name": "reference?",
+        "type": "React.HTMLProps<Element> \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "floating?",
+        "type": "React.HTMLProps<HTMLElement> \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "trigger?",
+        "type": "React.HTMLProps<Element> \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ]
+  },
+  "Form": {
+    "Root": [
+      {
+        "name": "validationMode?",
+        "type": "FormValidationMode \\| undefined",
+        "defaultValue": "onSubmit",
+        "description": "Determines when the form should be validated. The `validationMode` prop on `<Field.Root>` takes precedence over this. - `onSubmit` (default): validates the field when the form is submitted, afterwards fields will re-validate on change. - `onBlur`: validates a field when it loses focus. - `onChange`: validates the field on every change to its value."
+      },
+      {
+        "name": "errors?",
+        "type": "FormContext['errors'] \\| undefined",
+        "defaultValue": "-",
+        "description": "Validation errors returned externally, typically after submission by a server or a form action. This should be an object where keys correspond to the `name` attribute on `<Field.Root>`, and values correspond to error(s) related to that field."
+      },
+      {
+        "name": "actionsRef?",
+        "type": "React.RefObject<Form.Actions \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to imperative actions. - `validate`: Validates all fields when called. Optionally pass a field name to validate a single field. @example ```tsx // validate all fields actionsRef.current.validate(); // validate one field actionsRef.current.validate('email'); ```"
+      }
+    ]
+  },
+  "Input": {
+    "Root": [
+      {
+        "name": "onValueChange?",
+        "type": "Field.Control.Props['onValueChange'] \\| undefined",
+        "defaultValue": "-",
+        "description": "Callback fired when the `value` changes. Use when controlled."
+      },
+      {
+        "name": "defaultValue?",
+        "type": "Field.Control.Props['defaultValue'] \\| undefined",
+        "defaultValue": "-",
+        "description": "The default value of the input. Use when uncontrolled."
+      },
+      {
+        "name": "value?",
+        "type": "React.ComponentProps<'input'>['value'] \\| undefined",
+        "defaultValue": "-",
+        "description": "The value of the input. Use when controlled."
+      }
+    ]
+  },
+  "LabelableProvider": {
+    "Root": [
+      {
+        "name": "controlId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "labelId?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ]
+  },
+  "Menu": {
+    "CheckboxItem": [
+      {
+        "name": "checked?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the checkbox item is currently ticked. To render an uncontrolled checkbox item, use the `defaultChecked` prop instead."
+      },
+      {
+        "name": "defaultChecked?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the checkbox item is initially ticked. To render a controlled checkbox item, use the `checked` prop instead."
+      },
+      {
+        "name": "onClick?",
+        "type": "BaseUIComponentProps<'div', MenuCheckboxItemState>['onClick'] \\| undefined",
+        "defaultValue": "-",
+        "description": "The click handler for the menu item."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "label?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Overrides the text label to use when the item is matched during keyboard text navigation."
+      },
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "@ignore"
+      },
+      {
+        "name": "closeOnClick?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to close the menu when the item is clicked."
+      }
+    ],
+    "CheckboxItemIndicator": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the HTML element in the DOM when the checkbox item is not checked."
+      }
+    ],
+    "Group": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "The content of the component."
+      }
+    ],
+    "Item": [
+      {
+        "name": "onClick?",
+        "type": "BaseUIComponentProps<'div', MenuItemState>['onClick'] \\| undefined",
+        "defaultValue": "-",
+        "description": "The click handler for the menu item."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "label?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Overrides the text label to use when the item is matched during keyboard text navigation."
+      },
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "@ignore"
+      },
+      {
+        "name": "closeOnClick?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether to close the menu when the item is clicked."
+      }
+    ],
+    "useItemCommonProps": [
+      {
+        "name": "closeOnClick",
+        "type": "boolean",
+        "defaultValue": "-",
+        "description": "Whether to close the menu when the item is clicked."
+      },
+      {
+        "name": "highlighted",
+        "type": "boolean",
+        "defaultValue": "-",
+        "description": "Determines if the menu item is highlighted."
+      },
+      {
+        "name": "id",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "The id of the menu item."
+      },
+      {
+        "name": "nodeId",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "The node id of the menu positioner."
+      },
+      {
+        "name": "store",
+        "type": "MenuStore<any>",
+        "defaultValue": "-",
+        "description": "The menu store."
+      },
+      {
+        "name": "typingRef?",
+        "type": "React.RefObject<boolean> \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether a typeahead session is in progress."
+      },
+      {
+        "name": "itemRef",
+        "type": "React.RefObject<HTMLElement \\| null>",
+        "defaultValue": "-",
+        "description": "Ref to the item element."
+      },
+      {
+        "name": "itemMetadata?",
+        "type": "UseMenuItemMetadata \\| undefined",
+        "defaultValue": "-",
+        "description": "Optional metadata for checking item type before triggering click. If provided, click will only be triggered for 'regular-item' type."
+      }
+    ],
+    "LinkItem": [
+      {
+        "name": "label?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Overrides the text label to use when the item is matched during keyboard text navigation."
+      },
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "@ignore"
+      },
+      {
+        "name": "closeOnClick?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to close the menu when the item is clicked."
+      }
+    ],
+    "Popup": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "@ignore"
+      }
+    ],
+    "Portal": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the portal mounted in the DOM while the popup is hidden."
+      }
+    ],
+    "RadioGroup": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "The content of the component."
+      },
+      {
+        "name": "value?",
+        "type": "any",
+        "defaultValue": "-",
+        "description": "The controlled value of the radio item that should be currently selected. To render an uncontrolled radio group, use the `defaultValue` prop instead."
+      },
+      {
+        "name": "defaultValue?",
+        "type": "any",
+        "defaultValue": "-",
+        "description": "The uncontrolled value of the radio item that should be initially selected. To render a controlled radio group, use the `value` prop instead."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      }
+    ],
+    "RadioItem": [
+      {
+        "name": "value",
+        "type": "any",
+        "defaultValue": "-",
+        "description": "Value of the radio item. This is the value that will be set in the MenuRadioGroup when the item is selected."
+      },
+      {
+        "name": "onClick?",
+        "type": "BaseUIComponentProps<'div', MenuRadioItemState>['onClick'] \\| undefined",
+        "defaultValue": "-",
+        "description": "The click handler for the menu item."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "label?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Overrides the text label to use when the item is matched during keyboard text navigation."
+      },
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "@ignore"
+      },
+      {
+        "name": "closeOnClick?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to close the menu when the item is clicked."
+      }
+    ],
+    "RadioItemIndicator": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the HTML element in the DOM when the radio item is inactive."
+      }
+    ],
+    "Root": [
+      {
+        "name": "defaultOpen?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the menu is initially open. To render a controlled menu, use the `open` prop instead."
+      },
+      {
+        "name": "loopFocus?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether to loop keyboard focus back to the first item when the end of the list is reached while using the arrow keys."
+      },
+      {
+        "name": "highlightItemOnHover?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether moving the pointer over items should highlight them. Disabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state."
+      },
+      {
+        "name": "modal?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Determines if the menu enters a modal state when open. - `true`: user interaction is limited to the menu: document page scroll is locked and pointer interactions on outside elements are disabled. - `false`: user interaction with the rest of the document is allowed."
+      },
+      {
+        "name": "onOpenChange?",
+        "type": "((open: boolean, eventDetails: MenuRoot.ChangeEventDetails) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Event handler called when the menu is opened or closed."
+      },
+      {
+        "name": "onOpenChangeComplete?",
+        "type": "((open: boolean) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Event handler called after any animations complete when the menu is closed."
+      },
+      {
+        "name": "open?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the menu is currently open."
+      },
+      {
+        "name": "orientation?",
+        "type": "MenuRoot.Orientation \\| undefined",
+        "defaultValue": "vertical",
+        "description": "The visual orientation of the menu. Controls whether roving focus uses up/down or left/right arrow keys."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "closeParentOnEsc?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "When in a submenu, determines whether pressing the Escape key closes the entire menu, or only the current child menu."
+      },
+      {
+        "name": "actionsRef?",
+        "type": "React.RefObject<MenuRoot.Actions \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to imperative actions. - `unmount`: When specified, the menu will not be unmounted when closed. Instead, the `unmount` function must be called to unmount the menu manually. Useful when the menu's animation is controlled by an external library. - `close`: When specified, the menu can be closed imperatively."
+      },
+      {
+        "name": "triggerId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger that the popover is associated with. This is useful in conjunction with the `open` prop to create a controlled popover. There's no need to specify this prop when the popover is uncontrolled (i.e. when the `open` prop is not set)."
+      },
+      {
+        "name": "defaultTriggerId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger that the popover is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open popover."
+      },
+      {
+        "name": "handle?",
+        "type": "MenuHandle<Payload> \\| undefined",
+        "defaultValue": "-",
+        "description": "A handle to associate the menu with a trigger. If specified, allows external triggers to control the menu's open state."
+      },
+      {
+        "name": "children?",
+        "type": "React.ReactNode \\| PayloadChildRenderFunction<Payload>",
+        "defaultValue": "-",
+        "description": "The content of the popover. This can be a regular React node or a render function that receives the `payload` of the active trigger."
+      }
+    ],
+    "SubmenuRoot": [
+      {
+        "name": "closeParentOnEsc?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "When in a submenu, determines whether pressing the Escape key closes the entire menu, or only the current child menu."
+      }
+    ],
+    "SubmenuTrigger": [
+      {
+        "name": "onClick?",
+        "type": "BaseUIComponentProps<'div', MenuSubmenuTriggerState>['onClick'] \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "label?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Overrides the text label to use when the item is matched during keyboard text navigation."
+      },
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "@ignore"
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "delay?",
+        "type": "number \\| undefined",
+        "defaultValue": "100",
+        "description": "How long to wait before the menu may be opened on hover. Specified in milliseconds. Requires the `openOnHover` prop."
+      },
+      {
+        "name": "closeDelay?",
+        "type": "number \\| undefined",
+        "defaultValue": "0",
+        "description": "How long to wait before closing the menu that was opened on hover. Specified in milliseconds. Requires the `openOnHover` prop."
+      },
+      {
+        "name": "openOnHover?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the menu should also open when the trigger is hovered."
+      }
+    ],
+    "Trigger": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "handle?",
+        "type": "MenuHandle<Payload> \\| undefined",
+        "defaultValue": "-",
+        "description": "A handle to associate the trigger with a menu."
+      },
+      {
+        "name": "payload?",
+        "type": "Payload \\| undefined",
+        "defaultValue": "-",
+        "description": "A payload to pass to the menu when it is opened."
+      },
+      {
+        "name": "delay?",
+        "type": "number \\| undefined",
+        "defaultValue": "100",
+        "description": "How long to wait before the menu may be opened on hover. Specified in milliseconds. Requires the `openOnHover` prop."
+      },
+      {
+        "name": "closeDelay?",
+        "type": "number \\| undefined",
+        "defaultValue": "0",
+        "description": "How long to wait before closing the menu that was opened on hover. Specified in milliseconds. Requires the `openOnHover` prop."
+      },
+      {
+        "name": "openOnHover?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the menu should also open when the trigger is hovered."
+      }
+    ]
+  },
+  "Menubar": {
+    "Root": [
+      {
+        "name": "modal?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether the menubar is modal."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the whole menubar is disabled."
+      },
+      {
+        "name": "orientation?",
+        "type": "MenuRoot.Orientation \\| undefined",
+        "defaultValue": "horizontal",
+        "description": "The orientation of the menubar."
+      },
+      {
+        "name": "loopFocus?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether to loop keyboard focus back to the first item when the end of the list is reached while using the arrow keys."
+      }
+    ]
+  },
+  "Meter": {
+    "Root": [
+      {
+        "name": "format?",
+        "type": "Intl.NumberFormatOptions \\| undefined",
+        "defaultValue": "-",
+        "description": "Options to format the value."
+      },
+      {
+        "name": "getAriaValueText?",
+        "type": "((formattedValue: string, value: number) => string) \\| undefined",
+        "defaultValue": "-",
+        "description": "A function that returns a string value that provides a human-readable text alternative for `aria-valuenow`, the current value of the meter."
+      },
+      {
+        "name": "locale?",
+        "type": "Intl.LocalesArgument \\| undefined",
+        "defaultValue": "-",
+        "description": "The locale used by `Intl.NumberFormat` when formatting the value. Defaults to the user's runtime locale."
+      },
+      {
+        "name": "max?",
+        "type": "number \\| undefined",
+        "defaultValue": "100",
+        "description": "The maximum value"
+      },
+      {
+        "name": "min?",
+        "type": "number \\| undefined",
+        "defaultValue": "0",
+        "description": "The minimum value"
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "defaultValue": "-",
+        "description": "The current value."
+      }
+    ],
+    "Value": [
+      {
+        "name": "children?",
+        "type": "null \\| ((formattedValue: string, value: number) => React.ReactNode) \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ]
+  },
+  "NavigationMenu": {
+    "Content": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the content mounted in the DOM while the popup is closed. Ensures the content is present during server-side rendering for web crawlers."
+      }
+    ],
+    "Item": [
+      {
+        "name": "value?",
+        "type": "any",
+        "defaultValue": "-",
+        "description": "A unique value that identifies this navigation menu item. If no value is provided, a unique ID will be generated automatically. Use when controlling the navigation menu programmatically."
+      }
+    ],
+    "Link": [
+      {
+        "name": "active?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the link is the currently active page."
+      },
+      {
+        "name": "closeOnClick?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to close the navigation menu when the link is clicked."
+      }
+    ],
+    "Portal": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the portal mounted in the DOM while the popup is hidden."
+      },
+      {
+        "name": "container?",
+        "type": "FloatingPortal.Props<NavigationMenuPortalState>['container'] \\| undefined",
+        "defaultValue": "-",
+        "description": "A parent element to render the portal element into."
+      }
+    ],
+    "Root": [
+      {
+        "name": "actionsRef?",
+        "type": "React.RefObject<NavigationMenuRoot.Actions \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to imperative actions."
+      },
+      {
+        "name": "onOpenChangeComplete?",
+        "type": "((open: boolean) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Event handler called after any animations complete when the navigation menu is closed."
+      },
+      {
+        "name": "value?",
+        "type": "any",
+        "defaultValue": "null",
+        "description": "The controlled value of the navigation menu item that should be currently open. When non-nullish, the menu will be open. When nullish, the menu will be closed. To render an uncontrolled navigation menu, use the `defaultValue` prop instead."
+      },
+      {
+        "name": "defaultValue?",
+        "type": "any",
+        "defaultValue": "null",
+        "description": "The uncontrolled value of the item that should be initially selected. To render a controlled navigation menu, use the `value` prop instead."
+      },
+      {
+        "name": "delay?",
+        "type": "number \\| undefined",
+        "defaultValue": "50",
+        "description": "How long to wait before opening the navigation menu. Specified in milliseconds."
+      },
+      {
+        "name": "closeDelay?",
+        "type": "number \\| undefined",
+        "defaultValue": "50",
+        "description": "How long to wait before closing the navigation menu. Specified in milliseconds."
+      },
+      {
+        "name": "orientation?",
+        "type": "'horizontal' \\| 'vertical' \\| undefined",
+        "defaultValue": "horizontal",
+        "description": "The orientation of the navigation menu."
+      }
+    ]
+  },
+  "NumberField": {
+    "Root": [
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "The id of the input element."
+      },
+      {
+        "name": "min?",
+        "type": "number \\| undefined",
+        "defaultValue": "-",
+        "description": "The minimum value of the input element."
+      },
+      {
+        "name": "max?",
+        "type": "number \\| undefined",
+        "defaultValue": "-",
+        "description": "The maximum value of the input element."
+      },
+      {
+        "name": "allowOutOfRange?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "When true, direct text entry may be outside the `min`/`max` range without clamping, so native range underflow/overflow validation can occur. Step-based interactions (keyboard arrows, buttons, wheel, scrub) still clamp."
+      },
+      {
+        "name": "smallStep?",
+        "type": "number \\| undefined",
+        "defaultValue": "0.1",
+        "description": "The small step value of the input element when incrementing while the meta key is held. Snaps to multiples of this value."
+      },
+      {
+        "name": "step?",
+        "type": "number \\| 'any' \\| undefined",
+        "defaultValue": "1",
+        "description": "Amount to increment and decrement with the buttons and arrow keys, or to scrub with pointer movement in the scrub area. To always enable step validation on form submission, specify the `min` prop explicitly in conjunction with this prop. Specify `step=\"any\"` to always disable step validation."
+      },
+      {
+        "name": "largeStep?",
+        "type": "number \\| undefined",
+        "defaultValue": "10",
+        "description": "The large step value of the input element when incrementing while the shift key is held. Snaps to multiples of this value."
+      },
+      {
+        "name": "required?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the user must enter a value before submitting a form."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "readOnly?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the user should be unable to change the field value."
+      },
+      {
+        "name": "name?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Identifies the field when a form is submitted."
+      },
+      {
+        "name": "value?",
+        "type": "number \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "The raw numeric value of the field."
+      },
+      {
+        "name": "defaultValue?",
+        "type": "number \\| undefined",
+        "defaultValue": "-",
+        "description": "The uncontrolled value of the field when it's initially rendered. To render a controlled number field, use the `value` prop instead."
+      },
+      {
+        "name": "allowWheelScrub?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to allow the user to scrub the input value with the mouse wheel while focused and hovering over the input."
+      },
+      {
+        "name": "snapOnStep?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the value should snap to the nearest step when incrementing or decrementing."
+      },
+      {
+        "name": "format?",
+        "type": "Intl.NumberFormatOptions \\| undefined",
+        "defaultValue": "-",
+        "description": "Options to format the input value."
+      },
+      {
+        "name": "locale?",
+        "type": "Intl.LocalesArgument \\| undefined",
+        "defaultValue": "-",
+        "description": "The locale of the input element. Defaults to the user's runtime locale."
+      },
+      {
+        "name": "inputRef?",
+        "type": "React.Ref<HTMLInputElement> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to access the hidden input element."
+      }
+    ],
+    "ScrubArea": [
+      {
+        "name": "direction?",
+        "type": "'horizontal' \\| 'vertical' \\| undefined",
+        "defaultValue": "horizontal",
+        "description": "Cursor movement direction in the scrub area."
+      },
+      {
+        "name": "pixelSensitivity?",
+        "type": "number \\| undefined",
+        "defaultValue": "2",
+        "description": "Determines how many pixels the cursor must move before the value changes. A higher value will make scrubbing less sensitive."
+      },
+      {
+        "name": "teleportDistance?",
+        "type": "number \\| undefined",
+        "defaultValue": "-",
+        "description": "If specified, determines the distance that the cursor may move from the center of the scrub area before it will loop back around."
+      }
+    ]
+  },
+  "Popover": {
+    "Portal": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the portal mounted in the DOM while the popup is hidden."
+      }
+    ],
+    "Root": [
+      {
+        "name": "defaultOpen?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the popover is initially open. To render a controlled popover, use the `open` prop instead."
+      },
+      {
+        "name": "open?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the popover is currently open."
+      },
+      {
+        "name": "onOpenChangeComplete?",
+        "type": "((open: boolean) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Event handler called after any animations complete when the popover is opened or closed."
+      },
+      {
+        "name": "actionsRef?",
+        "type": "React.RefObject<PopoverRoot.Actions \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to imperative actions. - `unmount`: When specified, the popover will not be unmounted when closed. Instead, the `unmount` function must be called to unmount the popover manually. Useful when the popover's animation is controlled by an external library. - `close`: Closes the dialog imperatively when called."
+      },
+      {
+        "name": "modal?",
+        "type": "boolean \\| 'trap-focus' \\| undefined",
+        "defaultValue": "false",
+        "description": "Determines if the popover enters a modal state when open. - `true`: user interaction is limited to the popover: document page scroll is locked, and pointer interactions on outside elements are disabled. - `false`: user interaction with the rest of the document is allowed. - `'trap-focus'`: focus is trapped inside the popover, but document page scroll is not locked and pointer interactions outside of it remain enabled."
+      },
+      {
+        "name": "triggerId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger that the popover is associated with. This is useful in conjunction with the `open` prop to create a controlled popover. There's no need to specify this prop when the popover is uncontrolled (i.e. when the `open` prop is not set)."
+      },
+      {
+        "name": "defaultTriggerId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger that the popover is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open popover."
+      },
+      {
+        "name": "handle?",
+        "type": "PopoverHandle<Payload> \\| undefined",
+        "defaultValue": "-",
+        "description": "A handle to associate the popover with a trigger. If specified, allows external triggers to control the popover's open state."
+      },
+      {
+        "name": "children?",
+        "type": "React.ReactNode \\| PayloadChildRenderFunction<Payload>",
+        "defaultValue": "-",
+        "description": "The content of the popover. This can be a regular React node or a render function that receives the `payload` of the active trigger."
+      }
+    ]
+  },
+  "PreviewCard": {
+    "Portal": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the portal mounted in the DOM while the popup is hidden."
+      }
+    ],
+    "Root": [
+      {
+        "name": "defaultOpen?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the preview card is initially open. To render a controlled preview card, use the `open` prop instead."
+      },
+      {
+        "name": "open?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the preview card is currently open."
+      },
+      {
+        "name": "onOpenChangeComplete?",
+        "type": "((open: boolean) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Event handler called after any animations complete when the preview card is opened or closed."
+      },
+      {
+        "name": "actionsRef?",
+        "type": "React.RefObject<PreviewCardRoot.Actions \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to imperative actions. - `unmount`: Unmounts the preview card popup. - `close`: Closes the preview card imperatively when called."
+      },
+      {
+        "name": "handle?",
+        "type": "PreviewCardHandle<Payload> \\| undefined",
+        "defaultValue": "-",
+        "description": "A handle to associate the preview card with a trigger. If specified, allows external triggers to control the card's open state. Can be created with the PreviewCard.createHandle() method."
+      },
+      {
+        "name": "children?",
+        "type": "React.ReactNode \\| PayloadChildRenderFunction<Payload>",
+        "defaultValue": "-",
+        "description": "The content of the preview card. This can be a regular React node or a render function that receives the `payload` of the active trigger."
+      },
+      {
+        "name": "triggerId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger that the preview card is associated with. This is useful in conjunction with the `open` prop to create a controlled preview card. There's no need to specify this prop when the preview card is uncontrolled (i.e. when the `open` prop is not set)."
+      },
+      {
+        "name": "defaultTriggerId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger that the preview card is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open preview card."
+      }
+    ],
+    "Trigger": [
+      {
+        "name": "handle?",
+        "type": "PreviewCardHandle<Payload> \\| undefined",
+        "defaultValue": "-",
+        "description": "A handle to associate the trigger with a preview card."
+      },
+      {
+        "name": "payload?",
+        "type": "Payload \\| undefined",
+        "defaultValue": "-",
+        "description": "A payload to pass to the preview card when it is opened."
+      },
+      {
+        "name": "delay?",
+        "type": "number \\| undefined",
+        "defaultValue": "600",
+        "description": "How long to wait before the preview card opens. Specified in milliseconds."
+      },
+      {
+        "name": "closeDelay?",
+        "type": "number \\| undefined",
+        "defaultValue": "300",
+        "description": "How long to wait before closing the preview card. Specified in milliseconds."
+      }
+    ]
+  },
+  "Progress": {
+    "Root": [
+      {
+        "name": "format?",
+        "type": "Intl.NumberFormatOptions \\| undefined",
+        "defaultValue": "-",
+        "description": "Options to format the value."
+      },
+      {
+        "name": "getAriaValueText?",
+        "type": "((formattedValue: string \\| null, value: number \\| null) => string) \\| undefined",
+        "defaultValue": "-",
+        "description": "Accepts a function which returns a string value that provides a human-readable text alternative for the current value of the progress bar."
+      },
+      {
+        "name": "locale?",
+        "type": "Intl.LocalesArgument \\| undefined",
+        "defaultValue": "-",
+        "description": "The locale used by `Intl.NumberFormat` when formatting the value. Defaults to the user's runtime locale."
+      },
+      {
+        "name": "max?",
+        "type": "number \\| undefined",
+        "defaultValue": "100",
+        "description": "The maximum value."
+      },
+      {
+        "name": "min?",
+        "type": "number \\| undefined",
+        "defaultValue": "0",
+        "description": "The minimum value."
+      },
+      {
+        "name": "value",
+        "type": "number \\| null",
+        "defaultValue": "null",
+        "description": "The current value. The component is indeterminate when value is `null`."
+      }
+    ]
+  },
+  "Radio": {
+    "Indicator": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the HTML element in the DOM when the radio button is inactive."
+      }
+    ],
+    "Root": [
+      {
+        "name": "value",
+        "type": "Value",
+        "defaultValue": "-",
+        "description": "The unique identifying value of the radio in a group."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "required?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the user must choose a value before submitting a form."
+      },
+      {
+        "name": "readOnly?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the user should be unable to select the radio button."
+      },
+      {
+        "name": "inputRef?",
+        "type": "React.Ref<HTMLInputElement> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to access the hidden input element."
+      }
+    ]
+  },
+  "RadioGroup": {
+    "Root": [
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "readOnly?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the user should be unable to select a different radio button in the group."
+      },
+      {
+        "name": "required?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the user must choose a value before submitting a form."
+      },
+      {
+        "name": "name?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Identifies the field when a form is submitted."
+      },
+      {
+        "name": "value?",
+        "type": "Value \\| undefined",
+        "defaultValue": "-",
+        "description": "The controlled value of the radio item that should be currently selected. To render an uncontrolled radio group, use the `defaultValue` prop instead."
+      },
+      {
+        "name": "defaultValue?",
+        "type": "Value \\| undefined",
+        "defaultValue": "-",
+        "description": "The uncontrolled value of the radio button that should be initially selected. To render a controlled radio group, use the `value` prop instead."
+      },
+      {
+        "name": "onValueChange?",
+        "type": "((value: Value, eventDetails: RadioGroup.ChangeEventDetails) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Callback fired when the value changes."
+      },
+      {
+        "name": "inputRef?",
+        "type": "React.Ref<HTMLInputElement> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to access the hidden input element."
+      }
+    ]
+  },
+  "ScrollArea": {
+    "Root": [
+      {
+        "name": "xStart",
+        "type": "number",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "xEnd",
+        "type": "number",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "yStart",
+        "type": "number",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "yEnd",
+        "type": "number",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "Scrollbar": [
+      {
+        "name": "orientation?",
+        "type": "'vertical' \\| 'horizontal' \\| undefined",
+        "defaultValue": "vertical",
+        "description": "Whether the scrollbar controls vertical or horizontal scroll."
+      },
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the HTML element in the DOM when the viewport isn't scrollable."
+      }
+    ]
+  },
+  "Select": {
+    "Item": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "value?",
+        "type": "any",
+        "defaultValue": "null",
+        "description": "A unique value that identifies this select item."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "label?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Specifies the text label to use when the item is matched during keyboard text navigation. Defaults to the item text content if not provided."
+      }
+    ],
+    "ItemIndicator": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether to keep the HTML element in the DOM when the item is not selected."
+      }
+    ],
+    "Popup": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "Positioner": [
+      {
+        "name": "alignItemWithTrigger?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether the positioner overlaps the trigger so the selected item's text is aligned with the trigger's value text. This only applies to mouse input and is automatically disabled if there is not enough space."
+      }
+    ],
+    "Root": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "inputRef?",
+        "type": "React.Ref<HTMLInputElement> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to access the hidden input element."
+      },
+      {
+        "name": "name?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Identifies the field when a form is submitted."
+      },
+      {
+        "name": "autoComplete?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Provides a hint to the browser for autofill. @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete"
+      },
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "The id of the Select."
+      },
+      {
+        "name": "required?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the user must choose a value before submitting a form."
+      },
+      {
+        "name": "readOnly?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the user should be unable to choose a different option from the select popup."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "multiple?",
+        "type": "Multiple \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether multiple items can be selected."
+      },
+      {
+        "name": "highlightItemOnHover?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether moving the pointer over items should highlight them. Disabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state."
+      },
+      {
+        "name": "defaultOpen?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the select popup is initially open. To render a controlled select popup, use the `open` prop instead."
+      },
+      {
+        "name": "onOpenChange?",
+        "type": "((open: boolean, eventDetails: SelectRootChangeEventDetails) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Event handler called when the select popup is opened or closed."
+      },
+      {
+        "name": "onOpenChangeComplete?",
+        "type": "((open: boolean) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Event handler called after any animations complete when the select popup is opened or closed."
+      },
+      {
+        "name": "open?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the select popup is currently open."
+      },
+      {
+        "name": "modal?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Determines if the select enters a modal state when open. - `true`: user interaction is limited to the select: document page scroll is locked and pointer interactions on outside elements are disabled. - `false`: user interaction with the rest of the document is allowed."
+      },
+      {
+        "name": "actionsRef?",
+        "type": "React.RefObject<SelectRootActions \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to imperative actions. - `unmount`: When specified, the select will not be unmounted when closed. Instead, the `unmount` function must be called to unmount the select manually. Useful when the select's animation is controlled by an external library."
+      }
+    ],
+    "ScrollArrow": [
+      {
+        "name": "direction",
+        "type": "'up' \\| 'down'",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the HTML element in the DOM while the select popup is not scrollable."
+      }
+    ],
+    "ScrollDownArrow": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the HTML element in the DOM while the select popup is not scrollable."
+      }
+    ],
+    "ScrollUpArrow": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the HTML element in the DOM while the select popup is not scrollable."
+      }
+    ],
+    "Trigger": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the component should ignore user interaction."
+      }
+    ]
+  },
+  "Separator": {
+    "Root": [
+      {
+        "name": "orientation?",
+        "type": "Orientation \\| undefined",
+        "defaultValue": "horizontal",
+        "description": "The orientation of the separator."
+      }
+    ]
+  },
+  "Slider": {
+    "Root": [
+      {
+        "name": "defaultValue?",
+        "type": "Value \\| undefined",
+        "defaultValue": "-",
+        "description": "The uncontrolled value of the slider when it's initially rendered. To render a controlled slider, use the `value` prop instead."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the slider should ignore user interaction."
+      },
+      {
+        "name": "format?",
+        "type": "Intl.NumberFormatOptions \\| undefined",
+        "defaultValue": "-",
+        "description": "Options to format the input value."
+      },
+      {
+        "name": "locale?",
+        "type": "Intl.LocalesArgument \\| undefined",
+        "defaultValue": "-",
+        "description": "The locale used by `Intl.NumberFormat` when formatting the value. Defaults to the user's runtime locale."
+      },
+      {
+        "name": "max?",
+        "type": "number \\| undefined",
+        "defaultValue": "100",
+        "description": "The maximum allowed value of the slider. Should not be equal to min."
+      },
+      {
+        "name": "min?",
+        "type": "number \\| undefined",
+        "defaultValue": "0",
+        "description": "The minimum allowed value of the slider. Should not be equal to max."
+      },
+      {
+        "name": "minStepsBetweenValues?",
+        "type": "number \\| undefined",
+        "defaultValue": "0",
+        "description": "The minimum steps between values in a range slider."
+      },
+      {
+        "name": "name?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Identifies the field when a form is submitted."
+      },
+      {
+        "name": "orientation?",
+        "type": "Orientation \\| undefined",
+        "defaultValue": "horizontal",
+        "description": "The component orientation."
+      },
+      {
+        "name": "step?",
+        "type": "number \\| undefined",
+        "defaultValue": "1",
+        "description": "The granularity with which the slider can step through values. (A \"discrete\" slider.) The `min` prop serves as the origin for the valid values. We recommend (max - min) to be evenly divisible by the step."
+      },
+      {
+        "name": "largeStep?",
+        "type": "number \\| undefined",
+        "defaultValue": "10",
+        "description": "The granularity with which the slider can step through values when using Page Up/Page Down or Shift + Arrow Up/Arrow Down."
+      },
+      {
+        "name": "thumbAlignment?",
+        "type": "'center' \\| 'edge' \\| 'edge-client-only' \\| undefined",
+        "defaultValue": "center",
+        "description": "How the thumb(s) are aligned relative to `Slider.Control` when the value is at `min` or `max`: - `center`: The center of the thumb is aligned with the control edge - `edge`: The thumb is inset within the control such that its edge is aligned with the control edge - `edge-client-only`: Same as `edge` but renders after React hydration on the client, reducing bundle size in return"
+      },
+      {
+        "name": "thumbCollisionBehavior?",
+        "type": "'push' \\| 'swap' \\| 'none' \\| undefined",
+        "defaultValue": "push",
+        "description": "Controls how thumbs behave when they collide during pointer interactions. - `'push'` (default): Thumbs push each other without restoring their previous positions when dragged back. - `'swap'`: Thumbs swap places when dragged past each other. - `'none'`: Thumbs cannot move past each other; excess movement is ignored."
+      },
+      {
+        "name": "value?",
+        "type": "Value \\| undefined",
+        "defaultValue": "-",
+        "description": "The value of the slider. For ranged sliders, provide an array with two values."
+      },
+      {
+        "name": "value",
+        "type": "Value extends number ? number : Value,",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "eventDetails",
+        "type": "SliderRoot.ChangeEventDetails,",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "value",
+        "type": "Value extends number ? number : Value,",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "eventDetails",
+        "type": "SliderRoot.CommitEventDetails,",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "Thumb": [
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the thumb should ignore user interaction."
+      },
+      {
+        "name": "getAriaLabel?",
+        "type": "((index: number) => string) \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "A function which returns a string value for the [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) attribute of the `input`."
+      }
+    ]
+  },
+  "Switch": {
+    "Root": [
+      {
+        "name": "id?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "The id of the switch element."
+      },
+      {
+        "name": "checked?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the switch is currently active. To render an uncontrolled switch, use the `defaultChecked` prop instead."
+      },
+      {
+        "name": "defaultChecked?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the switch is initially active. To render a controlled switch, use the `checked` prop instead."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "inputRef?",
+        "type": "React.Ref<HTMLInputElement> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to access the hidden `<input>` element."
+      },
+      {
+        "name": "name?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "Identifies the field when a form is submitted."
+      },
+      {
+        "name": "readOnly?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the user should be unable to activate or deactivate the switch."
+      },
+      {
+        "name": "required?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the user must activate the switch before submitting a form."
+      },
+      {
+        "name": "value?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "The value submitted with the form when the switch is on. By default, switch submits the \"on\" value, matching native checkbox behavior."
+      },
+      {
+        "name": "uncheckedValue?",
+        "type": "string \\| undefined",
+        "defaultValue": "-",
+        "description": "The value submitted with the form when the switch is off. By default, unchecked switches do not submit any value, matching native checkbox behavior."
+      }
+    ]
+  },
+  "Tabs": {
+    "Indicator": [
+      {
+        "name": "renderBeforeHydration?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to render itself before React hydrates. This minimizes the time that the indicator isn't visible after server-side rendering."
+      }
+    ],
+    "List": [
+      {
+        "name": "activateOnFocus?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to automatically change the active tab on arrow key focus. Otherwise, tabs will be activated using <kbd>Enter</kbd> or <kbd>Space</kbd> key press."
+      },
+      {
+        "name": "loopFocus?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether to loop keyboard focus back to the first item when the end of the list is reached while using the arrow keys."
+      }
+    ],
+    "Panel": [
+      {
+        "name": "value",
+        "type": "TabsTab.Value",
+        "defaultValue": "-",
+        "description": "The value of the TabPanel. It will be shown when the Tab with the corresponding value is active."
+      },
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the HTML element in the DOM while the panel is hidden."
+      }
+    ],
+    "Root": [
+      {
+        "name": "value?",
+        "type": "TabsTab.Value \\| undefined",
+        "defaultValue": "-",
+        "description": "The value of the currently active `Tab`. Use when the component is controlled. When the value is `null`, no Tab will be active."
+      },
+      {
+        "name": "defaultValue?",
+        "type": "TabsTab.Value \\| undefined",
+        "defaultValue": "0",
+        "description": "The default value. Use when the component is not controlled. When the value is `null`, no Tab will be active."
+      },
+      {
+        "name": "orientation?",
+        "type": "TabsRoot.Orientation \\| undefined",
+        "defaultValue": "horizontal",
+        "description": "The component orientation (layout flow direction)."
+      }
+    ],
+    "Tab": [
+      {
+        "name": "value",
+        "type": "TabsTab.Value",
+        "defaultValue": "-",
+        "description": "The value of the Tab."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the Tab is disabled. If a first Tab on a `<Tabs.List>` is disabled, it won't initially be selected. Instead, the next enabled Tab will be selected. However, it does not work like this during server-side rendering, as it is not known during pre-rendering which Tabs are disabled. To work around it, ensure that `defaultValue` or `value` on `<Tabs.Root>` is set to an enabled Tab's value."
+      }
+    ]
+  },
+  "Toast": {
+    "Positioner": [
+      {
+        "name": "anchor?",
+        "type": "Element \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "An element to position the toast against."
+      },
+      {
+        "name": "side?",
+        "type": "Side \\| undefined",
+        "defaultValue": "top",
+        "description": "Which side of the anchor element to align the toast against. May automatically change to avoid collisions."
+      },
+      {
+        "name": "toast",
+        "type": "ToastObject<any>",
+        "defaultValue": "-",
+        "description": "The toast object associated with the positioner."
+      }
+    ],
+    "Provider": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "timeout?",
+        "type": "number \\| undefined",
+        "defaultValue": "5000",
+        "description": "The default amount of time (in ms) before a toast is auto dismissed. A value of `0` will prevent the toast from being dismissed automatically."
+      },
+      {
+        "name": "limit?",
+        "type": "number \\| undefined",
+        "defaultValue": "3",
+        "description": "The maximum number of toasts that can be displayed at once. When the limit is reached, the oldest toast will be removed to make room for the new one."
+      },
+      {
+        "name": "toastManager?",
+        "type": "ToastManager \\| undefined",
+        "defaultValue": "-",
+        "description": "A global manager for toasts to use outside of a React component."
+      }
+    ],
+    "Root": [
+      {
+        "name": "toast",
+        "type": "ToastRootToastObject<any>",
+        "defaultValue": "-",
+        "description": "The toast to render."
+      }
+    ],
+    "useManager": [
+      {
+        "name": "anchor?",
+        "type": "Element \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "An element to position the toast against."
+      }
+    ]
+  },
+  "Toggle": {
+    "Root": [
+      {
+        "name": "pressed?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the toggle button is currently pressed. This is the controlled counterpart of `defaultPressed`."
+      },
+      {
+        "name": "defaultPressed?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the toggle button is currently pressed. This is the uncontrolled counterpart of `pressed`."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "value?",
+        "type": "Value \\| undefined",
+        "defaultValue": "-",
+        "description": "A unique string that identifies the toggle when used inside a toggle group."
+      }
+    ]
+  },
+  "ToggleGroup": {
+    "Root": [
+      {
+        "name": "value?",
+        "type": "readonly Value[] \\| undefined",
+        "defaultValue": "-",
+        "description": "The open state of the toggle group represented by an array of the values of all pressed toggle buttons. This is the controlled counterpart of `defaultValue`."
+      },
+      {
+        "name": "defaultValue?",
+        "type": "readonly Value[] \\| undefined",
+        "defaultValue": "-",
+        "description": "The open state of the toggle group represented by an array of the values of all pressed toggle buttons. This is the uncontrolled counterpart of `value`."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the toggle group should ignore user interaction."
+      },
+      {
+        "name": "orientation?",
+        "type": "Orientation \\| undefined",
+        "defaultValue": "horizontal",
+        "description": "-"
+      },
+      {
+        "name": "loopFocus?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether to loop keyboard focus back to the first item when the end of the list is reached while using the arrow keys."
+      },
+      {
+        "name": "multiple?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "When `false` only one item in the group can be pressed. If any item in the group becomes pressed, the others will become unpressed. When `true` multiple items can be pressed."
+      }
+    ]
+  },
+  "Toolbar": {
+    "Button": [
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "When `true` the item is disabled."
+      },
+      {
+        "name": "focusableWhenDisabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "When `true` the item remains focuseable when disabled."
+      }
+    ],
+    "Group": [
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "When `true` all toolbar items in the group are disabled."
+      }
+    ],
+    "Input": [
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "When `true` the item is disabled."
+      },
+      {
+        "name": "focusableWhenDisabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "When `true` the item remains focuseable when disabled."
+      },
+      {
+        "name": "defaultValue?",
+        "type": "React.ComponentProps<'input'>['defaultValue'] \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      }
+    ],
+    "Root": [
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "orientation?",
+        "type": "ToolbarRoot.Orientation \\| undefined",
+        "defaultValue": "horizontal",
+        "description": "The orientation of the toolbar."
+      },
+      {
+        "name": "loopFocus?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "If `true`, using keyboard navigation will wrap focus to the other end of the toolbar once the end is reached."
+      }
+    ]
+  },
+  "Tooltip": {
+    "Portal": [
+      {
+        "name": "keepMounted?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether to keep the portal mounted in the DOM while the popup is hidden."
+      }
+    ],
+    "Positioner": [
+      {
+        "name": "side?",
+        "type": "Side \\| undefined",
+        "defaultValue": "top",
+        "description": "Which side of the anchor element to align the popup against. May automatically change to avoid collisions."
+      }
+    ],
+    "Provider": [
+      {
+        "name": "children?",
+        "type": "React.ReactNode",
+        "defaultValue": "-",
+        "description": "-"
+      },
+      {
+        "name": "delay?",
+        "type": "number \\| undefined",
+        "defaultValue": "-",
+        "description": "How long to wait before opening a tooltip. Specified in milliseconds."
+      },
+      {
+        "name": "closeDelay?",
+        "type": "number \\| undefined",
+        "defaultValue": "-",
+        "description": "How long to wait before closing a tooltip. Specified in milliseconds."
+      },
+      {
+        "name": "timeout?",
+        "type": "number \\| undefined",
+        "defaultValue": "400",
+        "description": "Another tooltip will open instantly if the previous tooltip is closed within this timeout. Specified in milliseconds."
+      }
+    ],
+    "Root": [
+      {
+        "name": "defaultOpen?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the tooltip is initially open. To render a controlled tooltip, use the `open` prop instead."
+      },
+      {
+        "name": "open?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "-",
+        "description": "Whether the tooltip is currently open."
+      },
+      {
+        "name": "onOpenChangeComplete?",
+        "type": "((open: boolean) => void) \\| undefined",
+        "defaultValue": "-",
+        "description": "Event handler called after any animations complete when the tooltip is opened or closed."
+      },
+      {
+        "name": "disableHoverablePopup?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the tooltip contents can be hovered without closing the tooltip."
+      },
+      {
+        "name": "trackCursorAxis?",
+        "type": "'none' \\| 'x' \\| 'y' \\| 'both' \\| undefined",
+        "defaultValue": "none",
+        "description": "Determines which axis the tooltip should track the cursor on."
+      },
+      {
+        "name": "actionsRef?",
+        "type": "React.RefObject<TooltipRoot.Actions \\| null> \\| undefined",
+        "defaultValue": "-",
+        "description": "A ref to imperative actions. - `unmount`: Unmounts the tooltip popup. - `close`: Closes the tooltip imperatively when called."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the tooltip is disabled."
+      },
+      {
+        "name": "handle?",
+        "type": "TooltipHandle<Payload> \\| undefined",
+        "defaultValue": "-",
+        "description": "A handle to associate the tooltip with a trigger. If specified, allows external triggers to control the tooltip's open state. Can be created with the Tooltip.createHandle() method."
+      },
+      {
+        "name": "children?",
+        "type": "React.ReactNode \\| PayloadChildRenderFunction<Payload>",
+        "defaultValue": "-",
+        "description": "The content of the tooltip. This can be a regular React node or a render function that receives the `payload` of the active trigger."
+      },
+      {
+        "name": "triggerId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger that the tooltip is associated with. This is useful in conjunction with the `open` prop to create a controlled tooltip. There's no need to specify this prop when the tooltip is uncontrolled (i.e. when the `open` prop is not set)."
+      },
+      {
+        "name": "defaultTriggerId?",
+        "type": "string \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "ID of the trigger that the tooltip is associated with. This is useful in conjunction with the `defaultOpen` prop to create an initially open tooltip."
+      }
+    ],
+    "Trigger": [
+      {
+        "name": "handle?",
+        "type": "TooltipHandle<Payload> \\| undefined",
+        "defaultValue": "-",
+        "description": "A handle to associate the trigger with a tooltip."
+      },
+      {
+        "name": "payload?",
+        "type": "Payload \\| undefined",
+        "defaultValue": "-",
+        "description": "A payload to pass to the tooltip when it is opened."
+      },
+      {
+        "name": "delay?",
+        "type": "number \\| undefined",
+        "defaultValue": "600",
+        "description": "How long to wait before opening the tooltip. Specified in milliseconds."
+      },
+      {
+        "name": "closeOnClick?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether the tooltip should close when this trigger is clicked."
+      },
+      {
+        "name": "closeDelay?",
+        "type": "number \\| undefined",
+        "defaultValue": "0",
+        "description": "How long to wait before closing the tooltip. Specified in milliseconds."
+      },
+      {
+        "name": "disabled?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "If `true`, the tooltip will not open when interacting with this trigger. Note that this doesn't apply the `disabled` attribute to the trigger element. If you want to disable the trigger element itself, you can pass the `disabled` prop to the trigger element via the `render` prop."
+      }
+    ]
+  },
+  "Utils": {
+    "InternalBackdrop": [
+      {
+        "name": "cutout?",
+        "type": "Element \\| null \\| undefined",
+        "defaultValue": "-",
+        "description": "The element to cut out of the backdrop. This is useful for allowing certain elements to be interactive while the backdrop is present."
+      }
+    ],
+    "types": [
+      {
+        "name": "nativeButton?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "true",
+        "description": "Whether the component renders a native `<button>` element when replacing it via the `render` prop. Set to `false` if the rendered element is not a button (e.g. `<div>`)."
+      },
+      {
+        "name": "nativeButton?",
+        "type": "boolean \\| undefined",
+        "defaultValue": "false",
+        "description": "Whether the component renders a native `<button>` element when replacing it via the `render` prop. Set to `true` if the rendered element is a native button."
+      }
+    ],
+    "useRenderElement": [
+      {
+        "name": "className?",
+        "type": "string \\| ((state: State) => string \\| undefined) \\| undefined",
+        "defaultValue": "-",
+        "description": "The class name to apply to the rendered element. Can be a string or a function that accepts the state and returns a string."
+      },
+      {
+        "name": "render?",
+        "type": "undefined \\| React.ReactElement \\| ComponentRenderFn<React.HTMLAttributes<any>, State>",
+        "defaultValue": "-",
+        "description": "The render prop or React element to override the default element."
+      },
+      {
+        "name": "style?",
+        "type": "React.CSSProperties \\| ((state: State) => React.CSSProperties \\| undefined) \\| undefined",
+        "defaultValue": "-",
+        "description": "The style to apply to the rendered element. Can be a style object or a function that accepts the state and returns a style object."
+      }
+    ]
+  }
+}
