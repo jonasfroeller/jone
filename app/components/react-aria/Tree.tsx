@@ -61,6 +61,7 @@ const chevron = tv({
 
 export interface TreeItemProps extends Partial<AriaTreeItemProps> {
   title: string;
+  icon?: React.ReactNode;
 }
 
 export function TreeItem(props: TreeItemProps) {
@@ -73,11 +74,15 @@ export function TreeItem(props: TreeItemProps) {
               <Checkbox slot="selection" />
             )}
             <div className='shrink-0 w-[calc(calc(var(--tree-item-level)-1)*calc(var(--spacing)*3))]' />
-            {hasChildItems ? (
-              <Button slot="chevron" className={expandButton({ isDisabled })}>
-              <ChevronRight aria-hidden className={chevron({ isExpanded, isDisabled })} />
-            </Button>
-            ) : <div className='shrink-0 w-8 h-8' />}
+            <div className='shrink-0 w-8 h-8 flex items-center justify-center'>
+              {hasChildItems ? (
+                <Button slot="chevron" className={expandButton({ isDisabled })}>
+                  <ChevronRight aria-hidden className={chevron({ isExpanded, isDisabled })} />
+                </Button>
+              ) : (
+                props.icon
+              )}
+            </div>
             {props.title}
           </div>
         )}
