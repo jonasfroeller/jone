@@ -1,5 +1,5 @@
 'use client';
-import { ChevronDown } from 'lucide-react';
+import ChevronDown from '~icons/lucide/chevron-down';
 import React from 'react';
 import {
   Select as AriaSelect,

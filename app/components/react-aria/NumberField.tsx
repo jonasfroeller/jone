@@ -1,5 +1,6 @@
 'use client';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import ChevronDown from '~icons/lucide/chevron-down';
+import ChevronUp from '~icons/lucide/chevron-up';
 import React from 'react';
 import {
   NumberField as AriaNumberField,

@@ -1,5 +1,6 @@
 'use client';
-import { SearchIcon, XIcon } from 'lucide-react';
+import SearchIcon from '~icons/lucide/search';
+import XIcon from '~icons/lucide/x';
 import React from 'react';
 import {
   SearchField as AriaSearchField,

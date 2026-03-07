@@ -1,5 +1,5 @@
 'use client';
-import { ArrowUp } from 'lucide-react';
+import ArrowUp from '~icons/lucide/arrow-up';
 import React from 'react';
 import {
   Cell as AriaCell,

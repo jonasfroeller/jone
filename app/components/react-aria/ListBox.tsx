@@ -1,5 +1,5 @@
 'use client';
-import { Check } from 'lucide-react';
+import Check from '~icons/lucide/check';
 import React from 'react';
 import {
   ListBox as AriaListBox,

@@ -1,6 +1,10 @@
 'use client';
 import { useMemo, useState } from 'react';
-import { Check, ChevronDown, Copy, ExternalLinkIcon, TextIcon } from 'lucide-react';
+import Check from '~icons/lucide/check';
+import ChevronDown from '~icons/lucide/chevron-down';
+import Copy from '~icons/lucide/copy';
+import ExternalLinkIcon from '~icons/lucide/external-link';
+import TextIcon from '~icons/lucide/text';
 import { cn } from '@/lib/cn';
 import { useCopyButton } from 'fumadocs-ui/utils/use-copy-button';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';

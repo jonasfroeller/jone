@@ -1,5 +1,6 @@
 'use client';
-import { Check, ChevronRight } from 'lucide-react';
+import Check from '~icons/lucide/check';
+import ChevronRight from '~icons/lucide/chevron-right';
 import React from 'react';
 import {
   Menu as AriaMenu,

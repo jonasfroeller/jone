@@ -1,5 +1,5 @@
 'use client';
-import { XIcon } from 'lucide-react';
+import XIcon from '~icons/lucide/x';
 import React, { createContext, useContext } from 'react';
 import {
   Tag as AriaTag,

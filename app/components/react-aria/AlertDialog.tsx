@@ -1,5 +1,6 @@
 'use client';
-import { AlertCircleIcon, InfoIcon } from "lucide-react";
+import AlertCircleIcon from '~icons/lucide/circle-alert';
+import InfoIcon from '~icons/lucide/info';
 import React, { type ReactNode } from "react";
 import { chain } from "react-aria";
 import { type DialogProps, Heading } from "react-aria-components";

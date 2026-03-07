@@ -1,5 +1,5 @@
 'use client';
-import { ChevronRight } from 'lucide-react';
+import ChevronRight from '~icons/lucide/chevron-right';
 import React from 'react';
 import { Breadcrumb as AriaBreadcrumb, Breadcrumbs as AriaBreadcrumbs, type BreadcrumbProps, type BreadcrumbsProps, type LinkProps } from 'react-aria-components';
 import { twMerge } from 'tailwind-merge';
