@@ -11,7 +11,7 @@ export { ColorField } from '@/components/react-aria/ColorField';
 export { ColorPicker } from '@/components/react-aria/ColorPicker';
 export { ColorSlider } from '@/components/react-aria/ColorSlider';
 export { ColorSwatch } from '@/components/react-aria/ColorSwatch';
-export { ColorSwatchPicker } from '@/components/react-aria/ColorSwatchPicker';
+export { ColorSwatchPicker, ColorSwatchPickerItem } from '@/components/react-aria/ColorSwatchPicker';
 export { ColorThumb } from '@/components/react-aria/ColorThumb';
 export { ColorWheel } from '@/components/react-aria/ColorWheel';
 export { ComboBox, ComboBoxItem } from '@/components/react-aria/ComboBox';
